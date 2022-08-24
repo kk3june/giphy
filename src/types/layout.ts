@@ -1,3 +1,3 @@
-export interface LayoutProps {
+export default interface LayoutProps {
   children: JSX.Element;
 }
