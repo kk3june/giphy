@@ -1,3 +1,3 @@
-export default interface MenuListProps {
-  list: Array<string>;
+export default interface MenuLinkProps {
+  name: string;
 }

@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import MenuLinkProps from '../../types/menu';
 
-const MenuLinkList = ({ list }: any) => {
+const MenuLinkList = ({ list }: { list: MenuLinkProps[] }) => {
   return (
     <>
       <UnOrdered>
         {list.map((data, idx) => {
-          const { id, value } = data;
+          const { name } = data;
           return (
             <Link key={idx}>
-              <Anchor href={value}>{value}</Anchor>
+              <Anchor href={name}>{name}</Anchor>
             </Link>
           );
         })}

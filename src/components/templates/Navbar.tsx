@@ -5,12 +5,12 @@ import MenuLinkList from './MenuLinkList';
 
 const Navbar = () => {
   const list = [
-    { value: 'reactions' },
-    { value: 'entertainment' },
-    { value: 'sports' },
-    { value: 'stickers' },
-    { value: 'artists' },
-    { value: '•' },
+    { name: 'reactions' },
+    { name: 'entertainment' },
+    { name: 'sports' },
+    { name: 'stickers' },
+    { name: 'artists' },
+    { name: '•' },
   ];
 
   return (
