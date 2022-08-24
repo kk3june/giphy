@@ -13,10 +13,6 @@ const Navbar = () => {
     { value: '•' },
   ];
 
-  const menuLinklist = {
-    list,
-  };
-
   return (
     <nav
       css={css`
@@ -26,7 +22,7 @@ const Navbar = () => {
       `}
     >
       <Logo />
-      <MenuLinkList {...menuLinklist} />
+      <MenuLinkList list={list} />
     </nav>
   );
 };
