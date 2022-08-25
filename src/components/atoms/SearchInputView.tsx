@@ -1,21 +1,28 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import SearchButton from './SearchButton';
 
-const SearchInputView = () => {
+const SearchInputView = ({ value, onChange, onClick }: any) => {
+  const searchButtonProps = {
+    value,
+    onClick,
+  };
   return (
     <div
       css={css`
         position: relative;
+        display: flex;
         width: 100%;
         background-color: white;
         border-radius: 15px;
       `}
     >
       <InputBanner>
-        <span>Search All the GIFs and Stickers</span>
+        {value ? '' : <span>Search All the GIFs and Stickers</span>}
       </InputBanner>
-      <SearchInput />
+      <SearchInput value={value} onChange={onChange} />
+      <SearchButton {...searchButtonProps} />
     </div>
   );
 };
@@ -33,7 +40,7 @@ const SearchInput = styled.input`
   background-color: transparent;
   border-style: none;
   padding-left: 15px;
-
+  z-index: 1;
   :focus {
     outline: none;
   }

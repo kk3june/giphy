@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-const SearchBttonView = () => {
+const SearchBttonView = ({ onClick }: any) => {
   return (
-    <SearchIconButton>
+    <SearchIconButton onClick={onClick}>
       <SearchIconSvg
         width="30"
         height="30"

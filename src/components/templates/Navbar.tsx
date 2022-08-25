@@ -6,7 +6,6 @@ import MenuLinkList from './MenuLinkList';
 import Button from '../atoms/Button';
 import UserButton from '../modules/UserButton';
 import SearchInput from '../atoms/SearchInput';
-import SearchButton from '../atoms/SearchButton';
 
 const Navbar = () => {
   const [user, setUser] = useState('log in');
@@ -45,7 +44,6 @@ const Navbar = () => {
         `}
       >
         <SearchInput />
-        <SearchButton />
       </div>
     </nav>
   );
