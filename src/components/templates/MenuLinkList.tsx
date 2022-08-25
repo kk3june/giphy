@@ -33,7 +33,7 @@ const UnOrdered = styled.ul`
     )
     0% 50% / 200% 50%;
   list-style: none;
-  margin-left: 10px;
+  margin-left: 14px;
 `;
 
 const Link = styled.li`
