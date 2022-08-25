@@ -5,6 +5,8 @@ import styled from '@emotion/styled';
 import MenuLinkList from './MenuLinkList';
 import Button from '../atoms/Button';
 import UserButton from '../modules/UserButton';
+import SearchInput from '../atoms/SearchInput';
+import SearchButton from '../atoms/SearchButton';
 
 const Navbar = () => {
   const [user, setUser] = useState('log in');
@@ -18,20 +20,33 @@ const Navbar = () => {
   ];
 
   return (
-    <nav
-      css={css`
-        display: flex;
-        align-items: center;
-        height: 80px;
-      `}
-    >
-      <Logo />
-      <MenuLinkList list={list} />
-      <Buttons>
-        <Button name="upload" />
-        <Button name="create" />
-      </Buttons>
-      <UserButton user={user} />
+    <nav>
+      <div
+        css={css`
+          display: flex;
+          align-items: center;
+        `}
+      >
+        <Logo />
+        <MenuLinkList list={list} />
+        <Buttons>
+          <Button name="upload" />
+          <Button name="create" />
+        </Buttons>
+        <UserButton user={user} />
+      </div>
+      <div
+        css={css`
+          display: flex;
+          width: 100%;
+          height: 50px;
+          border-radius: 5px;
+          background-color: white;
+        `}
+      >
+        <SearchInput />
+        <SearchButton />
+      </div>
     </nav>
   );
 };
