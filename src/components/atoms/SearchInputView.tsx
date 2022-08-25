@@ -3,11 +3,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import SearchButton from './SearchButton';
 
-const SearchInputView = ({ value, onChange, onClick }: any) => {
-  const searchButtonProps = {
-    value,
-    onClick,
-  };
+const SearchInputView = ({ value, onChange }: any) => {
   return (
     <div
       css={css`
@@ -22,7 +18,6 @@ const SearchInputView = ({ value, onChange, onClick }: any) => {
         {value ? '' : <span>Search All the GIFs and Stickers</span>}
       </InputBanner>
       <SearchInput value={value} onChange={onChange} />
-      <SearchButton {...searchButtonProps} />
     </div>
   );
 };

@@ -2,16 +2,15 @@ import React from 'react';
 import SearchButtonView from './SearchButtonView';
 import { VAC } from 'react-vac';
 
-const SearchButton = ({ value, onClick }: any) => {
-  const searchButtonProps = {
-    value,
+const SearchButton = ({ onClick }: any) => {
+  const searchButtonViewProps = {
     onClick,
   };
 
   return (
     <>
-      <SearchButtonView {...searchButtonProps} />
-      {/* <VAC name="SearchButtonView" data={searchButtonProps} /> */}
+      <SearchButtonView {...searchButtonViewProps} />
+      {/* <VAC name="SearchButtonView" data={searchButtonViewProps} /> */}
     </>
   );
 };
