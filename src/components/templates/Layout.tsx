@@ -7,6 +7,7 @@ import Floating from '../modules/Floating';
 const Layout = ({ children }: LayoutProps) => {
   return (
     <div
+      id="layout"
       css={css`
         display: flex;
         flex-direction: column;
