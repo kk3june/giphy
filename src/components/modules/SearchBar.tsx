@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import SearchInput from '../atoms/SearchInput';
-import SearchButton from '../atoms/SearchButton';
+import SearchInputLayer from '../../layer/SearchInputLayer';
+import SearchButtonLayer from '../../layer/SearchButtonLayer';
 
 const SearchBar = () => {
   const [value, setValue] = useState('');
@@ -26,8 +26,8 @@ const SearchBar = () => {
 
   return (
     <SearchBarWrapper>
-      <SearchInput {...searchInputProps} />
-      <SearchButton {...searchButtonProps} />
+      <SearchInputLayer {...searchInputProps} />
+      <SearchButtonLayer {...searchButtonProps} />
     </SearchBarWrapper>
   );
 };
