@@ -1,6 +1,6 @@
-import React from 'react';
-
-const Carosel = ({ data }: any) => {
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+const Carosel = ({ data, height }: any) => {
   return (
     <>
       <img src={data} />
