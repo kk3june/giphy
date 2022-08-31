@@ -10,7 +10,10 @@ import { HeaderProps } from '../../types/home';
 const Header = ({ name }: HeaderProps) => {
   return (
     <Wrapper>
-      <TrendingSvg />
+      {name === 'trending' && <TrendingSvg />}
+      {name === 'artists' && <ArtistsSvg />}
+      {name === 'clips' && <ClipSvg />}
+      {name === 'stories' && <StoriesSvg />}
       <span>{name}</span>
     </Wrapper>
   );

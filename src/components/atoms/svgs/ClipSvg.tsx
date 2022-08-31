@@ -40,9 +40,9 @@ const ClipSvg = () => {
         <g
           id="🏡-Homepage"
           stroke="none"
-          stroke-width="1"
+          strokeWidth="1"
           fill="none"
-          fill-rule="evenodd"
+          fillRule="evenodd"
         >
           <g id="Clip-Icon" transform="translate(-275.000000, -737.000000)">
             <g id="Video" transform="translate(274.500000, 736.500000)">
