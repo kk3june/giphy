@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Carousel from '../src/components/modules/Carousel';
+import Carousel from '../src/components/modules/Carousel/Carousel';
 import Header from '../src/components/atoms/Header/Header';
 import { css } from '@emotion/react';
 import {

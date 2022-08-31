@@ -1,8 +1,8 @@
 import React from 'react';
 import { css } from '@emotion/react';
-import LayoutProps from '../../types/layout';
-import Navbar from './Navbar';
-import Floating from '../modules/Floating';
+import LayoutProps from '../../../types/layout';
+import Navbar from '../Navbar/Navbar';
+import Floating from '../../modules/Floating/Floating';
 
 const Layout = ({ children }: LayoutProps) => {
   return (

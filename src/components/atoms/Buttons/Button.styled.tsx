@@ -1,17 +1,6 @@
-import React from 'react';
 import styled from '@emotion/styled';
 
-const Button = (props: any) => {
-  return (
-    <a href={props.name}>
-      <ButtonItem>
-        <span>{props.name}</span>
-      </ButtonItem>
-    </a>
-  );
-};
-
-const ButtonItem = styled.button`
+export const ButtonItem = styled.button`
   cursor: pointer;
   width: 100%;
   background: linear-gradient(
@@ -26,5 +15,3 @@ const ButtonItem = styled.button`
   text-transform: capitalize;
   font-size: 16px;
 `;
-
-export default Button;

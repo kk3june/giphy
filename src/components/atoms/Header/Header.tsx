@@ -1,7 +1,7 @@
-import TrendingSvg from '../svgs/TrendingSvg';
-import ArtistsSvg from '../svgs/ArtistsSvg';
-import ClipSvg from '../svgs/ClipSvg';
-import StoriesSvg from '../svgs/StoriesSvg';
+import TrendingSvg from '../Svgs/TrendingSvg';
+import ArtistsSvg from '../Svgs/ArtistsSvg';
+import ClipSvg from '../Svgs/ClipSvg';
+import StoriesSvg from '../Svgs/StoriesSvg';
 import { Wrapper, SvgBox } from './Header.styled';
 
 import { HeaderProps } from '../../../types/home';
