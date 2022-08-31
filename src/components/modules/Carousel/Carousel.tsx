@@ -1,9 +1,9 @@
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-const Carosel = ({ data, height }: any) => {
+import CardLayer from '../../../layer/CardLayer';
+
+const Carosel = ({ data }: any) => {
   return (
     <>
-      <img src={data} />
+      <CardLayer data={data} />
     </>
   );
 };
