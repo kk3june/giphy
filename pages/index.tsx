@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styled from '@emotion/styled';
 import Carousel from '../src/components/modules/Carousel/Carousel';
 import Header from '../src/components/atoms/Header/Header';
 import {
@@ -25,11 +26,23 @@ function Home() {
 
   return (
     <>
-      <Header name="trending" />
-      <Carousel data={trendingGifs} height="140px" />
-      <Header name="artists" />
-      <Header name="clips" />
-      <Header name="stories" />
+      <span>
+        <Header name="trending" />
+        <Carousel cardType="trending" data={trendingGifs} />
+      </span>
+      <span>
+        <Header name="artists" />
+        <Carousel cardType="artists" data={artistsGifs} />
+      </span>
+
+      <span>
+        <Header name="clips" />
+        <Carousel cardType="clips" data={trendingClips} />
+      </span>
+      <span>
+        <Header name="stories" />
+        <Carousel cardType="stories" data={storiesGifs} />
+      </span>
     </>
   );
 }

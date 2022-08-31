@@ -12,7 +12,7 @@ const Layout = ({ children }: LayoutProps) => {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: 70%;
+        width: 66rem;
         height: 100%;
         margin: 0 auto;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,

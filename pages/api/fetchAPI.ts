@@ -10,7 +10,7 @@ export const getTrendingGifs = async () => {
 };
 
 export const getArtistGifs = async () => {
-  const { data: gifs } = await gf.gifs('art-design', 'illustration');
+  const { data: gifs } = await gf.gifs('art', 'loop');
   return gifs;
 };
 

@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { StyledCard, StyledImg } from './Card.styled';
 
-const Card = ({ data }: any) => {
+const Card = ({ data, cardType }: any) => {
   return (
     <>
       <div
@@ -15,7 +15,7 @@ const Card = ({ data }: any) => {
           data.map((el: any) => (
             <StyledCard key={el.id}>
               <a href={el.id}>
-                <StyledImg src={el.images.original.url} />
+                <StyledImg src={el.images.original.url} cardType={cardType} />
               </a>
             </StyledCard>
           ))}
