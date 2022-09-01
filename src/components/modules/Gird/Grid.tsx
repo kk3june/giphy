@@ -2,8 +2,6 @@ import { StyledGrid, GridItem, ClipVideo } from './Grid.styled';
 import UserInfo from '../../atoms/UserInfo/UserInfo';
 
 const Grid = ({ data }: any) => {
-  console.log(data);
-
   return (
     <>
       <StyledGrid>
