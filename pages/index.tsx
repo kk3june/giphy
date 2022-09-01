@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import Carousel from '../src/components/modules/Carousel/Carousel';
+import GridLayer from '../src/layer/GridLayer';
 import Header from '../src/components/atoms/Header/Header';
 import {
   getTrendingGifs,
@@ -26,23 +27,23 @@ function Home() {
 
   return (
     <>
-      <span>
+      <div>
         <Header name="trending" />
         <Carousel cardType="trending" data={trendingGifs} />
-      </span>
-      <span>
+      </div>
+      <div>
         <Header name="artists" />
         <Carousel cardType="artists" data={artistsGifs} />
-      </span>
+      </div>
 
-      <span>
+      <div>
         <Header name="clips" />
-        <Carousel cardType="clips" data={trendingClips} />
-      </span>
-      <span>
+        <GridLayer data={trendingClips} />
+      </div>
+      <div>
         <Header name="stories" />
-        <Carousel cardType="stories" data={storiesGifs} />
-      </span>
+        {/* <Carousel cardType="stories" data={storiesGifs} /> */}
+      </div>
     </>
   );
 }
