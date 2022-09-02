@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import styled from '@emotion/styled';
 import Carousel from '../src/components/modules/Carousel/Carousel';
 import GridLayer from '../src/layer/GridLayer';
+import StoriesLayer from '../src/layer/StoriesLayer';
 import Header from '../src/components/atoms/Header/Header';
 import {
   getTrendingGifs,
@@ -38,11 +38,11 @@ function Home() {
 
       <div>
         <Header name="clips" />
-        <GridLayer data={trendingClips} />
+        <GridLayer data={trendingClips} type="clips" />
       </div>
       <div>
         <Header name="stories" />
-        {/* <Carousel cardType="stories" data={storiesGifs} /> */}
+        <StoriesLayer data={storiesGifs} type="stories" />
       </div>
     </>
   );
