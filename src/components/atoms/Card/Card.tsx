@@ -14,7 +14,7 @@ const Card = ({ data, cardType }: any) => {
         {data &&
           data.map((el: any) => (
             <StyledCard key={el.id}>
-              <a href={el.id}>
+              <a href={`gifs/${el.id}`}>
                 <StyledImg src={el.images.original.url} cardType={cardType} />
               </a>
             </StyledCard>

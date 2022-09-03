@@ -23,3 +23,18 @@ export const getStoryGifs = async () => {
   const { data: gifs } = await gf.trending({ limit: 25 });
   return gifs;
 };
+
+export const getGifById = async (id: string) => {
+  const { data: gifs } = await gf.gifs([id]);
+  return gifs;
+};
+
+export const getRelatedGifs = async (id: string) => {
+  const { data: gifs } = await gf.related(id, { limit: 10 });
+  return gifs;
+};
+
+export const getRelatedClips = async (id: string) => {
+  const { data: clips } = await gf.related(id, { limit: 3 });
+  return clips;
+};
