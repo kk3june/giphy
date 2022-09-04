@@ -7,8 +7,8 @@ export const Title = styled.a`
 
 export const StyledImg = styled.a`
   img {
-    width: 25px;
-    height: 25px;
+    width: ${props => (props.type === 'sidebar' ? '50px' : '25px')};
+    height: ${props => (props.type === 'sidebar' ? '50px' : '25px')};
     margin-right: 8px;
   }
 `;

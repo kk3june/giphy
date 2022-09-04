@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { getGifById, getRelatedGifs, getRelatedClips } from '../api/fetchAPI';
+import { css } from '@emotion/react';
+import Sidebar from '../../src/components/templates/Sidebar/Sidebar';
 
 const gifs = () => {
   const router = useRouter();
@@ -18,7 +20,15 @@ const gifs = () => {
     }
   }, [params]);
 
-  return <div>gifs</div>;
+  return (
+    <div
+      css={css`
+        margin-top: 3rem;
+      `}
+    >
+      <Sidebar data={gifById} />
+    </div>
+  );
 };
 
 export default gifs;

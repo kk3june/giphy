@@ -2,12 +2,14 @@ import { Title, StyledImg, UserName } from './UserInfo.styled';
 import { css } from '@emotion/react';
 
 interface UserInfoProps {
-  title: string;
+  type?: string;
+  title?: string;
+  name?: string;
   avatar: string;
   userName: string;
 }
 
-const UserInfo = ({ title, avatar, userName }: UserInfoProps) => {
+const UserInfo = ({ type, title, avatar, name, userName }: UserInfoProps) => {
   return (
     <>
       <Title>
@@ -25,10 +27,21 @@ const UserInfo = ({ title, avatar, userName }: UserInfoProps) => {
           align-items: center;
         `}
       >
-        <StyledImg>
+        <StyledImg type={type}>
           <img src={avatar} />
         </StyledImg>
-        <UserName>{userName}</UserName>
+        <div
+          css={css`
+            display: flex;
+            flex-direction: column;
+          `}
+        >
+          <UserName>{name}</UserName>
+          <UserName>
+            {type === 'sidebar' ? '@' : ''}
+            {userName}
+          </UserName>
+        </div>
       </div>
     </>
   );
