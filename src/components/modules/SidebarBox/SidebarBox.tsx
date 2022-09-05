@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { css } from '@emotion/react';
 
 import UploadIcon from '../../atoms/Svgs/UploadIcon';

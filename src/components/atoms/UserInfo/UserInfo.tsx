@@ -1,5 +1,6 @@
-import { Title, StyledImg, UserName } from './UserInfo.styled';
 import { css } from '@emotion/react';
+
+import { Title, StyledImg, UserName } from './UserInfo.styled';
 
 interface UserInfoProps {
   type?: string;
@@ -28,7 +29,7 @@ const UserInfo = ({ type, title, avatar, name, userName }: UserInfoProps) => {
         `}
       >
         <StyledImg type={type}>
-          <img src={avatar} />
+          <img src={avatar} alt='userAvatar'/>
         </StyledImg>
         <div
           css={css`
