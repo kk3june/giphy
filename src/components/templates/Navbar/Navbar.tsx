@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import Logo from '../atoms/Logo';
+import Logo from '../../atoms/Logo/Logo';
 import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import MenuLinkList from './MenuLinkList';
-import Button from '../atoms/Button';
-import UserButton from '../modules/UserButton';
-// import SearchInput from '../atoms/SearchInput';
-import SearchBar from '../modules/SearchBar';
+import MenuLinkList from '../MenuLinkList/MenuLinkList';
+import Button from '../../atoms/Buttons/Button';
+import UserButton from '../../modules/UserButton/UserButton';
+import SearchBar from '../../modules/SearchBar/SearchBar';
+import { Buttons } from './Navbar.styled';
 
 const Navbar = () => {
   const [user, setUser] = useState('log in');
@@ -40,11 +39,4 @@ const Navbar = () => {
   );
 };
 
-const Buttons = styled.div`
-  display: flex;
-  margin-left: 14px;
-  a {
-    margin-right: 5px;
-  }
-`;
 export default Navbar;

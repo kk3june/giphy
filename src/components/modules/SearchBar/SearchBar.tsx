@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import SearchInputLayer from '../../layer/SearchInputLayer';
-import SearchButtonLayer from '../../layer/SearchButtonLayer';
+import SearchInputLayer from '../../../layer/SearchInputLayer';
+import SearchButtonLayer from '../../../layer/SearchButtonLayer';
+import { SearchBarWrapper } from './SearchBar.styled';
 
 const SearchBar = () => {
   const [value, setValue] = useState('');
@@ -31,13 +32,5 @@ const SearchBar = () => {
     </SearchBarWrapper>
   );
 };
-
-const SearchBarWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  height: 45px;
-  background-color: white;
-  border-radius: 5px;
-`;
 
 export default SearchBar;

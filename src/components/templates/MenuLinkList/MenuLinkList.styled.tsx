@@ -1,25 +1,6 @@
-import React from 'react';
 import styled from '@emotion/styled';
-import MenuLinkProps from '../../types/menu';
 
-const MenuLinkList = ({ list }: { list: MenuLinkProps[] }) => {
-  return (
-    <>
-      <UnOrdered>
-        {list.map((data, idx) => {
-          const { name } = data;
-          return (
-            <Link key={idx}>
-              <Anchor href={name}>{name}</Anchor>
-            </Link>
-          );
-        })}
-      </UnOrdered>
-    </>
-  );
-};
-
-const UnOrdered = styled.ul`
+export const UnOrdered = styled.ul`
   display: flex;
   height: 35px;
   background: linear-gradient(
@@ -36,12 +17,12 @@ const UnOrdered = styled.ul`
   margin-left: 14px;
 `;
 
-const Link = styled.li`
+export const Link = styled.li`
   cursor: pointer;
   border-right: 4px solid black;
   height: 100%;
 `;
-const Anchor = styled.a`
+export const Anchor = styled.a`
   display: inline-block;
   text-align: center;
   width: 100%;
@@ -53,5 +34,3 @@ const Anchor = styled.a`
   text-decoration: none;
   text-transform: capitalize;
 `;
-
-export default MenuLinkList;

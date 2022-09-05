@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/react';
 import Image from 'next/image';
-import styled from '@emotion/styled';
+import { LogoWrapper } from './Logo.styled';
 
 const Logo = () => {
   return (
@@ -27,10 +27,5 @@ const Logo = () => {
     </LogoWrapper>
   );
 };
-
-const LogoWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
 
 export default Logo;

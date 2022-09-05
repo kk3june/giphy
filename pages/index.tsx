@@ -1,34 +1,48 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Carousel from '../src/components/modules/Carousel';
-import Header from '../src/components/atoms/Header';
-import { css } from '@emotion/react';
-import fetchContent from './api/fetchContent';
+import Carousel from '../src/components/modules/Carousel/Carousel';
+import GridLayer from '../src/layer/GridLayer';
+import StoriesLayer from '../src/layer/StoriesLayer';
+import Header from '../src/components/atoms/Header/Header';
+import {
+  getTrendingGifs,
+  getArtistGifs,
+  getTrendingClips,
+  getStoryGifs,
+} from './api/fetchAPI';
 
 function Home() {
-  const [gifs, setGifs] = useState<any[]>();
+  const [trendingGifs, setTrendingGifs] = useState<any[]>();
+  const [artistsGifs, setArtistsGifs] = useState<any[]>();
+  const [trendingClips, setTrendingClips] = useState<any[]>();
+  const [storiesGifs, setStoriesClips] = useState<any[]>();
 
   useEffect(() => {
-    fetchContent('gifs').then(res => setGifs(res.data));
+    getTrendingGifs().then(res => setTrendingGifs(res));
+    getArtistGifs().then(res => setArtistsGifs(res));
+    getTrendingClips().then(res => setTrendingClips(res));
+    getStoryGifs().then(res => setStoriesClips(res));
 
     console.log('rendering');
   }, []);
 
   return (
     <>
-      <Header name="trending" />
-      <div
-        css={css`
-          display: flex;
-          width: 100%;
-          height: 140px;
-          overflow: hidden;
-        `}
-      >
-        {gifs &&
-          gifs.map((gif, idx) => (
-            <Carousel key={idx} data={gif.images.original.url} />
-          ))}
+      <div>
+        <Header name="trending" />
+        <Carousel cardType="trending" data={trendingGifs} />
+      </div>
+      <div>
+        <Header name="artists" />
+        <Carousel cardType="artists" data={artistsGifs} />
+      </div>
+
+      <div>
+        <Header name="clips" />
+        <GridLayer data={trendingClips} type="clips" />
+      </div>
+      <div>
+        <Header name="stories" />
+        <StoriesLayer data={storiesGifs} type="stories" />
       </div>
     </>
   );
