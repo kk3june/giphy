@@ -4,7 +4,7 @@ import { getGifById, getRelatedGifs, getRelatedClips } from '../api/fetchAPI';
 import { css } from '@emotion/react';
 import Sidebar from '../../src/components/templates/Sidebar/Sidebar';
 
-const gifs = () => {
+const Gifs = () => {
   const router = useRouter();
   const query = router.query;
   const params = query['gifs'];
@@ -31,4 +31,4 @@ const gifs = () => {
   );
 };
 
-export default gifs;
+export default Gifs;
