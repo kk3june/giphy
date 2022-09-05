@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { UserButtonItem, UserSvg } from './UserButton.styled';
 
 const UserButton = (props: any) => {
   return (
@@ -25,5 +24,24 @@ const UserButton = (props: any) => {
     </a>
   );
 };
+
+const UserButtonItem = styled.button`
+  cursor: pointer;
+  width: 100%;
+  padding: 8px 0;
+  white-space: nowrap;
+  color: white;
+  background-color: rgb(62, 62, 62);
+  border-style: none;
+  text-transform: capitalize;
+  font-size: 16px;
+  border-radius: 0 5px 5px 0;
+`;
+const UserSvg = styled.svg`
+  width: 36px;
+  padding: 0 10px;
+  background-color: rgb(82, 82, 82);
+  border-radius: 5px 0 0 5px;
+`;
 
 export default UserButton;

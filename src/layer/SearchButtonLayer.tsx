@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchButton from '../components/atoms/Buttons/SearchButton';
+import SearchButton from '../components/atoms/SearchButton';
 import { VAC } from 'react-vac';
 
 const SearchButtonLayer = ({ onClick }: any) => {

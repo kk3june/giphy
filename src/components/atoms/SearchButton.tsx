@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchIconButton, SearchIconSvg } from './SearchButton.styled';
+import styled from '@emotion/styled';
 
 const SearchBttonView = ({ onClick }: any) => {
   return (
@@ -16,5 +16,28 @@ const SearchBttonView = ({ onClick }: any) => {
     </SearchIconButton>
   );
 };
+
+const SearchIconButton = styled.button`
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 100%;
+  border-style: none;
+  border-radius: 5px;
+  animation: 2s linear 0s infinite normal none running CNual;
+  background-image: linear-gradient(
+    45deg,
+    rgb(153, 51, 255) 0%,
+    rgb(255, 102, 102) 50%,
+    rgb(153, 51, 255) 100%
+  );
+  text-align: center;
+`;
+const SearchIconSvg = styled.svg`
+  color: white;
+`;
 
 export default SearchBttonView;

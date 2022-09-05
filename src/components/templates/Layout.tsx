@@ -1,8 +1,8 @@
 import React from 'react';
 import { css } from '@emotion/react';
-import LayoutProps from '../../../types/layout';
-import Navbar from '../Navbar/Navbar';
-import Floating from '../../modules/Floating/Floating';
+import LayoutProps from '../../types/layout';
+import Navbar from './Navbar';
+import Floating from '../modules/Floating';
 
 const Layout = ({ children }: LayoutProps) => {
   return (
@@ -12,7 +12,7 @@ const Layout = ({ children }: LayoutProps) => {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: 66rem;
+        width: 70%;
         height: 100%;
         margin: 0 auto;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
