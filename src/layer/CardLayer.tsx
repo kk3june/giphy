@@ -1,6 +1,8 @@
 import React from 'react';
-import Card from '../components/atoms/Card/Card';
+
 import { VAC } from 'react-vac';
+
+import CardList from '../components/modules/CardList/CardList';
 
 const CardLayer = ({ data, cardType }: any) => {
   const cardProps = {
@@ -9,7 +11,7 @@ const CardLayer = ({ data, cardType }: any) => {
   };
   return (
     <>
-      <Card {...cardProps} />
+      <CardList {...cardProps} />
       {/* <VAC name="Card" data={cardProps} /> */}
     </>
   );

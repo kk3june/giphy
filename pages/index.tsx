@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import Carousel from '../src/components/modules/Carousel/Carousel';
-import GridLayer from '../src/layer/GridLayer';
-import StoriesLayer from '../src/layer/StoriesLayer';
-import Header from '../src/components/atoms/Header/Header';
+
+
+import Header from 'components/atoms/Header/Header';
+import Carousel from 'components/modules/Carousel/Carousel';
+import GridLayer from 'layer/GridLayer';
+import StoriesLayer from 'layer/StoriesLayer';
+
+
 import {
   getTrendingGifs,
   getArtistGifs,

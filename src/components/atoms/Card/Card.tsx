@@ -1,27 +1,16 @@
-import { css } from '@emotion/react';
+import React from 'react';
+
 import { StyledCard, StyledImg } from './Card.styled';
 
-const Card = ({ data, cardType }: any) => {
-  return (
-    <>
-      <div
-        css={css`
-          display: flex;
-          width: 100%;
-          overflow: hidden;
-        `}
-      >
-        {data &&
-          data.map((el: any) => (
-            <StyledCard key={el.id}>
-              <a href={`gifs/${el.id}`}>
-                <StyledImg src={el.images.original.url} cardType={cardType} />
-              </a>
-            </StyledCard>
-          ))}
-      </div>
-    </>
-  );
+const Card = ({data, width}: any) => {
+
+    return (
+        <StyledCard key={data?.[0].id}>
+            <a href={`gifs/${data?.[0].id}`}>
+                <StyledImg src={data?.[0].images.original.url} width={width}/>
+            </a>
+        </StyledCard>
+    );
 };
 
 export default Card;

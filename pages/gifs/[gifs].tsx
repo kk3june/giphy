@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { css } from '@emotion/react';
 import { useRouter } from 'next/router';
 
-import GifsSection from 'components/templates/GifsSection/GifsSection';
+import GifSection from 'components/templates/GifsSection/GifSection';
 import Sidebar from 'components/templates/Sidebar/Sidebar';
 
 import { getGifById, getRelatedGifs, getRelatedClips } from '../api/fetchAPI';
@@ -33,7 +33,7 @@ const Gifs = () => {
       `}
     >
       <Sidebar data={gifById} />
-      <GifsSection data={gifById} />
+      <GifSection data={gifById} />
     </div>
   );
 };
