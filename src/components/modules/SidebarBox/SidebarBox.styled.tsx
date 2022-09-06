@@ -2,11 +2,13 @@ import styled from '@emotion/styled';
 
 export const StyledSpan = styled.span`
   display: block;
+  width: 100%;
   color: rgb(166, 166, 166);
   margin: 0px 0px 4px;
   font-size: 14px;
   line-height: 1.2rem;
   padding: 20px 0;
+  word-break: break-all;
 `;
 
 export const SnsIcon = styled.a`
@@ -23,22 +25,30 @@ export const SourceLink = styled.a`
   color: white;
   font-weight: ${props => (props.type === 'bold' ? 'bold' : '')};
   text-decoration: none;
+  text-overflow: ellipsis;
+`;
+export const SourceLinkUrl = styled.span`
+  display: inline-block;
+  width: 230px;
+  text-overflow: ellipsis;  
+  overflow: hidden;
 `;
 
 export const LearnMoreGif = styled.img`
   position: absolute;
-  width: calc(100% + 30px);
+  width: 270px;
   top: 10px;
   left: -15px;
+  z-index: 2;
 `;
 
 export const StyledTextBox = styled.span<any>`
   display: inline-block;
-  width: 100%;
-  height: 3rem;
+  width: 97%;
   line-height: 3rem;
   background-color: rgb(33, 33, 33);
-  margin-top: ${props => (props.learnmore && '140px')};
+  position: ${props => (props.learnmore && 'absolute')};
+  top: ${props => (props.learnmore && '190px')};
   text-align: center;
   a {
     text-decoration: none;
@@ -46,7 +56,8 @@ export const StyledTextBox = styled.span<any>`
   }
 `;
 
-export const SideGif = styled.div``;
+export const SideGif = styled.div`
+  width: inherit`;
 
 export const SideGifIcon = styled.a`
   display: flex;

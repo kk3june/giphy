@@ -3,7 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { css } from '@emotion/react';
 import { useRouter } from 'next/router';
 
-import Sidebar from '../../src/components/templates/Sidebar/Sidebar';
+import GifsSection from 'components/templates/GifsSection/GifsSection';
+import Sidebar from 'components/templates/Sidebar/Sidebar';
+
 import { getGifById, getRelatedGifs, getRelatedClips } from '../api/fetchAPI';
 
 const Gifs = () => {
@@ -20,16 +22,18 @@ const Gifs = () => {
       getRelatedGifs(params as string).then(res => setRelatedGifs(res));
       getRelatedClips(params as string).then(res => setRelatedClips(res));
     }
-    console.log(gifById);
   }, [params]);
 
   return (
     <div
       css={css`
+        display: flex;
         margin-top: 3rem;
+        width: 66rem;
       `}
     >
       <Sidebar data={gifById} />
+      <GifsSection data={gifById} />
     </div>
   );
 };
