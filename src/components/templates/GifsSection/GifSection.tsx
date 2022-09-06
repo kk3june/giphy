@@ -1,16 +1,16 @@
-import Card from 'components/atoms/Card/Card';
 import EmbedSvg from 'components/atoms/Svgs/EmbedSvg';
 import LikeSvg from 'components/atoms/Svgs/LikeSvg';
 import ShareSvg from 'components/atoms/Svgs/ShareSvg';
+import CardLayer from 'layer/CardLayer';
 
-import {StyledSection, GifTitle, GifButton, GifButtonName, GifButtonWrapper} from './GifSection.styled';
+import { StyledSection, GifTitle, GifButton, GifButtonName, GifButtonWrapper } from './GifSection.styled';
 
-const GifsSection = ({data}: any) => {
+const GifsSection = ({ data }: any) => {
   return (
     <StyledSection>
       <div>
-      <GifTitle>{data?.[0].title}</GifTitle>
-      <Card data={data} width='500px'/>
+        <GifTitle>{data?.[0].title}</GifTitle>
+        <CardLayer data={data} width="500px" />
       </div>
 
       <GifButtonWrapper>
@@ -18,14 +18,14 @@ const GifsSection = ({data}: any) => {
           <LikeSvg />
           <GifButtonName>Favorite</GifButtonName>
         </GifButton>
-        
+
         <GifButton>
           <ShareSvg />
           <GifButtonName>Share</GifButtonName>
         </GifButton>
-  
+
         <GifButton>
-          <EmbedSvg/>
+          <EmbedSvg />
           <GifButtonName>Embed</GifButtonName>
         </GifButton>
       </GifButtonWrapper>

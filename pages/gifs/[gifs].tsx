@@ -10,7 +10,7 @@ import { getGifById, getRelatedGifs, getRelatedClips } from '../api/fetchAPI';
 
 const Gifs = () => {
   const router = useRouter();
-  const {query} = router;
+  const { query } = router;
   const params = query.gifs;
   const [gifById, setGifById] = useState<any>();
   const [relatedGifs, setRelatedGifs] = useState<any>();
@@ -18,11 +18,13 @@ const Gifs = () => {
 
   useEffect(() => {
     if (params) {
-      getGifById(params as string).then(res => setGifById(res));
-      getRelatedGifs(params as string).then(res => setRelatedGifs(res));
-      getRelatedClips(params as string).then(res => setRelatedClips(res));
+      getGifById(params as string).then((res) => setGifById(res));
+      getRelatedGifs(params as string).then((res) => setRelatedGifs(res));
+      getRelatedClips(params as string).then((res) => setRelatedClips(res));
     }
   }, [params]);
+
+  console.log(relatedClips);
 
   return (
     <div

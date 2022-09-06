@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-
 import Header from 'components/atoms/Header/Header';
 import Carousel from 'components/modules/Carousel/Carousel';
 import GridLayer from 'layer/GridLayer';
 import StoriesLayer from 'layer/StoriesLayer';
 
-
-import {
-  getTrendingGifs,
-  getArtistGifs,
-  getTrendingClips,
-  getStoryGifs,
-} from './api/fetchAPI';
+import { getTrendingGifs, getArtistGifs, getTrendingClips, getStoryGifs } from './api/fetchAPI';
 
 function Home() {
   const [trendingGifs, setTrendingGifs] = useState<any[]>();
@@ -21,10 +14,10 @@ function Home() {
   const [storiesGifs, setStoriesClips] = useState<any[]>();
 
   useEffect(() => {
-    getTrendingGifs().then(res => setTrendingGifs(res));
-    getArtistGifs().then(res => setArtistsGifs(res));
-    getTrendingClips().then(res => setTrendingClips(res));
-    getStoryGifs().then(res => setStoriesClips(res));
+    getTrendingGifs().then((res) => setTrendingGifs(res));
+    getArtistGifs().then((res) => setArtistsGifs(res));
+    getTrendingClips().then((res) => setTrendingClips(res));
+    getStoryGifs().then((res) => setStoriesClips(res));
 
     console.log('rendering');
   }, []);
@@ -33,11 +26,11 @@ function Home() {
     <>
       <div>
         <Header name="trending" />
-        <Carousel cardType="trending" data={trendingGifs} />
+        <Carousel height="140px" data={trendingGifs} />
       </div>
       <div>
         <Header name="artists" />
-        <Carousel cardType="artists" data={artistsGifs} />
+        <Carousel height="343px" data={artistsGifs} />
       </div>
 
       <div>

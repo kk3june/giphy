@@ -1,16 +1,13 @@
-import CardLayer from '../../../layer/CardLayer';
+import CardListLayer from '../../../layer/CardListLayer';
 
-interface CardLayerProps {
+interface CardListLayerProps {
   data: any;
-  cardType: string;
+  width?: string;
+  height?: string;
 }
 
-const Carosel = ({ data, cardType }: CardLayerProps) => {
-  return (
-    <>
-      <CardLayer data={data} cardType={cardType} />
-    </>
-  );
+const Carosel = ({ data, width, height }: CardListLayerProps) => {
+  return <CardListLayer data={data} width={width} height={height} />;
 };
 
 export default Carosel;
