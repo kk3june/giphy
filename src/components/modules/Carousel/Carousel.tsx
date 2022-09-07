@@ -3,15 +3,15 @@ import CardLayer from 'layer/CardLayer';
 
 interface CardListLayerProps {
   data: any;
-  name?: string;
   width?: string;
   height?: string;
+  type?: string;
 }
 
-const Carousel = ({ data, width, height, name }: CardListLayerProps) => {
+const Carousel = ({ data, width, height, type }: CardListLayerProps) => {
   return (
-    <StyledCarousel height={height}>
-      <CardLayer data={data} width={width} height={height} name={name} />
+    <StyledCarousel width={width} height={height} type={type}>
+      <CardLayer data={data} width={width} height={height} type={type} />
     </StyledCarousel>
   );
 };

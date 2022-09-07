@@ -12,7 +12,7 @@ const GifsSection = ({ gifById }: any) => {
     <StyledSection>
       <div>
         <GifTitle>{gifById?.[0].title}</GifTitle>
-        <CardLayer data={gifById} width="500px" />
+        <CardLayer data={gifById} type="gif" width="500px" />
       </div>
 
       <GifButtonWrapper>

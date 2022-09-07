@@ -26,8 +26,6 @@ const Gifs = () => {
     }
   }, [params]);
 
-  // console.log(relatedClips);
-
   return (
     <div
       css={css`
@@ -39,11 +37,11 @@ const Gifs = () => {
       <Sidebar data={gifById} />
       <div>
         <GifSection gifById={gifById} />
-        {/* <span>Related Clips</span>
-        <Carousel data={relatedClips} width="248px" height="139.5px" /> */}
 
-        <span>Related Clips</span>
-        <Carousel data={relatedGifs} width="248px" height="150px" />
+        <h2>Related Clips</h2>
+        <Carousel data={relatedClips} type="clips" width="248px" height="139.5px" />
+        <h2>Related Gifs</h2>
+        <Carousel data={relatedGifs} type="gifs" width="248px" />
       </div>
     </div>
   );
