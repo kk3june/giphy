@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { css } from '@emotion/react';
 import { useRouter } from 'next/router';
 
+import Carousel from 'components/modules/Carousel/Carousel';
+import Stories from 'components/modules/Stories/Stories';
 import GifSection from 'components/templates/GifsSection/GifSection';
 import Sidebar from 'components/templates/Sidebar/Sidebar';
 
@@ -24,7 +26,7 @@ const Gifs = () => {
     }
   }, [params]);
 
-  console.log(relatedClips);
+  // console.log(relatedClips);
 
   return (
     <div
@@ -35,7 +37,14 @@ const Gifs = () => {
       `}
     >
       <Sidebar data={gifById} />
-      <GifSection data={gifById} />
+      <div>
+        <GifSection gifById={gifById} />
+        {/* <span>Related Clips</span>
+        <Carousel data={relatedClips} width="248px" height="139.5px" /> */}
+
+        <span>Related Clips</span>
+        <Carousel data={relatedGifs} width="248px" height="150px" />
+      </div>
     </div>
   );
 };

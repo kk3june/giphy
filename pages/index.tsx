@@ -26,11 +26,11 @@ function Home() {
     <>
       <div>
         <Header name="trending" />
-        <Carousel height="140px" data={trendingGifs} />
+        <Carousel name="trending" height="140px" data={trendingGifs} />
       </div>
       <div>
         <Header name="artists" />
-        <Carousel height="343px" data={artistsGifs} />
+        <Carousel name="artists" height="249px" width="343px" data={artistsGifs} />
       </div>
 
       <div>

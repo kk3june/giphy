@@ -1,3 +1,5 @@
+import { css } from '@emotion/react';
+
 import EmbedSvg from 'components/atoms/Svgs/EmbedSvg';
 import LikeSvg from 'components/atoms/Svgs/LikeSvg';
 import ShareSvg from 'components/atoms/Svgs/ShareSvg';
@@ -5,12 +7,12 @@ import CardLayer from 'layer/CardLayer';
 
 import { StyledSection, GifTitle, GifButton, GifButtonName, GifButtonWrapper } from './GifSection.styled';
 
-const GifsSection = ({ data }: any) => {
+const GifsSection = ({ gifById }: any) => {
   return (
     <StyledSection>
       <div>
-        <GifTitle>{data?.[0].title}</GifTitle>
-        <CardLayer data={data} width="500px" />
+        <GifTitle>{gifById?.[0].title}</GifTitle>
+        <CardLayer data={gifById} width="500px" />
       </div>
 
       <GifButtonWrapper>

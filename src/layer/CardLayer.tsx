@@ -4,13 +4,13 @@ import { VAC } from 'react-vac';
 
 import Card from 'components/atoms/Card/Card';
 
-const CardLayer = ({ data, width, height, cardType }: any) => {
-  console.log(data);
+const CardLayer = ({ data, width, height, cardType, name }: any) => {
   const cardProps = {
     data,
     width,
     height,
     cardType,
+    name,
   };
   return (
     <>

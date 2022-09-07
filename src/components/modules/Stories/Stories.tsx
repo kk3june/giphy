@@ -1,32 +1,35 @@
-import {
-  StyledStories,
-  WideStory,
-  NormalStory,
-  TitleStory,
-} from './Stories.styled';
+import { StyledStories, WideStory, NormalStory, TitleStory } from './Stories.styled';
 
 const Stories = ({ data, chkArr }: any) => {
   return (
-    <>
-      <StyledStories>
-        {data &&
-          data?.map((el: any, idx: number) => {
-            if (chkArr.indexOf(idx) !== -1)
-              return (
-                <WideStory key={el.id} href={el.id}>
-                  <TitleStory>{el.title}</TitleStory>
-                  <img src={el.images.original.url} />
-                </WideStory>
-              );
+    <StyledStories>
+      {data &&
+        chkArr &&
+        data?.map((el: any, idx: number) => {
+          if (chkArr.indexOf(idx) !== -1)
             return (
-              <NormalStory key={el.id} href={el.id}>
+              <WideStory key={el.id} href={el.id}>
                 <TitleStory>{el.title}</TitleStory>
-                <img src={el.images.original.url} />
-              </NormalStory>
+                <img src={el.images.original.url} alt="Story Gif" />
+              </WideStory>
             );
-          })}
-      </StyledStories>
-    </>
+          return (
+            <NormalStory key={el.id} href={el.id}>
+              <TitleStory>{el.title}</TitleStory>
+              <img src={el.images.original.url} alt="Story Gif" />
+            </NormalStory>
+          );
+        })}
+
+      {data &&
+        !chkArr &&
+        data?.map((el: any, idx: number) => (
+          <NormalStory key={el.id} href={el.id}>
+            <TitleStory>{el.title}</TitleStory>
+            <img src={el.images.original.url} alt="Story Gif" />
+          </NormalStory>
+        ))}
+    </StyledStories>
   );
 };
 
