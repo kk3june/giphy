@@ -1,6 +1,3 @@
-import React from 'react';
-import { css } from '@emotion/react';
-
 const ArtistsSvg = () => {
   return (
     <svg
@@ -17,8 +14,8 @@ const ArtistsSvg = () => {
           y2="0%"
           id="artists"
         >
-          <stop stopColor="#E646B6" offset="0%"></stop>
-          <stop stopColor="#FF6666" offset="100%"></stop>
+          <stop stopColor="#E646B6" offset="0%" />
+          <stop stopColor="#FF6666" offset="100%" />
         </linearGradient>
       </defs>
       <path
@@ -28,7 +25,7 @@ const ArtistsSvg = () => {
         fillRule="nonzero"
         stroke="url(#b)"
         strokeWidth=".1"
-      ></path>
+      />
     </svg>
   );
 };

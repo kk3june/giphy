@@ -1,16 +1,21 @@
 import React from 'react';
-import Card from '../components/atoms/Card/Card';
+
 import { VAC } from 'react-vac';
 
-const CardLayer = ({ data, cardType }: any) => {
+import Card from 'components/atoms/Card/Card';
+
+const CardLayer = ({ data, width, height, cardType, name }: any) => {
   const cardProps = {
     data,
+    width,
+    height,
     cardType,
+    name,
   };
   return (
     <>
       <Card {...cardProps} />
-      {/* <VAC name="Card" data={cardProps} /> */}
+      {/* <VAC name='Card' data={cardProps} /> */}
     </>
   );
 };

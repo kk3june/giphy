@@ -1,13 +1,24 @@
 import styled from '@emotion/styled';
 
-interface CardTypeProps {
-  readonly cardType: 'trending' | 'artists';
-}
+type StyledCardProps = {
+  width: string | undefined;
+  height: string | undefined;
+  name?: string | undefined;
+};
 
-export const StyledCard = styled.div``;
+export const StyledCardWrapper = styled.div`
+  display: flex;
+  overflow: hidden;
+`;
 
-export const StyledImg = styled.img<CardTypeProps>`
-  height: ${props => (props.cardType === 'trending' ? '140px' : '270px')};
+export const StyledCard = styled.div<StyledCardProps>`
+  height: ${({ height }) => height};
+`;
+
+export const StyledImg = styled.img<{ name: string }>`
+  display: inline-block;
   margin: 0 2px;
   border-radius: 5px;
+  height: 100%;
+  min-width: ${({ name }) => (name === 'artists' ? '343px' : '')};
 `;

@@ -1,6 +1,8 @@
 import React from 'react';
-import Stories from '../components/modules/Stories/Stories';
+
 import { VAC } from 'react-vac';
+
+import Stories from '../components/modules/Stories/Stories';
 
 const StoriesLayer = ({ data }: any) => {
   const chkArr = [0, 5, 11, 17, 24];

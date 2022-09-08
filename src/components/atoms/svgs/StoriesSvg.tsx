@@ -1,6 +1,3 @@
-import React from 'react';
-import { css } from '@emotion/react';
-
 const StoriesSvg = () => {
   return (
     <svg
@@ -11,8 +8,8 @@ const StoriesSvg = () => {
     >
       <defs>
         <linearGradient x1="7.986%" y1="100%" x2="92.014%" y2="0%" id="stories">
-          <stop stopColor="#6157FF" offset="0%"></stop>
-          <stop stopColor="#93F" offset="100%"></stop>
+          <stop stopColor="#6157FF" offset="0%" />
+          <stop stopColor="#93F" offset="100%" />
         </linearGradient>
       </defs>
       <path
@@ -20,7 +17,7 @@ const StoriesSvg = () => {
         transform="translate(-3 -2)"
         fill="url(#stories)"
         fillRule="nonzero"
-      ></path>
+      />
     </svg>
   );
 };
