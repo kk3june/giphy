@@ -8,7 +8,7 @@ type StyledCardProps = {
 
 export const StyledCardWrapper = styled.div<StyledCardProps>`
   display: flex;
-  justify-content: space-around;
+  justify-content: ${({ type }) => (type !== 'artists' ? 'space-between' : '')};
   flex-wrap: ${({ type }) => (type === 'gifs' ? 'wrap' : '')};
   width: 100%;
   height: ${({ type }) => (type === 'gifs' ? '1000px' : '')};

@@ -30,7 +30,7 @@ function Home() {
       </div>
       <div>
         <Header name="artists" />
-        <Carousel type="artists" height="249px" width="343px" data={artistsGifs} />
+        <Carousel type="artists" width="343px" height="249px" data={artistsGifs} />
       </div>
 
       <div>
