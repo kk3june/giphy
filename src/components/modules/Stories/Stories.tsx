@@ -8,13 +8,13 @@ const Stories = ({ data, chkArr }: any) => {
         data?.map((el: any, idx: number) => {
           if (chkArr.indexOf(idx) !== -1)
             return (
-              <WideStory key={el.id} href={el.id}>
+              <WideStory key={el.id} href={`gifs/${el.id}`}>
                 <TitleStory>{el.title}</TitleStory>
                 <img src={el.images.original.url} alt="Story Gif" />
               </WideStory>
             );
           return (
-            <NormalStory key={el.id} href={el.id}>
+            <NormalStory key={el.id} href={`gifs/${el.id}`}>
               <TitleStory>{el.title}</TitleStory>
               <img src={el.images.original.url} alt="Story Gif" />
             </NormalStory>
@@ -24,7 +24,7 @@ const Stories = ({ data, chkArr }: any) => {
       {data &&
         !chkArr &&
         data?.map((el: any, idx: number) => (
-          <NormalStory key={el.id} href={el.id}>
+          <NormalStory key={el.id} href={`gifs/${el.id}`}>
             <TitleStory>{el.title}</TitleStory>
             <img src={el.images.original.url} alt="Story Gif" />
           </NormalStory>

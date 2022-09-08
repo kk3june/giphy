@@ -12,6 +12,7 @@ export const StyledCardWrapper = styled.div<StyledCardProps>`
   flex-wrap: ${({ type }) => (type === 'gifs' ? 'wrap' : '')};
   width: 100%;
   height: ${({ type }) => (type === 'gifs' ? '1000px' : '')};
+
   overflow: hidden;
 `;
 
