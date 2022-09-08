@@ -8,14 +8,17 @@ type StyledCardProps = {
 
 export const StyledCardWrapper = styled.div<StyledCardProps>`
   display: flex;
-  flex-direction: ${({ type }) => (type === 'gifs' ? 'column' : '')};
-  overflow: hidden;
+  justify-content: space-around;
   flex-wrap: ${({ type }) => (type === 'gifs' ? 'wrap' : '')};
+  width: 100%;
   height: ${({ type }) => (type === 'gifs' ? '1000px' : '')};
+  overflow: hidden;
 `;
 
 export const StyledCard = styled.div<StyledCardProps>`
+  width: ${({ type }) => (type === 'gifs' ? '248px' : '')};
   height: ${({ height }) => height};
+  margin-bottom: 10px;
 `;
 
 export const StyledImg = styled.img<StyledCardProps>`

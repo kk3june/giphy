@@ -38,10 +38,22 @@ const Gifs = () => {
       <div>
         <GifSection gifById={gifById} />
 
-        <h2>Related Clips</h2>
-        <Carousel data={relatedClips} type="clips" width="248px" height="139.5px" />
-        <h2>Related Gifs</h2>
-        <Carousel data={relatedGifs} type="gifs" width="248px" />
+        <div
+          css={css`
+            padding-top: 20px;
+          `}
+        >
+          <h2>Related Clips</h2>
+          <Carousel data={relatedClips} type="clips" width="248px" height="139.5px" />
+        </div>
+        <div
+          css={css`
+            padding-top: 20px;
+          `}
+        >
+          <h2>Related Gifs</h2>
+          <Carousel data={relatedGifs} type="gifs" width="248px" />
+        </div>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 export const StyledSection = styled.div`
   width: 100%;
   display: flex;
+  justify-content: space-between;
 `;
 
 export const GifTitle = styled.span`
@@ -27,4 +28,5 @@ export const GifButtonWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 10px 45px;
+  margin-right: 5rem;
 `;
