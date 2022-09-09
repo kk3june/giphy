@@ -1,5 +1,6 @@
-import axios from 'axios';
 import { GiphyFetch } from '@giphy/js-fetch-api';
+import axios from 'axios';
+
 import { PROPERTIES } from '../../src/config/properties';
 
 const gf = new GiphyFetch(PROPERTIES.API_KEY);
@@ -37,4 +38,9 @@ export const getRelatedGifs = async (id: string) => {
 export const getRelatedClips = async (id: string) => {
   const { data: clips } = await gf.related(id, { limit: 3 });
   return clips;
+};
+
+export const getClipById = async (id: string) => {
+  const { data: gifs } = await gf.gifs([id]);
+  return gifs;
 };

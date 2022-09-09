@@ -4,7 +4,6 @@ import { css } from '@emotion/react';
 import { useRouter } from 'next/router';
 
 import Carousel from 'components/modules/Carousel/Carousel';
-import Stories from 'components/modules/Stories/Stories';
 import GifSection from 'components/templates/GifsSection/GifSection';
 import Sidebar from 'components/templates/Sidebar/Sidebar';
 

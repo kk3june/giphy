@@ -1,27 +1,17 @@
 import { css } from '@emotion/react';
 
-import { Title, StyledImg, UserName } from './UserInfo.styled';
+import { StyledImg, UserName } from './UserInfo.styled';
 
 interface UserInfoProps {
   type?: string;
-  title?: string;
   name?: string;
   avatar: string;
   userName: string;
 }
 
-const UserInfo = ({ type, title, avatar, name, userName }: UserInfoProps) => {
+const UserInfo = ({ type, avatar, name, userName }: UserInfoProps) => {
   return (
-    <>
-      <Title>
-        <div
-          css={css`
-            margin: 10px 0;
-          `}
-        >
-          {title}
-        </div>
-      </Title>
+    <a href="/">
       <div
         css={css`
           display: flex;
@@ -29,7 +19,7 @@ const UserInfo = ({ type, title, avatar, name, userName }: UserInfoProps) => {
         `}
       >
         <StyledImg type={type}>
-          <img src={avatar} alt='userAvatar'/>
+          <img src={avatar} alt="userAvatar" />
         </StyledImg>
         <div
           css={css`
@@ -44,7 +34,7 @@ const UserInfo = ({ type, title, avatar, name, userName }: UserInfoProps) => {
           </UserName>
         </div>
       </div>
-    </>
+    </a>
   );
 };
 

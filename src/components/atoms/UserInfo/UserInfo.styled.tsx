@@ -1,14 +1,9 @@
 import styled from '@emotion/styled';
 
-export const Title = styled.a`
-  font-size: 17px;
-  font-weight: bold;
-`;
-
 export const StyledImg = styled.a`
   img {
-    width: ${props => (props.type === 'sidebar' ? '50px' : '25px')};
-    height: ${props => (props.type === 'sidebar' ? '50px' : '25px')};
+    width: ${(props) => (props.type === 'sidebar' ? '50px' : '25px')};
+    height: ${(props) => (props.type === 'sidebar' ? '50px' : '25px')};
     margin-right: 8px;
   }
 `;
