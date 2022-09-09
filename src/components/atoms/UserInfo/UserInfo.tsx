@@ -11,30 +11,28 @@ interface UserInfoProps {
 
 const UserInfo = ({ type, avatar, name, userName }: UserInfoProps) => {
   return (
-    <a href="/">
+    <div
+      css={css`
+        display: flex;
+        align-items: center;
+      `}
+    >
+      <StyledImg type={type}>
+        <img src={avatar} alt="userAvatar" />
+      </StyledImg>
       <div
         css={css`
           display: flex;
-          align-items: center;
+          flex-direction: column;
         `}
       >
-        <StyledImg type={type}>
-          <img src={avatar} alt="userAvatar" />
-        </StyledImg>
-        <div
-          css={css`
-            display: flex;
-            flex-direction: column;
-          `}
-        >
-          <UserName>{name}</UserName>
-          <UserName>
-            {type === 'sidebar' ? '@' : ''}
-            {userName}
-          </UserName>
-        </div>
+        <UserName>{name}</UserName>
+        <UserName>
+          {type === 'sidebar' ? '@' : ''}
+          {userName}
+        </UserName>
       </div>
-    </a>
+    </div>
   );
 };
 

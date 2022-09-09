@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import { useRouter } from 'next/router';
 
+import ClipCard from 'components/atoms/ClipCard/ClipCard';
+
 import { getClipById } from '../api/fetchAPI';
 
 const Clips = () => {
@@ -17,8 +19,11 @@ const Clips = () => {
     }
   }, [params]);
 
-  console.log(clipById);
-  return <div>Clips</div>;
+  return (
+    <div>
+      <ClipCard data={clipById?.[0]} />
+    </div>
+  );
 };
 
 export default Clips;

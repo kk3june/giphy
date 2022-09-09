@@ -1,9 +1,13 @@
 import styled from '@emotion/styled';
 
-export const StyledImg = styled.a`
+type UserInfoProps = {
+  type?: string;
+};
+
+export const StyledImg = styled.span<UserInfoProps>`
   img {
-    width: ${(props) => (props.type === 'sidebar' ? '50px' : '25px')};
-    height: ${(props) => (props.type === 'sidebar' ? '50px' : '25px')};
+    width: ${({ type }) => (type === 'sidebar' ? '50px' : '25px')};
+    height: ${({ type }) => (type === 'sidebar' ? '50px' : '25px')};
     margin-right: 8px;
   }
 `;
