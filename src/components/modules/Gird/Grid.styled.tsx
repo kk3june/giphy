@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const StyledGrid = styled.div`
+const StyledGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(2, 15rem);
@@ -41,14 +41,4 @@ export const StyledGrid = styled.div`
   }
 `;
 
-export const GridItem = styled.a``;
-
-export const ClipVideo = styled.video``;
-
-export const Title = styled.div`
-  font-size: 17px;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
-  margin: 10px 0;
-`;
+export default StyledGrid;
