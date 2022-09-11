@@ -1,3 +1,3 @@
-export default interface MenuLinkProps {
+export interface MenuLinkProps {
   name: string;
 }

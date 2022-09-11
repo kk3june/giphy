@@ -17,7 +17,7 @@ export const UnOrdered = styled.ul`
   margin-left: 14px;
 `;
 
-export const Link = styled.li`
+export const LinkItem = styled.li`
   cursor: pointer;
   border-right: 4px solid black;
   height: 100%;

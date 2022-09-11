@@ -1,21 +1,21 @@
 import React from 'react';
+
 import MenuLinkProps from '../../../types/menu';
-import { UnOrdered, Link, Anchor } from './MenuLinkList.styled';
+
+import { UnOrdered, LinkItem, Anchor } from './MenuLinkList.styled';
 
 const MenuLinkList = ({ list }: { list: MenuLinkProps[] }) => {
   return (
-    <>
-      <UnOrdered>
-        {list.map((data, idx) => {
-          const { name } = data;
-          return (
-            <Link key={idx}>
-              <Anchor href={name}>{name}</Anchor>
-            </Link>
-          );
-        })}
-      </UnOrdered>
-    </>
+    <UnOrdered>
+      {list.map((data, idx) => {
+        const { name } = data;
+        return (
+          <LinkItem key={idx}>
+            <Anchor href={name}>{name}</Anchor>
+          </LinkItem>
+        );
+      })}
+    </UnOrdered>
   );
 };
 

@@ -20,17 +20,17 @@ export const SnsIcon = styled.a`
   }
 `;
 
-export const SourceLink = styled.a`
+export const SourceLink = styled.a<{ type: string }>`
   display: flex;
   color: white;
-  font-weight: ${props => (props.type === 'bold' ? 'bold' : '')};
+  font-weight: ${({ type }) => (type === 'bold' ? 'bold' : '')};
   text-decoration: none;
   text-overflow: ellipsis;
 `;
 export const SourceLinkUrl = styled.span`
   display: inline-block;
   width: 230px;
-  text-overflow: ellipsis;  
+  text-overflow: ellipsis;
   overflow: hidden;
 `;
 
@@ -42,13 +42,13 @@ export const LearnMoreGif = styled.img`
   z-index: 2;
 `;
 
-export const StyledTextBox = styled.span<any>`
+export const StyledTextBox = styled.span<{ learnmore: string }>`
   display: inline-block;
   width: 97%;
   line-height: 3rem;
   background-color: rgb(33, 33, 33);
-  position: ${props => (props.learnmore && 'absolute')};
-  top: ${props => (props.learnmore && '190px')};
+  position: ${({ learnmore }) => learnmore && 'absolute'};
+  top: ${({ learnmore }) => learnmore && '190px'};
   text-align: center;
   a {
     text-decoration: none;
@@ -57,7 +57,8 @@ export const StyledTextBox = styled.span<any>`
 `;
 
 export const SideGif = styled.div`
-  width: inherit`;
+  width: inherit;
+`;
 
 export const SideGifIcon = styled.a`
   display: flex;

@@ -1,10 +1,10 @@
-import TrendingSvg from '../Svgs/TrendingSvg';
+import { HeaderProps } from '../../../types/home';
 import ArtistsSvg from '../Svgs/ArtistsSvg';
 import ClipSvg from '../Svgs/ClipSvg';
 import StoriesSvg from '../Svgs/StoriesSvg';
-import { Wrapper, SvgBox } from './Header.styled';
+import TrendingSvg from '../Svgs/TrendingSvg';
 
-import { HeaderProps } from '../../../types/home';
+import { Wrapper, SvgBox } from './Header.styled';
 
 const Header = ({ name }: HeaderProps) => {
   return (

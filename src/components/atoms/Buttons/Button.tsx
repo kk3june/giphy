@@ -1,12 +1,12 @@
 import React from 'react';
-import styled from '@emotion/styled';
+
 import { ButtonItem } from './Button.styled';
 
-const Button = (props: any) => {
+const Button = ({ name }: any) => {
   return (
-    <a href={props.name}>
+    <a href={name}>
       <ButtonItem>
-        <span>{props.name}</span>
+        <span>{name}</span>
       </ButtonItem>
     </a>
   );
