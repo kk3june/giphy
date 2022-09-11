@@ -4,8 +4,23 @@ import Header from 'components/atoms/Header/Header';
 import Carousel from 'components/modules/Carousel/Carousel';
 import GridLayer from 'layer/GridLayer';
 import StoriesLayer from 'layer/StoriesLayer';
+import { TRENDING, ARTISTS, CLIPS, STORIES } from 'src/constants';
 
 import { getTrendingGifs, getArtistGifs, getTrendingClips, getStoryGifs } from './api/fetchAPI';
+
+interface ListWrapperTypes {
+  name: string;
+  children: JSX.Element | JSX.Element[];
+}
+
+const ListWrapper = ({ name, children }: ListWrapperTypes) => {
+  return (
+    <div>
+      <Header name={name.toLowerCase()} />
+      {children}
+    </div>
+  );
+};
 
 function Home() {
   const [trendingGifs, setTrendingGifs] = useState<any[]>();
@@ -22,26 +37,33 @@ function Home() {
     console.log('rendering');
   }, []);
 
-  return (
-    <>
-      <div>
-        <Header name="trending" />
-        <Carousel type="trending" height="140px" data={trendingGifs} />
-      </div>
-      <div>
-        <Header name="artists" />
-        <Carousel type="artists" width="343px" height="249px" data={artistsGifs} />
-      </div>
+  const MAIN_LIST = [
+    {
+      name: TRENDING,
+      children: <Carousel type="trending" height="140px" data={trendingGifs} />,
+    },
+    {
+      name: ARTISTS,
+      children: <Carousel type="artists" width="343px" height="249px" data={artistsGifs} />,
+    },
+    {
+      name: CLIPS,
+      children: <GridLayer data={trendingClips} type="clips" />,
+    },
+    {
+      name: STORIES,
+      children: <StoriesLayer data={storiesGifs} type="stories" />,
+    },
+  ];
 
-      <div>
-        <Header name="clips" />
-        <GridLayer data={trendingClips} type="clips" />
-      </div>
-      <div>
-        <Header name="stories" />
-        <StoriesLayer data={storiesGifs} type="stories" />
-      </div>
-    </>
+  return (
+    <div>
+      {MAIN_LIST.map((item) => (
+        <ListWrapper key={`${item.name}`} name={item.name}>
+          {item.children}
+        </ListWrapper>
+      ))}
+    </div>
   );
 }
 
