@@ -5,28 +5,28 @@ const Stories = ({ data, chkArr }: any) => {
     <StyledStories>
       {data &&
         chkArr &&
-        data?.map((el: any, idx: number) => {
+        data?.map((item: any, idx: number) => {
           if (chkArr.indexOf(idx) !== -1)
             return (
-              <WideStory key={el.id} href={`gifs/${el.id}`}>
-                <TitleStory>{el.title}</TitleStory>
-                <img src={el.images.original.url} alt="Story Gif" />
+              <WideStory key={item.id} href={`gifs/${item.id}`}>
+                <TitleStory>{item.title}</TitleStory>
+                <img src={item.images.original.url} alt="Story Gif" />
               </WideStory>
             );
           return (
-            <NormalStory key={el.id} href={`gifs/${el.id}`}>
-              <TitleStory>{el.title}</TitleStory>
-              <img src={el.images.original.url} alt="Story Gif" />
+            <NormalStory key={item.id} href={`gifs/${item.id}`}>
+              <TitleStory>{item.title}</TitleStory>
+              <img src={item.images.original.url} alt="Story Gif" />
             </NormalStory>
           );
         })}
 
       {data &&
         !chkArr &&
-        data?.map((el: any, idx: number) => (
-          <NormalStory key={el.id} href={`gifs/${el.id}`}>
-            <TitleStory>{el.title}</TitleStory>
-            <img src={el.images.original.url} alt="Story Gif" />
+        data?.map((item: any, idx: number) => (
+          <NormalStory key={item.id} href={`gifs/${item.id}`}>
+            <TitleStory>{item.title}</TitleStory>
+            <img src={item.images.original.url} alt="Story Gif" />
           </NormalStory>
         ))}
     </StyledStories>

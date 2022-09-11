@@ -1,16 +1,16 @@
 import React from 'react';
 
-import MenuLinkProps from '../../../types/menu';
+import { MenuLinkProps } from 'src/types/menu';
 
 import { UnOrdered, LinkItem, Anchor } from './MenuLinkList.styled';
 
 const MenuLinkList = ({ list }: { list: MenuLinkProps[] }) => {
   return (
     <UnOrdered>
-      {list.map((data, idx) => {
+      {list.map((data) => {
         const { name } = data;
         return (
-          <LinkItem key={idx}>
+          <LinkItem key={name}>
             <Anchor href={name}>{name}</Anchor>
           </LinkItem>
         );

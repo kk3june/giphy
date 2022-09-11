@@ -23,6 +23,7 @@
     "paths": {
       "layer/*": ["src/layer/*"],
       "components/*": ["src/components/*"],
+      "types/*": ["src/types/*"],
     }
   },
   "include": [
