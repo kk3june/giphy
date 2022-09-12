@@ -16,7 +16,7 @@ interface ListWrapperTypes {
 const ListWrapper = ({ name, children }: ListWrapperTypes) => {
   return (
     <div>
-      <Header name={name.toLowerCase()} />
+      <Header name={name} />
       {children}
     </div>
   );
@@ -58,7 +58,7 @@ function Home() {
 
   return (
     <div>
-      {MAIN_LIST.map((item) => (
+      {MAIN_LIST.map((item, idx) => (
         <ListWrapper key={`${item.name}`} name={item.name}>
           {item.children}
         </ListWrapper>
