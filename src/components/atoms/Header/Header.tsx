@@ -1,3 +1,5 @@
+import { TRENDING, ARTISTS, CLIPS, STORIES } from 'src/constants';
+
 import { HeaderProps } from '../../../types/home';
 import ArtistsSvg from '../Svgs/ArtistsSvg';
 import ClipSvg from '../Svgs/ClipSvg';
@@ -10,10 +12,10 @@ const Header = ({ name }: HeaderProps) => {
   return (
     <Wrapper>
       <SvgBox>
-        {name === 'trending' && <TrendingSvg />}
-        {name === 'artists' && <ArtistsSvg />}
-        {name === 'clips' && <ClipSvg />}
-        {name === 'stories' && <StoriesSvg />}
+        {name === TRENDING && <TrendingSvg />}
+        {name === ARTISTS && <ArtistsSvg />}
+        {name === CLIPS && <ClipSvg />}
+        {name === STORIES && <StoriesSvg />}
       </SvgBox>
       <span>{name}</span>
     </Wrapper>

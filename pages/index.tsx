@@ -1,26 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-import Header from 'components/atoms/Header/Header';
 import Carousel from 'components/modules/Carousel/Carousel';
+import ListWrapper from 'components/templates/ListWrapper/ListWrapper';
 import GridLayer from 'layer/GridLayer';
 import StoriesLayer from 'layer/StoriesLayer';
 import { TRENDING, ARTISTS, CLIPS, STORIES } from 'src/constants';
 
 import { getTrendingGifs, getArtistGifs, getTrendingClips, getStoryGifs } from './api/fetchAPI';
-
-interface ListWrapperTypes {
-  name: string;
-  children: JSX.Element | JSX.Element[];
-}
-
-const ListWrapper = ({ name, children }: ListWrapperTypes) => {
-  return (
-    <div>
-      <Header name={name} />
-      {children}
-    </div>
-  );
-};
 
 function Home() {
   const [trendingGifs, setTrendingGifs] = useState<any[]>();
@@ -58,7 +44,7 @@ function Home() {
 
   return (
     <div>
-      {MAIN_LIST.map((item, idx) => (
+      {MAIN_LIST.map((item) => (
         <ListWrapper key={`${item.name}`} name={item.name}>
           {item.children}
         </ListWrapper>
