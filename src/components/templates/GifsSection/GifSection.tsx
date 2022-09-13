@@ -1,5 +1,3 @@
-import { css } from '@emotion/react';
-
 import EllipsisVertical from 'components/atoms/Svgs/EllipsisVerticalSvg';
 import EmbedSvg from 'components/atoms/Svgs/EmbedSvg';
 import LikeSvg from 'components/atoms/Svgs/LikeSvg';

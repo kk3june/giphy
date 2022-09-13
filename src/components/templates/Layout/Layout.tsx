@@ -2,8 +2,9 @@ import React from 'react';
 
 import { css } from '@emotion/react';
 
-import LayoutProps from '../../../types/layout';
-import Floating from '../../modules/Floating/Floating';
+import Floating from 'components/modules/Floating/Floating';
+import { LayoutProps } from 'types/layout';
+
 import Navbar from '../Navbar/Navbar';
 
 const Layout = ({ children }: LayoutProps) => {

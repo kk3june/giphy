@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 
-import styled from '@emotion/styled';
-
-import SearchButtonLayer from '../../../layer/SearchButtonLayer';
-import SearchInputLayer from '../../../layer/SearchInputLayer';
+import SearchButtonLayer from 'layer/SearchButtonLayer';
+import SearchInputLayer from 'layer/SearchInputLayer';
 
 import { SearchBarWrapper } from './SearchBar.styled';
 

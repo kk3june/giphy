@@ -7,3 +7,5 @@ export const SearchBarWrapper = styled.div`
   background-color: white;
   border-radius: 5px;
 `;
+
+export default SearchBarWrapper;
