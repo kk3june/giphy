@@ -17,3 +17,7 @@ export const SvgBox = styled.span`
   height: 35px;
   margin-right: 10px;
 `;
+
+export const Title = styled.span`
+  font-size: 1.2rem;
+`;

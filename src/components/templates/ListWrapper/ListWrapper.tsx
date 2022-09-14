@@ -5,12 +5,13 @@ import Header from 'components/atoms/Header/Header';
 interface ListWrapperTypes {
   name: string;
   children: JSX.Element | JSX.Element[];
+  type: string;
 }
 
-const ListWrapper = ({ name, children }: ListWrapperTypes) => {
+const ListWrapper = ({ name, type, children }: ListWrapperTypes) => {
   return (
     <div>
-      <Header name={name} />
+      <Header name={name} type={type} />
       {children}
     </div>
   );

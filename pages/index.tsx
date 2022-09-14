@@ -45,7 +45,7 @@ function Home() {
   return (
     <div>
       {MAIN_LIST.map((item) => (
-        <ListWrapper key={`${item.name}`} name={item.name}>
+        <ListWrapper key={`${item.name}`} name={item.name} type="index">
           {item.children}
         </ListWrapper>
       ))}

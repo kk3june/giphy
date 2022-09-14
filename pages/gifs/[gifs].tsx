@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 
 import Carousel from 'components/modules/Carousel/Carousel';
 import GifSection from 'components/templates/GifsSection/GifSection';
+import ListWrapper from 'components/templates/ListWrapper/ListWrapper';
 import Sidebar from 'components/templates/Sidebar/Sidebar';
 
 import { getGifById, getRelatedGifs, getRelatedClips } from '../api/fetchAPI';
@@ -25,6 +26,17 @@ const Gifs = () => {
     }
   }, [params]);
 
+  const CONTENT_LIST = [
+    {
+      name: 'Related Clips',
+      children: <Carousel data={relatedClips} type="clips" width="248px" height="139.5px" />,
+    },
+    {
+      name: 'Related Gifs',
+      children: <Carousel data={relatedGifs} type="gifs" width="248px" />,
+    },
+  ];
+
   return (
     <div
       css={css`
@@ -37,22 +49,11 @@ const Gifs = () => {
       <div>
         <GifSection gifById={gifById} />
 
-        <div
-          css={css`
-            padding-top: 20px;
-          `}
-        >
-          <h2>Related Clips</h2>
-          <Carousel data={relatedClips} type="clips" width="248px" height="139.5px" />
-        </div>
-        <div
-          css={css`
-            padding-top: 20px;
-          `}
-        >
-          <h2>Related Gifs</h2>
-          <Carousel data={relatedGifs} type="gifs" width="248px" />
-        </div>
+        {CONTENT_LIST.map((item) => (
+          <ListWrapper key={`${item.name}`} name={item.name} type="content">
+            {item.children}
+          </ListWrapper>
+        ))}
       </div>
     </div>
   );
