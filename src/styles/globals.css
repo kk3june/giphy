@@ -15,9 +15,3 @@ body {
   color: white;
   background-color: black;
 }
-
-h2 {
-  font-weight: bold !important;
-  letter-spacing: 0.3px;  
-  padding: 10px 0 !important
-}
