@@ -1,5 +1,5 @@
-import React from 'react';
 import { css } from '@emotion/react';
+
 import { InputBanner, Input } from './SearchInput.styled';
 
 const SearchInput = ({ value, onChange }: any) => {
@@ -13,9 +13,7 @@ const SearchInput = ({ value, onChange }: any) => {
         border-radius: 15px;
       `}
     >
-      <InputBanner>
-        {value ? '' : <span>Search All the GIFs and Stickers</span>}
-      </InputBanner>
+      <InputBanner>{value ? '' : <span>Search All the GIFs and Stickers</span>}</InputBanner>
       <Input value={value} onChange={onChange} />
     </div>
   );

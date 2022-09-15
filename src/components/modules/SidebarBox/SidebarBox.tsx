@@ -15,7 +15,6 @@ import {
 } from './SidebarBox.styled';
 
 const SidebarBox = ({ data }: any) => {
-  console.log(data);
   const userInfoProps = {
     type: 'sidebar',
     name: data?.[0].user?.name,

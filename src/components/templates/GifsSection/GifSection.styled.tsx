@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
 
-export const StyledSection = styled.div`
+export const StyledSection = styled.div<{ type: string }>`
   width: 100%;
   display: flex;
+  justify-content: space-between;
 `;
 
 export const GifTitle = styled.span`
@@ -12,9 +13,9 @@ export const GifTitle = styled.span`
   margin-bottom: 0.8rem;
 `;
 
-export const GifButton = styled.div`
+export const GifButton = styled.span<{ type: string }>`
   display: flex;
-  margin: 20px;
+  margin: ${({ type }) => (type !== 'detail' ? '20px' : '0px 10px')};
   align-items: center;
 `;
 
@@ -23,8 +24,11 @@ export const GifButtonName = styled.span`
   margin-left: 20px;
   font-size: 1.1rem;
 `;
-export const GifButtonWrapper = styled.div`
+export const GifButtonWrapper = styled.div<{ type: string }>`
   display: flex;
-  flex-direction: column;
-  padding: 10px 45px;
+  flex-direction: ${({ type }) => (type !== 'detail' ? 'column' : 'row')};
+  padding: ${({ type }) => (type !== 'detail' ? '10px 45px' : '0')};
+  margin-right: ${({ type }) => (type !== 'detail' ? '5rem' : '0')};
+  color: white;
+  font-style: none;
 `;

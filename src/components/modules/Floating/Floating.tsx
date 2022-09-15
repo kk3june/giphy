@@ -1,4 +1,3 @@
-import React from 'react';
 import { css } from '@emotion/react';
 
 const Floating = () => {
@@ -10,7 +9,7 @@ const Floating = () => {
         bottom: 10px;
       `}
     >
-      <img src="/images/Poweredby_640px-Black_HorizLogo.png" width={150} />
+      <img src="/images/Poweredby_640px-Black_HorizLogo.png" width={150} alt="powered by giphy" />
     </div>
   );
 };

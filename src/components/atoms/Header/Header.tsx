@@ -1,21 +1,26 @@
-import TrendingSvg from '../Svgs/TrendingSvg';
+import { TRENDING, ARTISTS, CLIPS, STORIES } from 'src/constants';
+
+import { HeaderProps } from '../../../types/home';
 import ArtistsSvg from '../Svgs/ArtistsSvg';
 import ClipSvg from '../Svgs/ClipSvg';
 import StoriesSvg from '../Svgs/StoriesSvg';
-import { Wrapper, SvgBox } from './Header.styled';
+import TrendingSvg from '../Svgs/TrendingSvg';
 
-import { HeaderProps } from '../../../types/home';
+import { Wrapper, SvgBox, Title } from './Header.styled';
 
-const Header = ({ name }: HeaderProps) => {
+const Header = ({ name, type }: HeaderProps) => {
   return (
     <Wrapper>
-      <SvgBox>
-        {name === 'trending' && <TrendingSvg />}
-        {name === 'artists' && <ArtistsSvg />}
-        {name === 'clips' && <ClipSvg />}
-        {name === 'stories' && <StoriesSvg />}
-      </SvgBox>
-      <span>{name}</span>
+      {type === 'index' && (
+        <SvgBox>
+          {name === TRENDING && <TrendingSvg />}
+          {name === ARTISTS && <ArtistsSvg />}
+          {name === CLIPS && <ClipSvg />}
+          {name === STORIES && <StoriesSvg />}
+        </SvgBox>
+      )}
+
+      {type === 'index' ? <span>{name}</span> : <Title>{name}</Title>}
     </Wrapper>
   );
 };

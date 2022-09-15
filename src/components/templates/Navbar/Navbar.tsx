@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
-import Logo from '../../atoms/Logo/Logo';
+
 import { css } from '@emotion/react';
-import MenuLinkList from '../MenuLinkList/MenuLinkList';
+
 import Button from '../../atoms/Buttons/Button';
-import UserButton from '../../modules/UserButton/UserButton';
+import Logo from '../../atoms/Logo/Logo';
 import SearchBar from '../../modules/SearchBar/SearchBar';
+import UserButton from '../../modules/UserButton/UserButton';
+import MenuLinkList from '../MenuLinkList/MenuLinkList';
+
 import { Buttons } from './Navbar.styled';
 
 const Navbar = () => {
-  const [user, setUser] = useState('log in');
+  const [userState, setUserState] = useState('log in');
   const list = [
     { name: 'reactions' },
     { name: 'entertainment' },
@@ -32,7 +35,7 @@ const Navbar = () => {
           <Button name="upload" />
           <Button name="create" />
         </Buttons>
-        <UserButton user={user} />
+        <UserButton userState={userState} />
       </div>
       <SearchBar />
     </nav>
