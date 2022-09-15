@@ -4,7 +4,7 @@ import { css } from '@emotion/react';
 import { useRouter } from 'next/router';
 
 import ClipCard from 'components/atoms/ClipCard/ClipCard';
-import GifsSection from 'components/templates/GifsSection/GifSection';
+import { DETAIL, NORMAL } from 'src/constants';
 
 import { getClipById } from '../api/fetchAPI';
 
@@ -30,7 +30,7 @@ const Clips = () => {
       `}
     >
       <div>
-        <ClipCard data={clipById?.[0]} type="detail" />
+        <ClipCard data={clipById?.[0]} type={DETAIL} />
       </div>
       <div
         css={css`
@@ -38,10 +38,10 @@ const Clips = () => {
         `}
       >
         Up Next
-        <ClipCard data={clipById?.[0]} type="normal" />
-        <ClipCard data={clipById?.[0]} type="normal" />
-        <ClipCard data={clipById?.[0]} type="normal" />
-        <ClipCard data={clipById?.[0]} type="normal" />
+        <ClipCard data={clipById?.[0]} type={NORMAL} />
+        <ClipCard data={clipById?.[0]} type={NORMAL} />
+        <ClipCard data={clipById?.[0]} type={NORMAL} />
+        <ClipCard data={clipById?.[0]} type={NORMAL} />
       </div>
     </div>
   );

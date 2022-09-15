@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { css } from '@emotion/react';
 
 import GifsSection from 'components/templates/GifsSection/GifSection';
+import { DETAIL } from 'src/constants';
 
 import UserInfo from '../UserInfo/UserInfo';
 
@@ -22,7 +23,7 @@ const ClipCard = ({ data, type }: any) => {
         `}
       >
         <Title type={type}>{data?.title}</Title>
-        {type === 'detail' && <GifsSection type={type} />}
+        {type === DETAIL && <GifsSection type={type} />}
       </div>
       <UserInfo avatar={data?.user.avatar_url} userName={data?.user.display_name} />
     </GridItem>
