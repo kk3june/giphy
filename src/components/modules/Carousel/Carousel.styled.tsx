@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { CLIPS, GIFS } from 'src/constants';
+import { GIFS } from 'src/constants';
 
 type CarouselTypes = {
   width: string | undefined;
@@ -8,9 +8,13 @@ type CarouselTypes = {
   type: string | undefined;
 };
 
+const WIDTH_TYPE = {
+  GIFS: '48rem',
+  CLIPS: '48rem',
+};
+
 const StyledCarousel = styled.div<CarouselTypes>`
-  width: ${({ type }) => (type === GIFS ? '48rem' : '')};
-  width: ${({ type }) => (type === CLIPS ? '48rem' : '')};
+  width: ${({ type }) => WIDTH_TYPE[type as keyof typeof WIDTH_TYPE]};
   height: ${({ type }) => (type === GIFS ? '62.5rem' : '')};
 `;
 

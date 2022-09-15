@@ -8,9 +8,13 @@ export const GridItem = styled.a<{ type?: string }>`
   margin-bottom: 0.5rem;
 `;
 
-export const ClipVideo = styled.video<{ type?: string }>`
-  width: ${({ type }) => (type === DETAIL ? '48.5rem' : '')};
-  width: ${({ type }) => (type === NORMAL ? '14.5rem' : '')};
+const WIDTH_TYPE = {
+  DETAIL: '48.5rem',
+  NORMAL: '14.5rem',
+};
+
+export const ClipVideo = styled.video<{ type: any }>`
+  width: ${({ type }) => WIDTH_TYPE[type as keyof typeof WIDTH_TYPE]};
 `;
 
 export const Title = styled.div<{ type?: string }>`

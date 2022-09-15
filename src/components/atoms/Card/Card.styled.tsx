@@ -8,6 +8,12 @@ type StyledCardProps = {
   type?: string | undefined;
 };
 
+const WIDTH_TYPE = {
+  ARTISTS: '21.4375rem',
+  GIFS: '15.5rem',
+  CLIPS: '15.5rem',
+};
+
 export const StyledCardWrapper = styled.div<StyledCardProps>`
   display: flex;
   justify-content: ${({ type }) => (type !== ARTISTS ? 'space-between' : '')};
@@ -29,8 +35,6 @@ export const StyledImg = styled.img<StyledCardProps>`
   margin: 0 0.125rem;
   border-radius: 0.3125rem;
   height: 100%;
-  width: ${({ type }) => (type === ARTISTS ? '21.4375rem' : '')};
-  width: ${({ type }) => (type === GIFS ? '15.5rem' : '')};
-  width: ${({ type }) => (type === CLIPS ? '15.5rem' : '')};
+  width: ${({ type }) => WIDTH_TYPE[type as keyof typeof WIDTH_TYPE]};
   object-fit: cover;
 `;
