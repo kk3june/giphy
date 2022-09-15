@@ -4,19 +4,19 @@ export const StyledSpan = styled.span`
   display: block;
   width: 100%;
   color: rgb(166, 166, 166);
-  margin: 0px 0px 4px;
-  font-size: 14px;
+  margin: 0 0 0.25rem;
+  font-size: 0.875rem;
   line-height: 1.2rem;
-  padding: 20px 0;
+  padding: 1.25rem 0;
   word-break: break-all;
 `;
 
 export const SnsIcon = styled.a`
-  margin-right: 20px;
+  margin-right: 1.25rem;
   img {
-    margin-top: 10px;
-    width: 20px;
-    height: 20px;
+    margin-top: 0.625rem;
+    width: 1.25rem;
+    height: 1.25rem;
   }
 `;
 
@@ -29,26 +29,26 @@ export const SourceLink = styled.a<{ type: string }>`
 `;
 export const SourceLinkUrl = styled.span`
   display: inline-block;
-  width: 230px;
+  width: 13.375rem;
   text-overflow: ellipsis;
   overflow: hidden;
 `;
 
 export const LearnMoreGif = styled.img`
   position: absolute;
-  width: 270px;
-  top: 10px;
-  left: -15px;
+  width: 16.875rem;
+  top: 0.625rem;
+  left: -0.9375rem;
   z-index: 2;
 `;
 
-export const StyledTextBox = styled.span<{ learnmore: string }>`
+export const StyledTextBox = styled.span<{ learnmore?: any }>`
   display: inline-block;
   width: 97%;
   line-height: 3rem;
   background-color: rgb(33, 33, 33);
   position: ${({ learnmore }) => learnmore && 'absolute'};
-  top: ${({ learnmore }) => learnmore && '190px'};
+  top: ${({ learnmore }) => learnmore && '11.875rem'};
   text-align: center;
   a {
     text-decoration: none;
@@ -65,9 +65,9 @@ export const SideGifIcon = styled.a`
   width: 100%;
   align-items: center;
   svg {
-    width: 40px;
-    height: 40px;
-    padding: 5px 10px;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.3125rem 0.625rem;
     margin-right: 1rem;
     background-image: linear-gradient(135deg, #e646b6 0%, #6157ff 100%);
   }

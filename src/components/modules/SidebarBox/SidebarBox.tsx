@@ -25,8 +25,8 @@ const SidebarBox = ({ data }: any) => {
   return (
     <div
       css={css`
-        width: 248px;
-        margin-right: 30px;
+        width: 15.5rem;
+        margin-right: 1.875rem;
       `}
     >
       {data?.[0].user ? (
@@ -55,8 +55,8 @@ const SidebarBox = ({ data }: any) => {
               <SourceLink href={data?.[0].user?.website_url} type="bold">
                 <img
                   css={css`
-                    width: 16px;
-                    margin-right: 5px;
+                    width: 1rem;
+                    margin-right: 0.3125rem;
                     filter: brightness(0) invert(1);
                   `}
                   src="/images/snsIcon/external_link.png"

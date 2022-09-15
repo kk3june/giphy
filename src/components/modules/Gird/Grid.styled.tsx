@@ -4,12 +4,12 @@ const StyledGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(2, 15rem);
-  grid-gap: 10px;
+  grid-gap: 0.625rem;
   overflow: hidden;
   & a > video {
     width: 100%;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 0.5rem;
   }
 
   a:first-of-type {

@@ -26,11 +26,11 @@ function Home() {
   const MAIN_LIST = [
     {
       name: TRENDING,
-      children: <Carousel type="trending" height="140px" data={trendingGifs} />,
+      children: <Carousel type="trending" height="8.75rem" data={trendingGifs} />,
     },
     {
       name: ARTISTS,
-      children: <Carousel type="artists" width="343px" height="249px" data={artistsGifs} />,
+      children: <Carousel type="artists" width="21.4375rem" height="16.8125rem" data={artistsGifs} />,
     },
     {
       name: CLIPS,

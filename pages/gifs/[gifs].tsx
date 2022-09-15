@@ -29,11 +29,11 @@ const Gifs = () => {
   const CONTENT_LIST = [
     {
       name: 'Related Clips',
-      children: <Carousel data={relatedClips} type="clips" width="248px" height="139.5px" />,
+      children: <Carousel data={relatedClips} type="clips" width="15.5rem" height="8.75rem" />,
     },
     {
       name: 'Related Gifs',
-      children: <Carousel data={relatedGifs} type="gifs" width="248px" />,
+      children: <Carousel data={relatedGifs} type="gifs" width="15.5rem" />,
     },
   ];
 
@@ -42,7 +42,7 @@ const Gifs = () => {
       css={css`
         display: flex;
         margin-top: 3rem;
-        width: 66rem;
+        width: 65rem;
       `}
     >
       <Sidebar data={gifById} />

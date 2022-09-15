@@ -7,9 +7,9 @@ type CarouselTypes = {
 };
 
 const StyledCarousel = styled.div<CarouselTypes>`
-  width: ${({ type }) => (type === 'gifs' ? '768px' : '')};
-  width: ${({ type }) => (type === 'clips' ? '768px' : '')};
-  height: ${({ type }) => (type === 'gifs' ? '1000px' : '')};
+  width: ${({ type }) => (type === 'gifs' ? '48rem' : '')};
+  width: ${({ type }) => (type === 'clips' ? '48rem' : '')};
+  height: ${({ type }) => (type === 'gifs' ? '62.5rem' : '')};
 `;
 
 export default StyledCarousel;

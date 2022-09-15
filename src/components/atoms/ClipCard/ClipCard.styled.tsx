@@ -13,9 +13,9 @@ export const ClipVideo = styled.video<{ type?: string }>`
 
 export const Title = styled.div<{ type?: string }>`
   width: 100%;
-  margin: 5px 0;
-  padding: ${({ type }) => (type === 'detail' ? '10px 0' : '')};
-  font-size: ${({ type }) => (type === 'detail' ? '24px' : '17px')};
+  margin: 0.3125rem 0;
+  padding: ${({ type }) => (type === 'detail' ? '0.625rem 0' : '')};
+  font-size: ${({ type }) => (type === 'detail' ? '1.5rem' : '1.0625rem')};
   font-weight: bold;
   text-decoration: none;
   text-overflow: ellipsis;
