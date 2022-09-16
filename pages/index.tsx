@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
+import { useSelector, useDispatch } from 'react-redux';
+
 import Carousel from 'components/modules/Carousel/Carousel';
 import ListWrapper from 'components/templates/ListWrapper/ListWrapper';
 import GridLayer from 'layer/GridLayer';
 import StoriesLayer from 'layer/StoriesLayer';
 import { TRENDING, ARTISTS, CLIPS, STORIES, INDEX } from 'src/constants';
+import { setName } from 'src/store/user/slice';
 
 import { getTrendingGifs, getArtistGifs, getTrendingClips, getStoryGifs } from './api/fetchAPI';
 
@@ -14,11 +17,15 @@ function Home() {
   const [trendingClips, setTrendingClips] = useState<any[]>();
   const [storiesGifs, setStoriesClips] = useState<any[]>();
 
+  const dispatch = useDispatch();
+  const userName = useSelector((state) => state.user.name);
+
   useEffect(() => {
     getTrendingGifs().then((res) => setTrendingGifs(res));
     getArtistGifs().then((res) => setArtistsGifs(res));
     getTrendingClips().then((res) => setTrendingClips(res));
     getStoryGifs().then((res) => setStoriesClips(res));
+    dispatch(setName('kim'));
 
     console.log('rendering');
   }, []);
@@ -44,6 +51,7 @@ function Home() {
 
   return (
     <div>
+      <div>{userName}</div>
       {MAIN_LIST.map((item) => (
         <ListWrapper key={`${item.name}`} name={item.name} type={INDEX}>
           {item.children}

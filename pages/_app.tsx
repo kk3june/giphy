@@ -7,6 +7,7 @@ import type { AppProps } from 'next/app';
 
 import Layout from '../src/components/templates/Layout/Layout';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import wrapper from '../src/store';
 
 config.autoAddCss = false;
 
@@ -18,4 +19,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);
