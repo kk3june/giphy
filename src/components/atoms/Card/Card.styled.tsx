@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { ARTISTS, CLIPS, GIFS } from 'src/constants';
+import { ARTISTS, GIFS } from 'src/constants';
 
 type StyledCardProps = {
   width?: string | undefined;
