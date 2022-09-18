@@ -8,24 +8,30 @@ import { DETAIL } from 'src/constants';
 
 import UserInfo from '../UserInfo/UserInfo';
 
-import { GridItem, ClipVideo, Title } from './ClipCard.styled';
+import { GridItem, ClipAnchor, ClipVideo, Title } from './ClipCard.styled';
 
 const ClipCard = ({ data, type }: any) => {
   return (
-    <GridItem href={`clips/${data?.id}`}>
-      <ClipVideo key={data?.id} autoPlay muted loop type={type}>
-        <source src={data?.images.original.mp4} type="video/mp4" />
-      </ClipVideo>
+    <GridItem>
+      <ClipAnchor href={`/clips/${data?.id}`}>
+        <ClipVideo key={data?.id} autoPlay muted loop type={type}>
+          <source src={data?.images.original.mp4} type="video/mp4" />
+        </ClipVideo>
+      </ClipAnchor>
 
       <div
         css={css`
           display: flex;
         `}
       >
-        <Title type={type}>{data?.title}</Title>
+        <ClipAnchor href={`/clips/${data?.id}`}>
+          <Title type={type}>{data?.title}</Title>
+        </ClipAnchor>
         {type === DETAIL && <GifsSection type={type} />}
       </div>
-      <UserInfo avatar={data?.user.avatar_url} userName={data?.user.display_name} />
+      <ClipAnchor href={`/writer/${data?.username}`}>
+        <UserInfo avatar={data?.user.avatar_url} userName={data?.user.display_name} />
+      </ClipAnchor>
     </GridItem>
   );
 };

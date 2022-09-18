@@ -2,8 +2,7 @@ import styled from '@emotion/styled';
 
 import { DETAIL, NORMAL } from 'src/constants';
 
-export const GridItem = styled.a<{ type?: string }>`
-  display: inline-block;
+export const GridItem = styled.div<{ type?: string }>`
   width: 100%;
   margin-bottom: 0.5rem;
 `;
@@ -13,6 +12,11 @@ const WIDTH_TYPE = {
   NORMAL: '14.5rem',
 };
 
+export const ClipAnchor = styled.a`
+  display: inline-block;
+  width: 100%;
+  text-decoration: none;
+`;
 export const ClipVideo = styled.video<{ type: any }>`
   width: ${({ type }) => WIDTH_TYPE[type as keyof typeof WIDTH_TYPE]};
 `;
