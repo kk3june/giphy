@@ -30,11 +30,8 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'react/react-in-jsx-scope': 'off',
     'react/jsx-props-no-spreading': 'off',
-    "react/no-unknown-property": ["error", { "ignore": ["css"] }],
-    'react/jsx-filename-extension': [
-      'error',
-      { extensions: ['.tsx', '.jsx', 'spec.js'] },
-    ],
+    'react/no-unknown-property': ['error', { ignore: ['css'] }],
+    'react/jsx-filename-extension': ['error', { extensions: ['.tsx', '.jsx', 'spec.js'] }],
     'react/function-component-definition': 'off',
     'import/no-duplicates': 'off',
     'import/extensions': [
@@ -73,10 +70,8 @@ module.exports = {
         },
       },
     ],
-    'jsx-a11y/label-has-associated-control': [
-      'error',
-      { controlComponents: ['input', 'select'] },
-    ],
+    'jsx-a11y/label-has-associated-control': ['error', { controlComponents: ['input', 'select'] }],
+    'no-param-reassign': 'off',
   },
   settings: {
     // 'import/resolver': {
@@ -84,12 +79,11 @@ module.exports = {
     //     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     //   },
     // },
-    "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
     },
-    "import/resolver": {
-      "typescript": {}
-    }
+    'import/resolver': {
+      typescript: {},
+    },
   },
 };
-
