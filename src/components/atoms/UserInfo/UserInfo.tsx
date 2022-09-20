@@ -5,7 +5,7 @@ import { StyledImg, UserName } from './UserInfo.styled';
 interface UserInfoProps {
   type?: string;
   name?: string;
-  avatar: string;
+  avatar?: string;
   userName: string;
 }
 

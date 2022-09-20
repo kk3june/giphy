@@ -4,9 +4,9 @@ import { css } from '@emotion/react';
 import { useRouter } from 'next/router';
 
 import ClipCard from 'components/atoms/ClipCard/ClipCard';
-import { DETAIL, NORMAL } from 'src/constants';
+import { DETAIL, UPNEXT } from 'src/constants';
 
-import { getClipById } from '../api/fetchAPI';
+import { getClipById, getUpNext } from '../api/fetchAPI';
 
 const Clips = () => {
   const router = useRouter();
@@ -14,10 +14,12 @@ const Clips = () => {
   const params = query.clips;
 
   const [clipById, setClipById] = useState<any>();
+  const [upNext, setUpNext] = useState<any>();
 
   useEffect(() => {
     if (params) {
       getClipById(params as string).then((res) => setClipById(res));
+      getUpNext(params as string).then((res) => setUpNext(res));
     }
   }, [params]);
 
@@ -27,6 +29,7 @@ const Clips = () => {
         display: flex;
         width: 100%;
         justify-content: space-between;
+        margin-top: 1rem;
       `}
     >
       <div>
@@ -37,11 +40,15 @@ const Clips = () => {
           width: min-content;
         `}
       >
-        Up Next
-        <ClipCard data={clipById?.[0]} type={NORMAL} />
-        <ClipCard data={clipById?.[0]} type={NORMAL} />
-        <ClipCard data={clipById?.[0]} type={NORMAL} />
-        <ClipCard data={clipById?.[0]} type={NORMAL} />
+        <h2
+          css={css`
+            margin-bottom: 1rem;
+            font-weight: bold;
+          `}
+        >
+          Up Next
+        </h2>
+        {upNext && upNext.map((item: any) => <ClipCard key={item.id} data={item} type={UPNEXT} />)}
       </div>
     </div>
   );

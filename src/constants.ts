@@ -8,3 +8,4 @@ export const INDEX = 'INDEX';
 export const CONTENT = 'CONTENT';
 export const DETAIL = 'DETAIL';
 export const NORMAL = 'NORMAL';
+export const UPNEXT = 'UPNEXT';
