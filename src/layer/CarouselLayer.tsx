@@ -4,15 +4,10 @@ import { VAC } from 'react-vac';
 
 import Carousel from 'components/modules/Carousel/Carousel';
 
-const CarouselLayer = ({ type, data, width, height }: any) => {
+const CarouselLayer = ({ type, data }: any) => {
   const carouselType = {
     type,
     data,
-    width,
-    height,
-    clickArrowSvg: () => {
-      console.log('test');
-    },
   };
 
   return (
