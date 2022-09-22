@@ -14,15 +14,14 @@ const WIDTH_TYPE = {
   CLIPS: '15.5rem',
 };
 
-export const StyledCardWrapper = styled.div<StyledCardProps>`
-  display: flex;
-  justify-content: ${({ type }) => (type !== ARTISTS ? 'space-between' : '')};
-  flex-wrap: ${({ type }) => (type === GIFS ? 'wrap' : '')};
-  width: 100%;
-  height: ${({ type }) => (type === GIFS ? '62.5rem' : '')};
-
-  overflow: hidden;
-`;
+// export const StyledCardWrapper = styled.div<StyledCardProps>`
+//   display: flex;
+//   justify-content: ${({ type }) => (type !== ARTISTS ? 'space-between' : '')};
+//   flex-wrap: ${({ type }) => (type === GIFS ? 'wrap' : '')};
+//   width: 100%;
+//   height: ${({ type }) => (type === GIFS ? '62.5rem' : '')};
+//   overflow: hidden;
+// `;
 
 export const StyledCard = styled.div<StyledCardProps>`
   width: ${({ type }) => (type === GIFS ? '15.5rem' : '')};

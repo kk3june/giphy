@@ -13,8 +13,7 @@ interface CarouselLayerProps {
 const Carousel = ({ data, width, height, type, clickArrowSvg }: CarouselLayerProps) => {
   return (
     <StyledCarousel width={width} height={height} type={type}>
-      <CardLayer data={data} width={width} height={height} type={type} />
-
+      {data && data.map((item: any) => <CardLayer data={item} width={width} height={height} type={type} />)}
       <ArrowRightSvg type={type} onClick={clickArrowSvg} />
     </StyledCarousel>
   );

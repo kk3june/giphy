@@ -15,6 +15,8 @@ const WIDTH_TYPE = {
 
 const StyledCarousel = styled.div<CarouselTypes>`
   position: relative;
+  display: flex;
+  overflow: hidden;
   width: ${({ type }) => WIDTH_TYPE[type as keyof typeof WIDTH_TYPE]};
   height: ${({ type }) => (type === GIFS ? '62.5rem' : '')};
 `;
