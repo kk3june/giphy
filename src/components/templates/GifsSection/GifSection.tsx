@@ -2,43 +2,35 @@ import EllipsisVertical from 'components/atoms/Svgs/EllipsisVerticalSvg';
 import EmbedSvg from 'components/atoms/Svgs/EmbedSvg';
 import LikeSvg from 'components/atoms/Svgs/LikeSvg';
 import ShareSvg from 'components/atoms/Svgs/ShareSvg';
-import CardLayer from 'layer/CardLayer';
-import { GIF, DETAIL } from 'src/constants';
+import { DETAIL } from 'src/constants';
 
-import { StyledSection, GifTitle, GifButton, GifButtonName, GifButtonWrapper } from './GifSection.styled';
+import { GifButton, GifButtonName, GifButtonWrapper } from './GifSection.styled';
 
 const GifsSection = ({ gifById, type }: any) => {
   return (
-    <StyledSection type={type}>
-      <div>
-        <GifTitle>{gifById?.[0].title}</GifTitle>
-        <CardLayer data={gifById} type={GIF} width="31.25rem" />
-      </div>
+    <GifButtonWrapper type={type}>
+      <GifButton type={type}>
+        <LikeSvg />
+        <GifButtonName>Favorite</GifButtonName>
+      </GifButton>
 
-      <GifButtonWrapper type={type}>
+      <GifButton type={type}>
+        <ShareSvg />
+        <GifButtonName>Share</GifButtonName>
+      </GifButton>
+
+      {type !== DETAIL && (
         <GifButton type={type}>
-          <LikeSvg />
-          <GifButtonName>Favorite</GifButtonName>
+          <EmbedSvg />
+          <GifButtonName>Embed</GifButtonName>
         </GifButton>
-
+      )}
+      {type === DETAIL && (
         <GifButton type={type}>
-          <ShareSvg />
-          <GifButtonName>Share</GifButtonName>
+          <EllipsisVertical />
         </GifButton>
-
-        {type !== DETAIL && (
-          <GifButton type={type}>
-            <EmbedSvg />
-            <GifButtonName>Embed</GifButtonName>
-          </GifButton>
-        )}
-        {type === DETAIL && (
-          <GifButton type={type}>
-            <EllipsisVertical />
-          </GifButton>
-        )}
-      </GifButtonWrapper>
-    </StyledSection>
+      )}
+    </GifButtonWrapper>
   );
 };
 

@@ -9,23 +9,22 @@ type StyledCardProps = {
 };
 
 const WIDTH_TYPE = {
+  TRENDING: '',
   ARTISTS: '21.4375rem',
-  GIFS: '15.5rem',
-  CLIPS: '15.5rem',
+  RELATED_CLIPS: '15.5rem',
+  RELATED_GIFS: '15.5rem',
+  GIF: '31.25rem',
+};
+const HEIGHT_TYPE = {
+  TRENDING: '8.75rem',
+  ARTISTS: '16.8125rem',
+  RELATED_CLIPS: '8.71875rem',
+  RELATED_GIFS: 'auto',
 };
 
-// export const StyledCardWrapper = styled.div<StyledCardProps>`
-//   display: flex;
-//   justify-content: ${({ type }) => (type !== ARTISTS ? 'space-between' : '')};
-//   flex-wrap: ${({ type }) => (type === GIFS ? 'wrap' : '')};
-//   width: 100%;
-//   height: ${({ type }) => (type === GIFS ? '62.5rem' : '')};
-//   overflow: hidden;
-// `;
-
 export const StyledCard = styled.div<StyledCardProps>`
-  width: ${({ type }) => (type === GIFS ? '15.5rem' : '')};
-  height: ${({ height }) => height};
+  width: ${({ type }) => WIDTH_TYPE[type as keyof typeof WIDTH_TYPE]};
+  height: ${({ type }) => HEIGHT_TYPE[type as keyof typeof HEIGHT_TYPE]};
   margin-bottom: 0.625rem;
 `;
 

@@ -1,4 +1,4 @@
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
@@ -8,7 +8,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 import CardLayer from 'layer/CardLayer';
-import { TRENDING, ARTISTS } from 'src/constants';
 
 interface CarouselLayerProps {
   type: string | undefined;
@@ -28,15 +27,7 @@ const Carousel = ({ data, type }: CarouselLayerProps) => {
   };
 
   return (
-    <Swiper
-      style={SwiperStyle}
-      modules={[Navigation, Pagination, Scrollbar, A11y]}
-      spaceBetween={0}
-      slidesPerView="auto"
-      navigation
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
-    >
+    <Swiper style={SwiperStyle} modules={[Navigation]} spaceBetween={3} slidesPerView="auto" navigation>
       {data &&
         data.map((item: any) => (
           <SwiperSlide key={item.id} style={SlideStyle}>

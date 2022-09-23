@@ -3,11 +3,13 @@ import React, { useState, useEffect } from 'react';
 import { css } from '@emotion/react';
 import { useRouter } from 'next/router';
 
-import Carousel from 'components/modules/Carousel/Carousel';
+import NormalGrid from 'components/modules/Gird/NormalGrid';
 import GifSection from 'components/templates/GifsSection/GifSection';
 import ListWrapper from 'components/templates/ListWrapper/ListWrapper';
 import Sidebar from 'components/templates/Sidebar/Sidebar';
-import { CONTENT, CLIPS, GIFS } from 'src/constants';
+import CardLayer from 'layer/CardLayer';
+import CarouselLayer from 'layer/CarouselLayer';
+import { CONTENT, GIF, RELATED_CLIPS, RELATED_GIFS } from 'src/constants';
 
 import { getGifById, getRelatedGifs, getRelatedClips } from '../api/fetchAPI';
 
@@ -30,11 +32,11 @@ const Gifs = () => {
   const CONTENT_LIST = [
     {
       name: 'Related Clips',
-      children: <Carousel data={relatedClips} type={CLIPS} width="15.5rem" height="8.75rem" />,
+      children: <CarouselLayer data={relatedClips} type={RELATED_CLIPS} />,
     },
     {
       name: 'Related Gifs',
-      children: <Carousel data={relatedGifs} type={GIFS} width="15.5rem" />,
+      children: <NormalGrid data={relatedGifs} type={RELATED_GIFS} />,
     },
   ];
 
@@ -48,7 +50,14 @@ const Gifs = () => {
     >
       <Sidebar data={gifById} />
       <div>
-        <GifSection gifById={gifById} />
+        <div
+          css={css`
+            display: flex;
+          `}
+        >
+          <CardLayer data={gifById?.[0]} type={GIF} />
+          <GifSection gifById={gifById} />
+        </div>
 
         {CONTENT_LIST.map((item) => (
           <ListWrapper key={`${item.name}`} name={item.name} type={CONTENT}>
