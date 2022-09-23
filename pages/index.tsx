@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
+import { useSelector, useDispatch } from 'react-redux';
+
 import Carousel from 'components/modules/Carousel/Carousel';
 import ListWrapper from 'components/templates/ListWrapper/ListWrapper';
 import GridLayer from 'layer/GridLayer';
 import StoriesLayer from 'layer/StoriesLayer';
-import { TRENDING, ARTISTS, CLIPS, STORIES } from 'src/constants';
+import { TRENDING, ARTISTS, CLIPS, STORIES, INDEX } from 'src/constants';
+import { setName } from 'src/store/user/slice';
 
 import { getTrendingGifs, getArtistGifs, getTrendingClips, getStoryGifs } from './api/fetchAPI';
 
@@ -14,11 +17,15 @@ function Home() {
   const [trendingClips, setTrendingClips] = useState<any[]>();
   const [storiesGifs, setStoriesClips] = useState<any[]>();
 
+  const dispatch = useDispatch();
+  const userName = useSelector((state) => state.user.name);
+
   useEffect(() => {
     getTrendingGifs().then((res) => setTrendingGifs(res));
     getArtistGifs().then((res) => setArtistsGifs(res));
     getTrendingClips().then((res) => setTrendingClips(res));
     getStoryGifs().then((res) => setStoriesClips(res));
+    dispatch(setName('kim'));
 
     console.log('rendering');
   }, []);
@@ -26,26 +33,27 @@ function Home() {
   const MAIN_LIST = [
     {
       name: TRENDING,
-      children: <Carousel type="trending" height="140px" data={trendingGifs} />,
+      children: <Carousel type={TRENDING} height="8.75rem" data={trendingGifs} />,
     },
     {
       name: ARTISTS,
-      children: <Carousel type="artists" width="343px" height="249px" data={artistsGifs} />,
+      children: <Carousel type={ARTISTS} width="21.4375rem" height="16.8125rem" data={artistsGifs} />,
     },
     {
       name: CLIPS,
-      children: <GridLayer data={trendingClips} type="clips" />,
+      children: <GridLayer data={trendingClips} type={CLIPS} />,
     },
     {
       name: STORIES,
-      children: <StoriesLayer data={storiesGifs} type="stories" />,
+      children: <StoriesLayer data={storiesGifs} type={STORIES} />,
     },
   ];
 
   return (
     <div>
+      <div>{userName}</div>
       {MAIN_LIST.map((item) => (
-        <ListWrapper key={`${item.name}`} name={item.name} type="index">
+        <ListWrapper key={`${item.name}`} name={item.name} type={INDEX}>
           {item.children}
         </ListWrapper>
       ))}

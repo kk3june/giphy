@@ -10,7 +10,7 @@ const SearchInput = ({ value, onChange }: any) => {
         display: flex;
         width: 100%;
         background-color: white;
-        border-radius: 15px;
+        border-radius: 0.9375rem;
       `}
     >
       <InputBanner>{value ? '' : <span>Search All the GIFs and Stickers</span>}</InputBanner>

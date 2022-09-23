@@ -9,30 +9,30 @@ export const StyledStories = styled.div`
     display: block;
     cursor: pointer;
     position: relative;
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
     > img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      padding: 0 5px;
+      padding: 0 0.3125rem;
     }
   }
 `;
 
 export const WideStory = styled.a`
-  height: 300px;
+  height: 18.75rem;
   width: 33rem;
 `;
 export const NormalStory = styled.a`
-  height: 300px;
+  height: 18.75rem;
   width: 16.5rem;
 `;
 
 export const TitleStory = styled.span`
   position: absolute;
   bottom: 0;
-  padding: 20px;
-  font-size: 18px;
+  padding: 1.25rem;
+  font-size: 1.125rem;
   font-weight: bold;
   color: white;
 `;

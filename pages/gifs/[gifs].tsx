@@ -7,6 +7,7 @@ import Carousel from 'components/modules/Carousel/Carousel';
 import GifSection from 'components/templates/GifsSection/GifSection';
 import ListWrapper from 'components/templates/ListWrapper/ListWrapper';
 import Sidebar from 'components/templates/Sidebar/Sidebar';
+import { CONTENT, CLIPS, GIFS } from 'src/constants';
 
 import { getGifById, getRelatedGifs, getRelatedClips } from '../api/fetchAPI';
 
@@ -29,11 +30,11 @@ const Gifs = () => {
   const CONTENT_LIST = [
     {
       name: 'Related Clips',
-      children: <Carousel data={relatedClips} type="clips" width="248px" height="139.5px" />,
+      children: <Carousel data={relatedClips} type={CLIPS} width="15.5rem" height="8.75rem" />,
     },
     {
       name: 'Related Gifs',
-      children: <Carousel data={relatedGifs} type="gifs" width="248px" />,
+      children: <Carousel data={relatedGifs} type={GIFS} width="15.5rem" />,
     },
   ];
 
@@ -42,7 +43,7 @@ const Gifs = () => {
       css={css`
         display: flex;
         margin-top: 3rem;
-        width: 66rem;
+        width: 65rem;
       `}
     >
       <Sidebar data={gifById} />
@@ -50,7 +51,7 @@ const Gifs = () => {
         <GifSection gifById={gifById} />
 
         {CONTENT_LIST.map((item) => (
-          <ListWrapper key={`${item.name}`} name={item.name} type="content">
+          <ListWrapper key={`${item.name}`} name={item.name} type={CONTENT}>
             {item.children}
           </ListWrapper>
         ))}

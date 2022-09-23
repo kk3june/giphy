@@ -15,7 +15,7 @@ const Layout = ({ children }: LayoutProps) => {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: 66rem;
+        width: 65rem;
         height: 100%;
         margin: 0 auto;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',

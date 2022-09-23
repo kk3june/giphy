@@ -22,47 +22,55 @@ const SidebarBox = ({ data }: any) => {
     avatar: data?.[0].user?.avatar,
   };
 
+  const { user } = Array.isArray(data) && data.length > 0 && data[0];
+
   return (
     <div
       css={css`
-        width: 248px;
-        margin-right: 30px;
+        width: 15.5rem;
+        margin-right: 1.875rem;
       `}
     >
-      {data?.[0].user ? (
+      {user ? (
         <div
           css={css`
             width: inherit;
           `}
         >
           <UserInfo {...userInfoProps} />
-          <StyledSpan>{data?.[0].user?.description}</StyledSpan>
+          <StyledSpan>{user?.description}</StyledSpan>
           <StyledSpan>Follow on:</StyledSpan>
 
-          <SnsIcon href={data?.[0].user?.facebook_url}>
-            <img src="/images/snsIcon/facebook.png" alt="link to facebook" />
-          </SnsIcon>
-          <SnsIcon href={data?.[0].user?.instagram_url}>
-            <img src="/images/snsIcon/instagram.png" alt="link to instagram" />
-          </SnsIcon>
-          <SnsIcon href={data?.[0].user?.twitter_url}>
-            <img src="/images/snsIcon/twitter.png" alt="link to twitter" />
-          </SnsIcon>
+          {user?.facebook_url && (
+            <SnsIcon href={user?.facebook_url}>
+              <img src="/images/snsIcon/facebook.png" alt="link to facebook" />
+            </SnsIcon>
+          )}
+          {user?.instagram_url && (
+            <SnsIcon href={user?.instagram_url}>
+              <img src="/images/snsIcon/instagram.png" alt="link to instagram" />
+            </SnsIcon>
+          )}
+          {user?.twitter_url && (
+            <SnsIcon href={user?.twitter_url}>
+              <img src="/images/snsIcon/twitter.png" alt="link to twitter" />
+            </SnsIcon>
+          )}
 
-          {data?.[0].user?.website_url && (
+          {user?.website_url && (
             <>
               <StyledSpan>Source</StyledSpan>
-              <SourceLink href={data?.[0].user?.website_url} type="bold">
+              <SourceLink href={user?.website_url} type="bold">
                 <img
                   css={css`
-                    width: 16px;
-                    margin-right: 5px;
+                    width: 1rem;
+                    margin-right: 0.3125rem;
                     filter: brightness(0) invert(1);
                   `}
                   src="/images/snsIcon/external_link.png"
                   alt="external link"
                 />
-                <SourceLinkUrl>{data?.[0].user?.website_display_url}</SourceLinkUrl>
+                <SourceLinkUrl>{user?.website_display_url}</SourceLinkUrl>
               </SourceLink>
             </>
           )}

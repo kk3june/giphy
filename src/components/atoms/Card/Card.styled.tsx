@@ -1,34 +1,40 @@
 import styled from '@emotion/styled';
 
+import { ARTISTS, GIFS } from 'src/constants';
+
 type StyledCardProps = {
   width?: string | undefined;
   height?: string | undefined;
   type?: string | undefined;
 };
 
+const WIDTH_TYPE = {
+  ARTISTS: '21.4375rem',
+  GIFS: '15.5rem',
+  CLIPS: '15.5rem',
+};
+
 export const StyledCardWrapper = styled.div<StyledCardProps>`
   display: flex;
-  justify-content: ${({ type }) => (type !== 'artists' ? 'space-between' : '')};
-  flex-wrap: ${({ type }) => (type === 'gifs' ? 'wrap' : '')};
+  justify-content: ${({ type }) => (type !== ARTISTS ? 'space-between' : '')};
+  flex-wrap: ${({ type }) => (type === GIFS ? 'wrap' : '')};
   width: 100%;
-  height: ${({ type }) => (type === 'gifs' ? '1000px' : '')};
+  height: ${({ type }) => (type === GIFS ? '62.5rem' : '')};
 
   overflow: hidden;
 `;
 
 export const StyledCard = styled.div<StyledCardProps>`
-  width: ${({ type }) => (type === 'gifs' ? '248px' : '')};
+  width: ${({ type }) => (type === GIFS ? '15.5rem' : '')};
   height: ${({ height }) => height};
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
 `;
 
 export const StyledImg = styled.img<StyledCardProps>`
   display: inline-block;
-  margin: 0 2px;
-  border-radius: 5px;
+  margin: 0 0.125rem;
+  border-radius: 0.3125rem;
   height: 100%;
-  min-width: ${({ type }) => (type === 'artists' ? '343px' : '')};
-  width: ${({ type }) => (type === 'gifs' ? '248px' : '')};
-  width: ${({ type }) => (type === 'clips' ? '248px' : '')};
+  width: ${({ type }) => WIDTH_TYPE[type as keyof typeof WIDTH_TYPE]};
   object-fit: cover;
 `;

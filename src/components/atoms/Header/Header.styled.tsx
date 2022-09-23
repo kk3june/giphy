@@ -13,9 +13,9 @@ export const SvgBox = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 35px;
-  height: 35px;
-  margin-right: 10px;
+  width: 2.1875rem;
+  height: 2.1875rem;
+  margin-right: 0.625rem;
 `;
 
 export const Title = styled.span`
