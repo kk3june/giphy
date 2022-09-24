@@ -1,18 +1,39 @@
-import StyledCarousel from 'components/modules/Carousel/Carousel.styled';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
+import { StyledWrapper } from 'components/modules/Carousel/Carousel.styled';
 import CardLayer from 'layer/CardLayer';
 
-interface CardListLayerProps {
+interface CarouselLayerProps {
+  type: string | undefined;
   data: any;
-  width?: string;
-  height?: string;
-  type?: string;
 }
 
-const Carousel = ({ data, width, height, type }: CardListLayerProps) => {
+const Carousel = ({ data, type }: CarouselLayerProps) => {
   return (
-    <StyledCarousel width={width} height={height} type={type}>
-      <CardLayer data={data} width={width} height={height} type={type} />
-    </StyledCarousel>
+    <StyledWrapper>
+      <Swiper
+        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        spaceBetween={0}
+        slidesPerView={1}
+        navigation
+        onSlideChange={() => console.log('slide change')}
+        onSwiper={(swiper) => console.log(swiper)}
+      >
+        {data &&
+          data.map((item: any) => (
+            <SwiperSlide key={item.id}>
+              <CardLayer data={item} type={type} />
+            </SwiperSlide>
+          ))}
+      </Swiper>
+    </StyledWrapper>
   );
 };
 

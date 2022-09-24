@@ -22,6 +22,7 @@ const ClipCard = ({ data, type }: any) => {
       <div
         css={css`
           display: flex;
+          width: ${type !== DETAIL ? '14.5rem' : ''};
         `}
       >
         <ClipAnchor href={`/clips/${data?.id}`}>
@@ -29,9 +30,11 @@ const ClipCard = ({ data, type }: any) => {
         </ClipAnchor>
         {type === DETAIL && <GifsSection type={type} />}
       </div>
-      <ClipAnchor href={`/writer/${data?.username}`}>
-        <UserInfo avatar={data?.user.avatar_url} userName={data?.user.display_name} />
-      </ClipAnchor>
+      {data?.user && (
+        <ClipAnchor href={`/writer/${data?.username}`}>
+          <UserInfo avatar={data?.user?.avatar_url} userName={data?.user?.display_name} />
+        </ClipAnchor>
+      )}
     </GridItem>
   );
 };

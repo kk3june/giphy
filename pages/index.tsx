@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import Carousel from 'components/modules/Carousel/Carousel';
 import ListWrapper from 'components/templates/ListWrapper/ListWrapper';
+import CarouselLayer from 'layer/CarouselLayer';
 import GridLayer from 'layer/GridLayer';
 import StoriesLayer from 'layer/StoriesLayer';
 import { TRENDING, ARTISTS, CLIPS, STORIES, INDEX } from 'src/constants';
@@ -33,11 +33,11 @@ function Home() {
   const MAIN_LIST = [
     {
       name: TRENDING,
-      children: <Carousel type={TRENDING} height="8.75rem" data={trendingGifs} />,
+      children: <CarouselLayer type={TRENDING} data={trendingGifs} />,
     },
     {
       name: ARTISTS,
-      children: <Carousel type={ARTISTS} width="21.4375rem" height="16.8125rem" data={artistsGifs} />,
+      children: <CarouselLayer type={ARTISTS} data={artistsGifs} />,
     },
     {
       name: CLIPS,

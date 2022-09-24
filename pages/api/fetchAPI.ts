@@ -37,6 +37,11 @@ export const getRelatedClips = async (id: string) => {
   return clips;
 };
 
+export const getUpNext = async (id: string) => {
+  const { data: clips } = await gf.related(id, { limit: 4 });
+  return clips;
+};
+
 export const getClipById = async (id: string) => {
   const { data: gifs } = await gf.gifs([id]);
   return gifs;
