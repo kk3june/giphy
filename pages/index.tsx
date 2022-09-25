@@ -7,33 +7,41 @@ import CarouselLayer from 'layer/CarouselLayer';
 import GridLayer from 'layer/GridLayer';
 import StoriesLayer from 'layer/StoriesLayer';
 import { TRENDING, ARTISTS, CLIPS, STORIES, INDEX } from 'src/constants';
+import { fetchTrendingGifs } from 'src/store/trending/thunks';
 import { setName } from 'src/store/user/slice';
 
 import { getTrendingGifs, getArtistGifs, getTrendingClips, getStoryGifs } from './api/fetchAPI';
 
 function Home() {
-  const [trendingGifs, setTrendingGifs] = useState<any[]>();
+  // const [trendingGifs, setTrendingGifs] = useState<any[]>();
   const [artistsGifs, setArtistsGifs] = useState<any[]>();
   const [trendingClips, setTrendingClips] = useState<any[]>();
   const [storiesGifs, setStoriesClips] = useState<any[]>();
 
+  const { trendingGifsIsLoading, gifs: trendingGifs } = useSelector((state) => state.trending);
   const dispatch = useDispatch();
   const userName = useSelector((state) => state.user.name);
 
   useEffect(() => {
-    getTrendingGifs().then((res) => setTrendingGifs(res));
+    // getTrendingGifs().then((res) => setTrendingGifs(res));
     getArtistGifs().then((res) => setArtistsGifs(res));
     getTrendingClips().then((res) => setTrendingClips(res));
     getStoryGifs().then((res) => setStoriesClips(res));
     dispatch(setName('kim'));
 
     console.log('rendering');
+
+    const getTrendingAPI = async () => {
+      await dispatch(fetchTrendingGifs({ limit: 10 }));
+    };
+
+    getTrendingAPI();
   }, []);
 
   const MAIN_LIST = [
     {
       name: TRENDING,
-      children: <CarouselLayer type={TRENDING} data={trendingGifs} />,
+      children: <CarouselLayer type={TRENDING} data={trendingGifs} isLoading={trendingGifsIsLoading} />,
     },
     {
       name: ARTISTS,

@@ -1,6 +1,6 @@
 import { GiphyFetch } from '@giphy/js-fetch-api';
 
-const gf = new GiphyFetch(process.env.NEXT_PUBLIC_GIPHY_API_KEY as string);
+export const gf = new GiphyFetch(process.env.NEXT_PUBLIC_GIPHY_API_KEY as string);
 
 export const getTrendingGifs = async () => {
   const { data: gifs } = await gf.trending({ limit: 10 });

@@ -13,10 +13,19 @@ import CardLayer from 'layer/CardLayer';
 interface CarouselLayerProps {
   type: string | undefined;
   data: any;
+  isLoading?: boolean;
 }
 
-const Carousel = ({ data, type }: CarouselLayerProps) => {
-  return (
+const Carousel = ({ data, type, isLoading }: CarouselLayerProps) => {
+  return isLoading ? (
+    <div
+      css={{
+        fontSize: '100px',
+      }}
+    >
+      isLoading
+    </div>
+  ) : (
     <StyledWrapper>
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}

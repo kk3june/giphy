@@ -1,11 +1,13 @@
 import { configureStore, ThunkDispatch, AnyAction } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
 
+import { trendingReducer } from './trending/slice';
 import { userReducer } from './user/slice';
 
 export const store = configureStore({
   reducer: {
     user: userReducer,
+    trending: trendingReducer,
   },
   devTools: true,
 });
