@@ -1,7 +1,15 @@
 import { StyledStories, WideStory, NormalStory, TitleStory } from './Stories.styled';
 
-const Stories = ({ data, chkArr }: any) => {
-  return (
+const Stories = ({ data, chkArr, isLoading }: any) => {
+  return isLoading ? (
+    <div
+      css={{
+        fontSize: '100px',
+      }}
+    >
+      isLoading
+    </div>
+  ) : (
     <StyledStories>
       {data &&
         chkArr &&

@@ -7,35 +7,36 @@ import CarouselLayer from 'layer/CarouselLayer';
 import GridLayer from 'layer/GridLayer';
 import StoriesLayer from 'layer/StoriesLayer';
 import { TRENDING, ARTISTS, CLIPS, STORIES, INDEX } from 'src/constants';
+import { fetchArtistsGifs } from 'src/store/artists/thunks';
 import { fetchTrendingGifs } from 'src/store/trending/thunks';
-import { setName } from 'src/store/user/slice';
+// import { setName } from 'src/store/user/slice';
 
-import { getTrendingGifs, getArtistGifs, getTrendingClips, getStoryGifs } from './api/fetchAPI';
+import { getTrendingClips } from './api/fetchAPI';
 
 function Home() {
-  // const [trendingGifs, setTrendingGifs] = useState<any[]>();
-  const [artistsGifs, setArtistsGifs] = useState<any[]>();
   const [trendingClips, setTrendingClips] = useState<any[]>();
-  const [storiesGifs, setStoriesClips] = useState<any[]>();
+  const { trendingGifsIsLoading, trendingGifs } = useSelector((state) => state.trending);
+  const { artistsGifsIsLoading, artistsGifs } = useSelector((state) => state.artists);
 
-  const { trendingGifsIsLoading, gifs: trendingGifs } = useSelector((state) => state.trending);
   const dispatch = useDispatch();
-  const userName = useSelector((state) => state.user.name);
+  // const userName = useSelector((state) => state.user.name);
 
   useEffect(() => {
-    // getTrendingGifs().then((res) => setTrendingGifs(res));
-    getArtistGifs().then((res) => setArtistsGifs(res));
     getTrendingClips().then((res) => setTrendingClips(res));
-    getStoryGifs().then((res) => setStoriesClips(res));
-    dispatch(setName('kim'));
-
-    console.log('rendering');
+    // dispatch(setName('kim'));
 
     const getTrendingAPI = async () => {
       await dispatch(fetchTrendingGifs({ limit: 10 }));
     };
 
+    const getArtistsAPI = async () => {
+      await dispatch(fetchArtistsGifs());
+    };
+
     getTrendingAPI();
+    getArtistsAPI();
+
+    console.log('rendering');
   }, []);
 
   const MAIN_LIST = [
@@ -45,7 +46,7 @@ function Home() {
     },
     {
       name: ARTISTS,
-      children: <CarouselLayer type={ARTISTS} data={artistsGifs} />,
+      children: <CarouselLayer type={ARTISTS} data={artistsGifs} isLoading={artistsGifsIsLoading} />,
     },
     {
       name: CLIPS,
@@ -53,13 +54,13 @@ function Home() {
     },
     {
       name: STORIES,
-      children: <StoriesLayer data={storiesGifs} type={STORIES} />,
+      children: <StoriesLayer type={STORIES} data={trendingGifs} isLoading={trendingGifsIsLoading} />,
     },
   ];
 
   return (
     <div>
-      <div>{userName}</div>
+      {/* <div>{userName}</div> */}
       {MAIN_LIST.map((item) => (
         <ListWrapper key={`${item.name}`} name={item.name} type={INDEX}>
           {item.children}

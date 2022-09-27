@@ -4,7 +4,7 @@ import { fetchTrendingGifs } from './thunks';
 
 const initialState = {
   trendingGifsIsLoading: false,
-  gifs: null,
+  trendingGifs: null,
   trendingGifsError: null,
 };
 
@@ -23,7 +23,7 @@ export const trendingSlice = createSlice({
       })
       .addCase(fetchTrendingGifs.fulfilled, (state, action) => {
         state.trendingGifsIsLoading = false;
-        state.gifs = action.payload;
+        state.trendingGifs = action.payload;
       })
       .addCase(fetchTrendingGifs.rejected, (state, action) => {
         state.trendingGifsIsLoading = false;

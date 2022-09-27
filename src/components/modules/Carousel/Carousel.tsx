@@ -13,7 +13,7 @@ import CardLayer from 'layer/CardLayer';
 interface CarouselLayerProps {
   type: string | undefined;
   data: any;
-  isLoading?: boolean;
+  isLoading: boolean;
 }
 
 const Carousel = ({ data, type, isLoading }: CarouselLayerProps) => {
