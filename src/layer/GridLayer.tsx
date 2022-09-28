@@ -2,9 +2,11 @@
 
 import Grid from '../components/modules/Gird/Grid';
 
-const GridLayer = ({ data }: any) => {
+const GridLayer = ({ data, type, isLoading }: any) => {
   const gridProps = {
     data,
+    type,
+    isLoading,
   };
 
   return (

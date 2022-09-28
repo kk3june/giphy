@@ -1,11 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { fetchTrendingGifs } from './thunks';
+import { fetchTrendingGifs, fetchTrendingClips } from './thunks';
 
 const initialState = {
   trendingGifsIsLoading: false,
   trendingGifs: null,
   trendingGifsError: null,
+  trendingClipsIsLoading: false,
+  trendingClips: null,
+  trendingClipsError: null,
 };
 
 export const trendingSlice = createSlice({
@@ -16,19 +19,30 @@ export const trendingSlice = createSlice({
   },
 
   // 비동기 작업을 하는 곳
-  extraReducers: (builder) =>
-    builder
-      .addCase(fetchTrendingGifs.pending, (state) => {
-        state.trendingGifsIsLoading = true;
-      })
-      .addCase(fetchTrendingGifs.fulfilled, (state, action) => {
-        state.trendingGifsIsLoading = false;
-        state.trendingGifs = action.payload;
-      })
-      .addCase(fetchTrendingGifs.rejected, (state, action) => {
-        state.trendingGifsIsLoading = false;
-        state.trendingGifsError = action.payload;
-      }),
+  extraReducers: {
+    [fetchTrendingClips.pending.type]: (state) => {
+      state.trendingClipsIsLoading = true;
+    },
+    [fetchTrendingClips.fulfilled.type]: (state, action) => {
+      state.trendingClipsIsLoading = false;
+      state.trendingClips = action.payload;
+    },
+    [fetchTrendingClips.rejected.type]: (state, action) => {
+      state.trendingClipsIsLoading = false;
+      state.trendingClipsError = action.payload;
+    },
+    [fetchTrendingGifs.pending.type]: (state) => {
+      state.trendingGifsIsLoading = true;
+    },
+    [fetchTrendingGifs.fulfilled.type]: (state, action) => {
+      state.trendingGifsIsLoading = false;
+      state.trendingGifs = action.payload;
+    },
+    [fetchTrendingGifs.rejected.type]: (state, action) => {
+      state.trendingGifsIsLoading = false;
+      state.trendingGifsError = action.payload;
+    },
+  },
 });
 
 export const { reducer: trendingReducer } = trendingSlice;

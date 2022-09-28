@@ -11,4 +11,11 @@ export const fetchTrendingGifs = createAsyncThunk('trendings/getTrendingGifs', a
   }
 });
 
-export default fetchTrendingGifs;
+export const fetchTrendingClips = createAsyncThunk('trendings/getTrendingClips', async ({ thunkAPI }: any) => {
+  try {
+    const { data: clips } = await gf.trending({ type: 'videos', limit: 3 });
+    return clips;
+  } catch (e) {
+    return thunkAPI.rejectWithValue(e);
+  }
+});

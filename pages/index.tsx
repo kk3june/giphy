@@ -8,24 +8,19 @@ import GridLayer from 'layer/GridLayer';
 import StoriesLayer from 'layer/StoriesLayer';
 import { TRENDING, ARTISTS, CLIPS, STORIES, INDEX } from 'src/constants';
 import { fetchArtistsGifs } from 'src/store/artists/thunks';
-import { fetchTrendingGifs } from 'src/store/trending/thunks';
-// import { setName } from 'src/store/user/slice';
-
-import { getTrendingClips } from './api/fetchAPI';
+import { fetchTrendingGifs, fetchTrendingClips } from 'src/store/trending/thunks';
 
 function Home() {
-  const [trendingClips, setTrendingClips] = useState<any[]>();
-  const { trendingGifsIsLoading, trendingGifs } = useSelector((state) => state.trending);
+  const { trendingGifsIsLoading, trendingClipsIsLoading, trendingGifs, trendingClips } = useSelector(
+    (state) => state.trending,
+  );
   const { artistsGifsIsLoading, artistsGifs } = useSelector((state) => state.artists);
 
   const dispatch = useDispatch();
-  // const userName = useSelector((state) => state.user.name);
 
   useEffect(() => {
-    getTrendingClips().then((res) => setTrendingClips(res));
-    // dispatch(setName('kim'));
-
     const getTrendingAPI = async () => {
+      await dispatch(fetchTrendingClips({ limit: 20 }));
       await dispatch(fetchTrendingGifs({ limit: 10 }));
     };
 
@@ -50,7 +45,7 @@ function Home() {
     },
     {
       name: CLIPS,
-      children: <GridLayer data={trendingClips} type={CLIPS} />,
+      children: <GridLayer type={CLIPS} data={trendingClips} isLoading={trendingClipsIsLoading} />,
     },
     {
       name: STORIES,
@@ -60,7 +55,6 @@ function Home() {
 
   return (
     <div>
-      {/* <div>{userName}</div> */}
       {MAIN_LIST.map((item) => (
         <ListWrapper key={`${item.name}`} name={item.name} type={INDEX}>
           {item.children}
