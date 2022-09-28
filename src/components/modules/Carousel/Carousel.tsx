@@ -29,7 +29,7 @@ const Carousel = ({ data, type, isLoading }: CarouselLayerProps) => {
     <StyledWrapper>
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={0}
+        spaceBetween={3}
         slidesPerView={1}
         navigation
         onSlideChange={() => console.log('slide change')}
