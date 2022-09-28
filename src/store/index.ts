@@ -2,6 +2,8 @@ import { configureStore, ThunkDispatch, AnyAction } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
 
 import { artistsReducer } from './artists/slice';
+import { byIdReducer } from './byId/slice';
+import { relatedReducer } from './related/slice';
 import { trendingReducer } from './trending/slice';
 import { userReducer } from './user/slice';
 
@@ -10,6 +12,8 @@ export const store = configureStore({
     user: userReducer,
     trending: trendingReducer,
     artists: artistsReducer,
+    related: relatedReducer,
+    byId: byIdReducer,
   },
   devTools: true,
 });

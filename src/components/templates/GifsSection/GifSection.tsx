@@ -6,7 +6,7 @@ import { DETAIL } from 'src/constants';
 
 import { GifButton, GifButtonName, GifButtonWrapper } from './GifSection.styled';
 
-const GifsSection = ({ gifById, type }: any) => {
+const GifsSection = ({ data, type }: any) => {
   return (
     <GifButtonWrapper type={type}>
       <GifButton type={type}>

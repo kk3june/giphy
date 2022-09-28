@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { css } from '@emotion/react';
 import { useRouter } from 'next/router';
+import { useSelector, useDispatch } from 'react-redux';
 
 import NormalGrid from 'components/modules/Gird/NormalGrid';
 import GifSection from 'components/templates/GifsSection/GifSection';
@@ -10,6 +11,8 @@ import Sidebar from 'components/templates/Sidebar/Sidebar';
 import CardLayer from 'layer/CardLayer';
 import CarouselLayer from 'layer/CarouselLayer';
 import { CONTENT, GIF, RELATED_CLIPS, RELATED_GIFS } from 'src/constants';
+import { fetchById } from 'store/byId/thunks';
+import { fetchRelatedGifs, fetchRelatedClips } from 'store/related/thunks';
 
 import { getGifById, getRelatedGifs, getRelatedClips } from '../api/fetchAPI';
 
@@ -17,26 +20,37 @@ const Gifs = () => {
   const router = useRouter();
   const { query } = router;
   const params = query.gifs;
-  const [gifById, setGifById] = useState<any>();
-  const [relatedGifs, setRelatedGifs] = useState<any>();
-  const [relatedClips, setRelatedClips] = useState<any>();
+
+  const dispatch = useDispatch();
+  const { relatedGifsIsLoading, relatedGifs, relatedClipsIsLoading, relatedClips } = useSelector(
+    (state) => state.related,
+  );
+  const { fetchContentByIdIsLoading, fetchContentById } = useSelector((state) => state.byId);
 
   useEffect(() => {
+    const getRelatedAPI = async (id) => {
+      await dispatch(fetchRelatedClips(id));
+      await dispatch(fetchRelatedGifs(id));
+    };
+
+    const getByIdAPI = async (id) => {
+      await dispatch(fetchById(id));
+    };
+
     if (params) {
-      getGifById(params as string).then((res) => setGifById(res));
-      getRelatedGifs(params as string).then((res) => setRelatedGifs(res));
-      getRelatedClips(params as string).then((res) => setRelatedClips(res));
+      getRelatedAPI(params);
+      getByIdAPI(params);
     }
   }, [params]);
 
   const CONTENT_LIST = [
     {
       name: 'Related Clips',
-      children: <CarouselLayer data={relatedClips} type={RELATED_CLIPS} />,
+      children: <CarouselLayer type={RELATED_CLIPS} data={relatedClips} isLoading={relatedClipsIsLoading} />,
     },
     {
       name: 'Related Gifs',
-      children: <NormalGrid data={relatedGifs} type={RELATED_GIFS} />,
+      children: <NormalGrid type={RELATED_GIFS} data={relatedGifs} isLoading={relatedGifsIsLoading} />,
     },
   ];
 
@@ -48,15 +62,15 @@ const Gifs = () => {
         width: 65rem;
       `}
     >
-      <Sidebar data={gifById} />
+      <Sidebar data={fetchContentById} />
       <div>
         <div
           css={css`
             display: flex;
           `}
         >
-          <CardLayer data={gifById?.[0]} type={GIF} />
-          <GifSection gifById={gifById} />
+          <CardLayer data={fetchContentById?.[0]} type={GIF} isLoading={fetchContentByIdIsLoading} />
+          <GifSection data={fetchContentById} />
         </div>
 
         {CONTENT_LIST.map((item) => (

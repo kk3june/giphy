@@ -10,6 +10,8 @@ import { TRENDING, ARTISTS, CLIPS, STORIES, INDEX } from 'src/constants';
 import { fetchArtistsGifs } from 'src/store/artists/thunks';
 import { fetchTrendingGifs, fetchTrendingClips } from 'src/store/trending/thunks';
 
+// import { setName } from 'src/store/user/slice';
+
 function Home() {
   const { trendingGifsIsLoading, trendingClipsIsLoading, trendingGifs, trendingClips } = useSelector(
     (state) => state.trending,
@@ -17,10 +19,14 @@ function Home() {
   const { artistsGifsIsLoading, artistsGifs } = useSelector((state) => state.artists);
 
   const dispatch = useDispatch();
+  // const userName = useSelector((state) => state.user.name);
 
   useEffect(() => {
+    // getTrendingClips().then((res) => setTrendingClips(res));
+    // dispatch(setName('kim'));
+
     const getTrendingAPI = async () => {
-      await dispatch(fetchTrendingClips({ limit: 20 }));
+      await dispatch(fetchTrendingClips({ limit: 3 }));
       await dispatch(fetchTrendingGifs({ limit: 10 }));
     };
 
@@ -55,6 +61,7 @@ function Home() {
 
   return (
     <div>
+      {/* <div>{userName}</div> */}
       {MAIN_LIST.map((item) => (
         <ListWrapper key={`${item.name}`} name={item.name} type={INDEX}>
           {item.children}

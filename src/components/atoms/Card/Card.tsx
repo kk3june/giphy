@@ -4,8 +4,19 @@ import { GIF } from 'src/constants';
 
 import { StyledCard, StyledImg } from './Card.styled';
 
-const Card = ({ data, type }: any) => {
-  return (
+const Card = ({ data, type, isLoading }: any) => {
+  return isLoading ? (
+    <div
+      css={{
+        fontSize: '100px',
+        width: '500px',
+        height: '500px',
+        backgroundColor: 'white',
+      }}
+    >
+      isLoading
+    </div>
+  ) : (
     <StyledCard type={type}>
       {type === GIF && data?.source_post_url && (
         <a href={data?.source_post_url}>

@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { gf } from 'pages/api/fetchAPI';
 
-export const fetchTrendingGifs = createAsyncThunk('trendings/getTrendingGifs', async ({ params, thunkAPI }: any) => {
+export const fetchTrendingGifs = createAsyncThunk('trendings/getTrendingGifs', async (params, thunkAPI) => {
   try {
     const { data: gifs } = await gf.trending(params);
     return gifs;
@@ -11,7 +11,7 @@ export const fetchTrendingGifs = createAsyncThunk('trendings/getTrendingGifs', a
   }
 });
 
-export const fetchTrendingClips = createAsyncThunk('trendings/getTrendingClips', async ({ thunkAPI }: any) => {
+export const fetchTrendingClips = createAsyncThunk('trendings/getTrendingClips', async (params, thunkAPI) => {
   try {
     const { data: clips } = await gf.trending({ type: 'videos', limit: 3 });
     return clips;
