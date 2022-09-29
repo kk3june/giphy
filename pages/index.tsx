@@ -10,7 +10,6 @@ import StoriesLayer from 'layer/StoriesLayer';
 import { TRENDING, ARTISTS, CLIPS, STORIES, INDEX } from 'src/constants';
 import { fetchArtistsGifs } from 'src/store/artists/thunks';
 import { fetchTrendingGifs, fetchTrendingClips } from 'src/store/trending/thunks';
-import { AppDispatch } from 'store/index';
 
 import wrapper from '../src/store';
 
@@ -29,8 +28,6 @@ function Home() {
     (state) => state.trending,
   );
   const { artistsGifsIsLoading, artistsGifs } = useSelector((state) => state.artists);
-
-  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     console.log('rendering');

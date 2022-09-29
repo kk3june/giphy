@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { css } from '@emotion/react';
-import { useRouter } from 'next/router';
-import { useSelector, useDispatch } from 'react-redux';
+import { GetServerSideProps } from 'next';
+import { useSelector } from 'react-redux';
 
 import NormalGrid from 'components/modules/Gird/NormalGrid';
 import GifSection from 'components/templates/GifsSection/GifSection';
@@ -11,36 +11,26 @@ import Sidebar from 'components/templates/Sidebar/Sidebar';
 import CardLayer from 'layer/CardLayer';
 import CarouselLayer from 'layer/CarouselLayer';
 import { CONTENT, GIF, RELATED_CLIPS, RELATED_GIFS } from 'src/constants';
+import wrapper from 'src/store';
 import { fetchById } from 'store/byId/thunks';
-import { AppDispatch } from 'store/index';
 import { fetchRelatedGifs, fetchRelatedClips } from 'store/related/thunks';
 
-const Gifs = () => {
-  const router = useRouter();
-  const { query } = router;
-  const params = query.gifs;
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async (context) => {
+  const id = context.query.gifs;
 
-  const dispatch = useDispatch<AppDispatch>();
+  await store.dispatch(fetchRelatedClips(id));
+  await store.dispatch(fetchRelatedGifs(id));
+  await store.dispatch(fetchById(id as string));
+  return {
+    props: {}, // will be passed to the page component as props
+  };
+});
+
+const Gifs = () => {
   const { relatedGifsIsLoading, relatedGifs, relatedClipsIsLoading, relatedClips } = useSelector(
     (state) => state.related,
   );
   const { fetchContentByIdIsLoading, fetchContentById } = useSelector((state) => state.byId);
-
-  useEffect(() => {
-    const getRelatedAPI = async (id: string) => {
-      await dispatch(fetchRelatedClips(id));
-      await dispatch(fetchRelatedGifs(id));
-    };
-
-    const getByIdAPI = async (id: string) => {
-      await dispatch(fetchById(id));
-    };
-
-    if (params) {
-      getRelatedAPI(params.toString());
-      getByIdAPI(params.toString());
-    }
-  }, [params]);
 
   const CONTENT_LIST = [
     {
