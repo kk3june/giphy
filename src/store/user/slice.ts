@@ -1,12 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-interface UserState {
-  name: string | null;
-}
+import { StateTypes } from 'types/state';
 
-const initialState: UserState = {
+const initialState = {
   name: null,
-};
+} as StateTypes;
 
 export const userSlice = createSlice({
   name: 'user',

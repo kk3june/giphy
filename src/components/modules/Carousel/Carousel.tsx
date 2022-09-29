@@ -36,8 +36,9 @@ const Carousel = ({ data, type, isLoading }: CarouselLayerProps) => {
         onSwiper={(swiper) => console.log(swiper)}
       >
         {data &&
-          data.map((item: any) => (
-            <SwiperSlide key={item.id}>
+          data.map((item: any, index: any) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <SwiperSlide key={`${item.type}-${index}`}>
               <CardLayer data={item} type={type} />
             </SwiperSlide>
           ))}
