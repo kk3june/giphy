@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { StateTypes } from 'types/state';
+
 import { fetchTrendingGifs, fetchTrendingClips } from './thunks';
 
 const initialState = {
@@ -9,7 +11,7 @@ const initialState = {
   trendingClipsIsLoading: false,
   trendingClips: null,
   trendingClipsError: null,
-};
+} as StateTypes;
 
 export const trendingSlice = createSlice({
   name: 'trending',

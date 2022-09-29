@@ -1,12 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { StateTypes } from 'types/state';
+
 import { fetchById } from './thunks';
 
 const initialState = {
   fetchContentByIdIsLoading: false,
   fetchContentById: null,
   fetchContentByIdError: null,
-};
+} as StateTypes;
 
 export const byIdSlice = createSlice({
   name: 'byId',

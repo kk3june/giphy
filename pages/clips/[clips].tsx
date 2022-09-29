@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import { css } from '@emotion/react';
 import { useRouter } from 'next/router';
@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ClipCard from 'components/atoms/ClipCard/ClipCard';
 import { DETAIL, UPNEXT } from 'src/constants';
 import { fetchById } from 'store/byId/thunks';
+import { AppDispatch } from 'store/index';
 import { fetchRelatedClips } from 'store/related/thunks';
 
 const Clips = () => {
@@ -14,21 +15,21 @@ const Clips = () => {
   const { query } = router;
   const params = query.clips;
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { relatedClipsIsLoading, relatedClips } = useSelector((state) => state.related);
   const { fetchContentByIdIsLoading, fetchContentById } = useSelector((state) => state.byId);
 
   useEffect(() => {
-    const getUpNextAPI = async (id) => {
+    const getUpNextAPI = async (id: string) => {
       await dispatch(fetchRelatedClips(id));
     };
-    const getByIdAPI = async (id) => {
+    const getByIdAPI = async (id: string) => {
       await dispatch(fetchById(id));
     };
 
     if (params) {
-      getUpNextAPI(params);
-      getByIdAPI(params);
+      getUpNextAPI(params.toString());
+      getByIdAPI(params.toString());
     }
   }, [params]);
 

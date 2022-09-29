@@ -1,12 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { StateTypes } from 'types/state';
+
 import { fetchArtistsGifs } from './thunks';
 
 const initialState = {
   artistsGifsIsLoading: false,
   artistsGifs: null,
   artistsGifsError: null,
-};
+} as StateTypes;
 
 export const artistsSlice = createSlice({
   name: 'artists',

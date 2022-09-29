@@ -13,7 +13,6 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setName: (state, payload) => {
-      console.log('payload', payload);
       state.name = payload.payload;
     },
   },

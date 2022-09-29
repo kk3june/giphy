@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import { css } from '@emotion/react';
 import { useRouter } from 'next/router';
@@ -12,6 +12,7 @@ import CardLayer from 'layer/CardLayer';
 import CarouselLayer from 'layer/CarouselLayer';
 import { CONTENT, GIF, RELATED_CLIPS, RELATED_GIFS } from 'src/constants';
 import { fetchById } from 'store/byId/thunks';
+import { AppDispatch } from 'store/index';
 import { fetchRelatedGifs, fetchRelatedClips } from 'store/related/thunks';
 
 const Gifs = () => {
@@ -19,25 +20,25 @@ const Gifs = () => {
   const { query } = router;
   const params = query.gifs;
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { relatedGifsIsLoading, relatedGifs, relatedClipsIsLoading, relatedClips } = useSelector(
     (state) => state.related,
   );
   const { fetchContentByIdIsLoading, fetchContentById } = useSelector((state) => state.byId);
 
   useEffect(() => {
-    const getRelatedAPI = async (id) => {
+    const getRelatedAPI = async (id: string) => {
       await dispatch(fetchRelatedClips(id));
       await dispatch(fetchRelatedGifs(id));
     };
 
-    const getByIdAPI = async (id) => {
+    const getByIdAPI = async (id: string) => {
       await dispatch(fetchById(id));
     };
 
     if (params) {
-      getRelatedAPI(params);
-      getByIdAPI(params);
+      getRelatedAPI(params.toString());
+      getByIdAPI(params.toString());
     }
   }, [params]);
 
@@ -61,7 +62,11 @@ const Gifs = () => {
       `}
     >
       <Sidebar data={fetchContentById} />
-      <div>
+      <div
+        css={css`
+          overflow: hidden;
+        `}
+      >
         <div
           css={css`
             display: flex;

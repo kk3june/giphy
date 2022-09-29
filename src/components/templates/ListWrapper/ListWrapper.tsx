@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { css } from '@emotion/react';
+
 import Header from 'components/atoms/Header/Header';
 
 interface ListWrapperTypes {
@@ -10,7 +12,11 @@ interface ListWrapperTypes {
 
 const ListWrapper = ({ name, type, children }: ListWrapperTypes) => {
   return (
-    <div>
+    <div
+      css={css`
+        overflow: hidden;
+      `}
+    >
       <Header name={name} type={type} />
       {children}
     </div>
