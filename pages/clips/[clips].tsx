@@ -2,24 +2,33 @@ import React, { useState, useEffect } from 'react';
 
 import { css } from '@emotion/react';
 import { useRouter } from 'next/router';
+import { useSelector, useDispatch } from 'react-redux';
 
 import ClipCard from 'components/atoms/ClipCard/ClipCard';
 import { DETAIL, UPNEXT } from 'src/constants';
-
-import { getClipById, getUpNext } from '../api/fetchAPI';
+import { fetchById } from 'store/byId/thunks';
+import { fetchRelatedClips } from 'store/related/thunks';
 
 const Clips = () => {
   const router = useRouter();
   const { query } = router;
   const params = query.clips;
 
-  const [clipById, setClipById] = useState<any>();
-  const [upNext, setUpNext] = useState<any>();
+  const dispatch = useDispatch();
+  const { relatedClipsIsLoading, relatedClips } = useSelector((state) => state.related);
+  const { fetchContentByIdIsLoading, fetchContentById } = useSelector((state) => state.byId);
 
   useEffect(() => {
+    const getUpNextAPI = async (id) => {
+      await dispatch(fetchRelatedClips(id));
+    };
+    const getByIdAPI = async (id) => {
+      await dispatch(fetchById(id));
+    };
+
     if (params) {
-      getClipById(params as string).then((res) => setClipById(res));
-      getUpNext(params as string).then((res) => setUpNext(res));
+      getUpNextAPI(params);
+      getByIdAPI(params);
     }
   }, [params]);
 
@@ -33,7 +42,7 @@ const Clips = () => {
       `}
     >
       <div>
-        <ClipCard data={clipById?.[0]} type={DETAIL} />
+        <ClipCard data={fetchContentById?.[0]} type={DETAIL} isLoading={fetchContentByIdIsLoading} />
       </div>
       <div
         css={css`
@@ -48,7 +57,10 @@ const Clips = () => {
         >
           Up Next
         </h2>
-        {upNext && upNext.map((item: any) => <ClipCard key={item.id} data={item} type={UPNEXT} />)}
+        {relatedClips &&
+          relatedClips.map((item: any) => (
+            <ClipCard key={item.id} data={item} type={UPNEXT} isLoading={relatedClipsIsLoading} />
+          ))}
       </div>
     </div>
   );

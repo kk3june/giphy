@@ -14,8 +14,6 @@ import { CONTENT, GIF, RELATED_CLIPS, RELATED_GIFS } from 'src/constants';
 import { fetchById } from 'store/byId/thunks';
 import { fetchRelatedGifs, fetchRelatedClips } from 'store/related/thunks';
 
-import { getGifById, getRelatedGifs, getRelatedClips } from '../api/fetchAPI';
-
 const Gifs = () => {
   const router = useRouter();
   const { query } = router;
