@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 
+import { GetServerSideProps } from 'next';
 import { useSelector, useDispatch } from 'react-redux';
 
 import ListWrapper from 'components/templates/ListWrapper/ListWrapper';
@@ -11,7 +12,17 @@ import { fetchArtistsGifs } from 'src/store/artists/thunks';
 import { fetchTrendingGifs, fetchTrendingClips } from 'src/store/trending/thunks';
 import { AppDispatch } from 'store/index';
 
-// import { setName } from 'src/store/user/slice';
+import wrapper from '../src/store';
+
+// SSR
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
+  await store.dispatch(fetchTrendingGifs(21));
+  await store.dispatch(fetchTrendingClips(3));
+  await store.dispatch(fetchArtistsGifs(6));
+  return {
+    props: {}, // will be passed to the page component as props
+  };
+});
 
 function Home() {
   const { trendingGifsIsLoading, trendingClipsIsLoading, trendingGifs, trendingClips } = useSelector(
@@ -20,24 +31,8 @@ function Home() {
   const { artistsGifsIsLoading, artistsGifs } = useSelector((state) => state.artists);
 
   const dispatch = useDispatch<AppDispatch>();
-  // const userName = useSelector((state) => state.user.name);
 
   useEffect(() => {
-    // getTrendingClips().then((res) => setTrendingClips(res));
-    // dispatch(setName('kim'));
-
-    const getTrendingAPI = async () => {
-      await dispatch(fetchTrendingClips(3));
-      await dispatch(fetchTrendingGifs(20));
-    };
-
-    const getArtistsAPI = async () => {
-      await dispatch(fetchArtistsGifs());
-    };
-
-    getTrendingAPI();
-    getArtistsAPI();
-
     console.log('rendering');
   }, []);
 

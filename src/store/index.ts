@@ -1,5 +1,6 @@
-import { configureStore, ThunkDispatch, AnyAction } from '@reduxjs/toolkit';
+import { configureStore, ThunkDispatch, AnyAction, combineReducers } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
+import { HYDRATE } from 'next-redux-wrapper';
 
 import { artistsReducer } from './artists/slice';
 import { byIdReducer } from './byId/slice';
@@ -7,14 +8,25 @@ import { relatedReducer } from './related/slice';
 import { trendingReducer } from './trending/slice';
 import { userReducer } from './user/slice';
 
+const rootReducer = (state, action: AnyAction) => {
+  switch (action.type) {
+    case HYDRATE:
+      return action.payload;
+    default: {
+      const combineReducer = combineReducers({
+        user: userReducer,
+        trending: trendingReducer,
+        artists: artistsReducer,
+        related: relatedReducer,
+        byId: byIdReducer,
+      });
+      return combineReducer(state, action);
+    }
+  }
+};
+
 export const store = configureStore({
-  reducer: {
-    user: userReducer,
-    trending: trendingReducer,
-    artists: artistsReducer,
-    related: relatedReducer,
-    byId: byIdReducer,
-  },
+  reducer: rootReducer,
   devTools: true,
 });
 
