@@ -1,5 +1,5 @@
 export interface StateTypes {
-  name: string | null;
+  username: string | null;
   trendingGifsIsLoading: boolean | null;
   trendingGifs: any;
   trendingGifsError: string | null;

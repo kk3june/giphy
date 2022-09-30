@@ -2,7 +2,7 @@ import React from 'react';
 
 import { SearchIconButton, SearchIconSvg } from './SearchButton.styled';
 
-const SearchBttonView = ({ onClick }: any) => {
+const SearchBtton = ({ onClick }: any) => {
   return (
     <SearchIconButton onClick={onClick}>
       <SearchIconSvg width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" fill="white">
@@ -12,4 +12,4 @@ const SearchBttonView = ({ onClick }: any) => {
   );
 };
 
-export default SearchBttonView;
+export default SearchBtton;

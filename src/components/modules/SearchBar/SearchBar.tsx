@@ -1,35 +1,14 @@
 import React, { useState } from 'react';
 
-import SearchButtonLayer from 'layer/SearchButtonLayer';
-import SearchInputLayer from 'layer/SearchInputLayer';
+import SearchButton from 'components/atoms/Buttons/SearchButton';
+import SearchInput from 'components/atoms/SearchInput/SearchInput';
+import { SearchBarWrapper } from 'components/modules/SearchBar/SearchBar.styled';
 
-import { SearchBarWrapper } from './SearchBar.styled';
-
-const SearchBar = () => {
-  const [value, setValue] = useState('');
-  const handleSubmit = (val: string) => {
-    console.log(val);
-  };
-
-  const searchInputProps = {
-    value,
-    onChange: (event: any) => {
-      setValue(event.target?.value);
-    },
-  };
-
-  const searchButtonProps = {
-    value,
-    onClick: () => {
-      handleSubmit?.(value);
-      setValue('');
-    },
-  };
-
+const SearchBar = ({ inputProps, buttonProps }: any) => {
   return (
     <SearchBarWrapper>
-      <SearchInputLayer {...searchInputProps} />
-      <SearchButtonLayer {...searchButtonProps} />
+      <SearchInput {...inputProps} />
+      <SearchButton {...buttonProps} />
     </SearchBarWrapper>
   );
 };

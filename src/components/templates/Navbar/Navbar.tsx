@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { css } from '@emotion/react';
+import { useSelector } from 'react-redux';
+
+import SearchBarLayer from 'layer/SearchBarLayer';
+import { RootState } from 'src/store';
 
 import Button from '../../atoms/Buttons/Button';
 import Logo from '../../atoms/Logo/Logo';
-import SearchBar from '../../modules/SearchBar/SearchBar';
 import UserButton from '../../modules/UserButton/UserButton';
 import MenuLinkList from '../MenuLinkList/MenuLinkList';
 
 import { Buttons } from './Navbar.styled';
 
 const Navbar = () => {
-  const [userState, setUserState] = useState('log in');
+  const { username } = useSelector((state: RootState) => state.user);
+
   const list = [
     { name: 'reactions' },
     { name: 'entertainment' },
@@ -35,9 +39,9 @@ const Navbar = () => {
           <Button name="upload" />
           <Button name="create" />
         </Buttons>
-        <UserButton userState={userState} />
+        <UserButton userName={username} />
       </div>
-      <SearchBar />
+      <SearchBarLayer />
     </nav>
   );
 };

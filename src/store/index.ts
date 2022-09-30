@@ -8,7 +8,7 @@ import { relatedReducer } from './related/slice';
 import { trendingReducer } from './trending/slice';
 import { userReducer } from './user/slice';
 
-const rootReducer = (state, action: AnyAction) => {
+const rootReducer = (state: any, action: AnyAction) => {
   switch (action.type) {
     case HYDRATE:
       return action.payload;
