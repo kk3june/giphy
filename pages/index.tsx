@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { GetServerSideProps } from 'next';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import ListWrapper from 'components/templates/ListWrapper/ListWrapper';
 import CarouselLayer from 'layer/CarouselLayer';
@@ -11,6 +11,7 @@ import { TRENDING, ARTISTS, CLIPS, STORIES, INDEX } from 'src/constants';
 import { fetchArtistsGifs } from 'src/store/artists/thunks';
 import { fetchTrendingGifs, fetchTrendingClips } from 'src/store/trending/thunks';
 
+import { RootState } from '../src/store';
 import wrapper from '../src/store';
 
 // SSR
@@ -25,9 +26,9 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
 
 function Home() {
   const { trendingGifsIsLoading, trendingClipsIsLoading, trendingGifs, trendingClips } = useSelector(
-    (state) => state.trending,
+    (state: RootState) => state.trending,
   );
-  const { artistsGifsIsLoading, artistsGifs } = useSelector((state) => state.artists);
+  const { artistsGifsIsLoading, artistsGifs } = useSelector((state: RootState) => state.artists);
 
   useEffect(() => {
     console.log('rendering');

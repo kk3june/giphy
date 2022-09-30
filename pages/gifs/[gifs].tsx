@@ -12,6 +12,7 @@ import CardLayer from 'layer/CardLayer';
 import CarouselLayer from 'layer/CarouselLayer';
 import { CONTENT, GIF, RELATED_CLIPS, RELATED_GIFS } from 'src/constants';
 import wrapper from 'src/store';
+import { RootState } from 'src/store';
 import { fetchById } from 'store/byId/thunks';
 import { fetchRelatedGifs, fetchRelatedClips } from 'store/related/thunks';
 
@@ -28,9 +29,9 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
 
 const Gifs = () => {
   const { relatedGifsIsLoading, relatedGifs, relatedClipsIsLoading, relatedClips } = useSelector(
-    (state) => state.related,
+    (state: RootState) => state.related,
   );
-  const { fetchContentByIdIsLoading, fetchContentById } = useSelector((state) => state.byId);
+  const { fetchContentByIdIsLoading, fetchContentById } = useSelector((state: RootState) => state.byId);
 
   const CONTENT_LIST = [
     {

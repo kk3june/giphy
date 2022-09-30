@@ -8,6 +8,7 @@ import ClipCard from 'components/atoms/ClipCard/ClipCard';
 import { DETAIL, UPNEXT } from 'src/constants';
 import { fetchById } from 'store/byId/thunks';
 import { AppDispatch } from 'store/index';
+import { RootState } from 'store/index';
 import { fetchRelatedClips } from 'store/related/thunks';
 
 const Clips = () => {
@@ -16,8 +17,8 @@ const Clips = () => {
   const params = query.clips;
 
   const dispatch = useDispatch<AppDispatch>();
-  const { relatedClipsIsLoading, relatedClips } = useSelector((state) => state.related);
-  const { fetchContentByIdIsLoading, fetchContentById } = useSelector((state) => state.byId);
+  const { relatedClipsIsLoading, relatedClips } = useSelector((state: RootState) => state.related);
+  const { fetchContentByIdIsLoading, fetchContentById } = useSelector((state: RootState) => state.byId);
 
   useEffect(() => {
     const getUpNextAPI = async (id: string) => {
