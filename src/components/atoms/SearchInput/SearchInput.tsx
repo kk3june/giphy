@@ -4,7 +4,7 @@ import { InputBanner, Input } from './SearchInput.styled';
 
 const SearchInput = ({ value, onChange }: any) => {
   return (
-    <div
+    <form
       css={css`
         position: relative;
         display: flex;
@@ -12,10 +12,11 @@ const SearchInput = ({ value, onChange }: any) => {
         background-color: white;
         border-radius: 0.9375rem;
       `}
+      action="/search"
     >
       <InputBanner>{value ? '' : <span>Search All the GIFs and Stickers</span>}</InputBanner>
       <Input value={value} onChange={onChange} />
-    </div>
+    </form>
   );
 };
 

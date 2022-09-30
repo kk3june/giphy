@@ -19,8 +19,8 @@ import { fetchRelatedGifs, fetchRelatedClips } from 'store/related/thunks';
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async (context) => {
   const id = context.query.gifs;
 
-  await store.dispatch(fetchRelatedClips(id));
-  await store.dispatch(fetchRelatedGifs(id));
+  await store.dispatch(fetchRelatedClips({ id }));
+  await store.dispatch(fetchRelatedGifs({ id }));
   await store.dispatch(fetchById(id as string));
   return {
     props: {}, // will be passed to the page component as props

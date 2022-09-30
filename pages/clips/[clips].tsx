@@ -22,10 +22,10 @@ const Clips = () => {
 
   useEffect(() => {
     const getUpNextAPI = async (id: string) => {
-      await dispatch(fetchRelatedClips(id));
+      await dispatch(fetchRelatedClips({ id }));
     };
     const getByIdAPI = async (id: string) => {
-      await dispatch(fetchById(id));
+      await dispatch(fetchById(id as string));
     };
 
     if (params) {
