@@ -1,38 +1,29 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { css } from '@emotion/react';
-import { useRouter } from 'next/router';
-import { useSelector, useDispatch } from 'react-redux';
+import { GetServerSideProps } from 'next';
+import { useSelector } from 'react-redux';
 
 import ClipCard from 'components/atoms/ClipCard/ClipCard';
 import { DETAIL, UPNEXT } from 'src/constants';
 import { fetchById } from 'store/byId/thunks';
-import { AppDispatch } from 'store/index';
 import { RootState } from 'store/index';
+import wrapper from 'store/index';
 import { fetchRelatedClips } from 'store/related/thunks';
 
-const Clips = () => {
-  const router = useRouter();
-  const { query } = router;
-  const params = query.clips;
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async (context) => {
+  const id = context.query.clips;
 
-  const dispatch = useDispatch<AppDispatch>();
+  await store.dispatch(fetchRelatedClips({ id }));
+  await store.dispatch(fetchById(id as string));
+  return {
+    props: {}, // will be passed to the page component as props
+  };
+});
+
+const Clips = () => {
   const { relatedClipsIsLoading, relatedClips } = useSelector((state: RootState) => state.related);
   const { fetchContentByIdIsLoading, fetchContentById } = useSelector((state: RootState) => state.byId);
-
-  useEffect(() => {
-    const getUpNextAPI = async (id: string) => {
-      await dispatch(fetchRelatedClips({ id }));
-    };
-    const getByIdAPI = async (id: string) => {
-      await dispatch(fetchById(id as string));
-    };
-
-    if (params) {
-      getUpNextAPI(params.toString());
-      getByIdAPI(params.toString());
-    }
-  }, [params]);
 
   return (
     <div
