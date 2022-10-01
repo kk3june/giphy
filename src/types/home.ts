@@ -1,4 +1,4 @@
 export interface HeaderProps {
-  name: string;
-  type: string;
+  name?: string | string[];
+  type?: string;
 }

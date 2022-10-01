@@ -14,6 +14,8 @@ export const fetchRelatedClips = createAsyncThunk('related/getRelatedClips', asy
 export const fetchRelatedGifs = createAsyncThunk('related/getRelatedGifs', async ({ id, thunkAPI }: any) => {
   try {
     const { data: gifs } = await gf.related(id, { limit: 12 });
+    console.log('check', id);
+    console.log(gifs);
     return gifs;
   } catch (e) {
     return thunkAPI.rejectWithValue(e);
