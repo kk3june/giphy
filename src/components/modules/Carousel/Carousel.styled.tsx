@@ -167,12 +167,6 @@ export const StyledWrapper = styled.div`
     .swiper-slide {
       width: auto !important;
     }
-    .swiper-button-prev,
-    .swiper-button-next {
-      &:hover {
-        color: red;
-      }
-    }
   }
 `;
 

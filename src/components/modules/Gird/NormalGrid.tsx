@@ -6,8 +6,8 @@ import CardLayer from 'layer/CardLayer';
 
 const StyleNormalGrid = styled.div`
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
-  width: 48.5rem;
 `;
 
 const NormalGrid = ({ data, type, isLoading }: any) => {

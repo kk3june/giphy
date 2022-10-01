@@ -25,7 +25,8 @@ const HEIGHT_TYPE = {
 export const StyledCard = styled.div<StyledCardProps>`
   width: ${({ type }) => WIDTH_TYPE[type as keyof typeof WIDTH_TYPE]};
   height: ${({ type }) => HEIGHT_TYPE[type as keyof typeof HEIGHT_TYPE]};
-  margin-bottom: 0.625rem;
+  margin-right: 0.2rem;
+  margin-bottom: 0.2rem;
 `;
 
 export const StyledImg = styled.img<StyledCardProps>`
