@@ -1,28 +1,27 @@
 import React, { useState } from 'react';
 
+import { useRouter } from 'next/router';
+
 import SearchBar from 'components/modules/SearchBar/SearchBar';
 
 const SearchBarLayer = () => {
   const [value, setValue] = useState('');
-  const handleSubmit = (val: string) => {
-    console.log(val);
-  };
+  const router = useRouter();
 
   const searchInputProps = {
     value,
-    onChange: (event: any) => {
+    handleChange: (event: any) => {
       setValue(event.target?.value);
+    },
+    handleSubmit: (event: any) => {
+      event.preventDefault();
+      router.push({
+        pathname: `/search/${value}`,
+      });
     },
   };
 
-  const searchButtonProps = {
-    value,
-    onClick: () => {
-      handleSubmit?.(value);
-      setValue('');
-    },
-  };
-  return <SearchBar inputProps={searchInputProps} buttonProps={searchButtonProps} />;
+  return <SearchBar inputProps={searchInputProps} />;
 };
 
 export default SearchBarLayer;
