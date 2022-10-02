@@ -4,6 +4,7 @@ import { HYDRATE } from 'next-redux-wrapper';
 
 import { artistsReducer } from './artists/artistsSlice';
 import { byIdReducer } from './byId/byIdSlice';
+import { randomReducer } from './random/randomSlice';
 import { relatedReducer } from './related/relatedSlice';
 import { trendingReducer } from './trending/trendingSlice';
 import { userReducer } from './user/userSlice';
@@ -19,6 +20,7 @@ const rootReducer = (state: any, action: AnyAction) => {
         artists: artistsReducer,
         related: relatedReducer,
         byId: byIdReducer,
+        random: randomReducer,
       });
       return combineReducer(state, action);
     }

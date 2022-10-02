@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { GIF } from 'src/constants';
+import { GIF, LOGIN_PAGE } from 'src/constants';
 
 import { StyledCard, StyledImg } from './Card.styled';
 
@@ -21,11 +21,12 @@ const Card = ({ data, type, isLoading }: any) => {
         </a>
       )}
       {type === GIF && !data?.source_post_url && <StyledImg src={data?.images?.original.url} type={type} />}
-      {type !== GIF && (
+      {type !== GIF && type !== LOGIN_PAGE && (
         <a href={`/gifs/${data?.id}`}>
           <StyledImg src={data?.images?.original.url} type={type} />
         </a>
       )}
+      {type === LOGIN_PAGE && <StyledImg src={data?.images?.original.url} type={type} />}
     </StyledCard>
   );
 };

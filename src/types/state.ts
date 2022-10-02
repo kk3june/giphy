@@ -18,4 +18,7 @@ export interface StateTypes {
   artistsGifsIsLoading: boolean | null;
   artistsGifs: any;
   artistsGifsError: string | null;
+  randomContentIsLoading: boolean | null;
+  randomContent: any;
+  randomContentError: string | null;
 }

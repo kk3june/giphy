@@ -14,12 +14,14 @@ const WIDTH_TYPE = {
   RELATED_CLIPS: '15.5rem',
   RELATED_GIFS: '15.5rem',
   GIF: '31.25rem',
+  LOGIN_PAGE: '100%',
 };
 const HEIGHT_TYPE = {
   TRENDING: '8.75rem',
   ARTISTS: '16.8125rem',
   RELATED_CLIPS: '8.71875rem',
   RELATED_GIFS: 'auto',
+  LOGIN_PAGE: '100%',
 };
 
 export const StyledCard = styled.div<StyledCardProps>`

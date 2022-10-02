@@ -12,3 +12,4 @@ export const DETAIL = 'DETAIL';
 export const NORMAL = 'NORMAL';
 export const UPNEXT = 'UPNEXT';
 export const LARGE_HEADER = 'LARGE_HEADER';
+export const LOGIN_PAGE = 'LOGIN_PAGE';
