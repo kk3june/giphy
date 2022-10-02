@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { useDispatch, useSelector } from 'react-redux';
+import { GetServerSideProps } from 'next';
+import { useSelector } from 'react-redux';
 
 import CardLayer from 'layer/CardLayer';
-import { AppDispatch } from 'store/index';
+import wrapper, { RootState } from 'store/index';
 import { fetchRandom } from 'store/random/randomThunk';
 
 const WithOutNavWrapper = styled.div`
@@ -20,15 +21,13 @@ const Half = styled.div`
   border: 1px solid black;
 `;
 
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async () => {
+  await store.dispatch(fetchRandom());
+  return { props: {} };
+});
+
 const Login = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const { randomContent, randomContentIsLoading } = useSelector((state) => state.random);
-  useEffect(() => {
-    const getRandomContentAPI = () => {
-      dispatch(fetchRandom());
-    };
-    getRandomContentAPI();
-  }, []);
+  const { randomContent, randomContentIsLoading } = useSelector((state: RootState) => state.random);
 
   const LOGIN_PAGE = 'LOGIN_PAGE';
   return (
