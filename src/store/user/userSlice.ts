@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { StateTypes } from 'types/state';
 
 const initialState = {
-  name: null,
+  username: 'login',
 } as StateTypes;
 
 export const userSlice = createSlice({
@@ -11,7 +11,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setName: (state, payload) => {
-      state.name = payload.payload;
+      state.username = payload.payload;
     },
   },
 });

@@ -6,10 +6,10 @@ import { useSelector } from 'react-redux';
 
 import ClipCard from 'components/atoms/ClipCard/ClipCard';
 import { DETAIL, UPNEXT } from 'src/constants';
-import { fetchById } from 'store/byId/thunks';
+import { fetchById } from 'store/byId/byIdThunks';
 import { RootState } from 'store/index';
 import wrapper from 'store/index';
-import { fetchRelatedClips } from 'store/related/thunks';
+import { fetchRelatedClips } from 'store/related/relatedThunks';
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async (context) => {
   const id = context.query.clips;

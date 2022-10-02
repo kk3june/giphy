@@ -2,11 +2,11 @@ import { configureStore, ThunkDispatch, AnyAction, combineReducers } from '@redu
 import { createWrapper } from 'next-redux-wrapper';
 import { HYDRATE } from 'next-redux-wrapper';
 
-import { artistsReducer } from './artists/slice';
-import { byIdReducer } from './byId/slice';
-import { relatedReducer } from './related/slice';
-import { trendingReducer } from './trending/slice';
-import { userReducer } from './user/slice';
+import { artistsReducer } from './artists/artistsSlice';
+import { byIdReducer } from './byId/byIdSlice';
+import { relatedReducer } from './related/relatedSlice';
+import { trendingReducer } from './trending/trendingSlice';
+import { userReducer } from './user/userSlice';
 
 const rootReducer = (state: any, action: AnyAction) => {
   switch (action.type) {

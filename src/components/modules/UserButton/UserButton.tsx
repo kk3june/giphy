@@ -5,7 +5,7 @@ import { UserButtonItem, UserSvg } from './UserButton.styled';
 const UserButton = ({ userName }: any) => {
   return (
     <a
-      href={userName}
+      href="/login"
       css={css`
         display: flex;
         width: 100%;

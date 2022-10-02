@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { StateTypes } from 'types/state';
 
-import { fetchArtistsGifs } from './thunks';
+import { fetchArtistsGifs } from './artistsThunks';
 
 const initialState = {
   artistsGifsIsLoading: false,

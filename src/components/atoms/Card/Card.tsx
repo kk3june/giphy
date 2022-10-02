@@ -9,9 +9,6 @@ const Card = ({ data, type, isLoading }: any) => {
     <div
       css={{
         fontSize: '100px',
-        width: '500px',
-        height: '500px',
-        backgroundColor: 'white',
       }}
     >
       isLoading

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { StateTypes } from 'types/state';
 
-import { fetchTrendingGifs, fetchTrendingClips } from './thunks';
+import { fetchTrendingGifs, fetchTrendingClips } from './trendingThunks';
 
 const initialState = {
   trendingGifsIsLoading: false,

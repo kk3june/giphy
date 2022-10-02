@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { StateTypes } from 'types/state';
 
-import { fetchById } from './thunks';
+import { fetchById } from './byIdThunks';
 
 const initialState = {
   fetchContentByIdIsLoading: false,

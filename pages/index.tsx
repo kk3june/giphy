@@ -8,8 +8,8 @@ import CarouselLayer from 'layer/CarouselLayer';
 import GridLayer from 'layer/GridLayer';
 import StoriesLayer from 'layer/StoriesLayer';
 import { TRENDING, ARTISTS, CLIPS, STORIES, INDEX } from 'src/constants';
-import { fetchArtistsGifs } from 'src/store/artists/thunks';
-import { fetchTrendingGifs, fetchTrendingClips } from 'src/store/trending/thunks';
+import { fetchArtistsGifs } from 'store/artists/artistsThunks';
+import { fetchTrendingGifs, fetchTrendingClips } from 'store/trending/trendingThunks';
 
 import { RootState } from '../src/store';
 import wrapper from '../src/store';

@@ -13,8 +13,8 @@ import CarouselLayer from 'layer/CarouselLayer';
 import { CONTENT, GIF, RELATED_CLIPS, RELATED_GIFS } from 'src/constants';
 import wrapper from 'src/store';
 import { RootState } from 'src/store';
-import { fetchById } from 'store/byId/thunks';
-import { fetchRelatedGifs, fetchRelatedClips } from 'store/related/thunks';
+import { fetchById } from 'store/byId/byIdThunks';
+import { fetchRelatedGifs, fetchRelatedClips } from 'store/related/relatedThunks';
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async (context) => {
   const id = context.query.gifs;
