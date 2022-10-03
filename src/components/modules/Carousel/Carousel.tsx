@@ -13,22 +13,32 @@ import CardLayer from 'layer/CardLayer';
 interface CarouselLayerProps {
   type: string | undefined;
   data: any;
+  isLoading: boolean;
 }
 
-const Carousel = ({ data, type }: CarouselLayerProps) => {
-  return (
+const Carousel = ({ data, type, isLoading }: CarouselLayerProps) => {
+  return isLoading ? (
+    <div
+      css={{
+        fontSize: '100px',
+      }}
+    >
+      isLoading
+    </div>
+  ) : (
     <StyledWrapper>
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={0}
+        spaceBetween={3}
         slidesPerView={1}
         navigation
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
       >
         {data &&
-          data.map((item: any) => (
-            <SwiperSlide key={item.id}>
+          data.map((item: any, index: any) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <SwiperSlide key={`${item.type}-${index}`}>
               <CardLayer data={item} type={type} />
             </SwiperSlide>
           ))}

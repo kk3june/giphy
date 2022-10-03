@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 
 import { css } from '@emotion/react';
 
@@ -10,8 +9,16 @@ import UserInfo from '../UserInfo/UserInfo';
 
 import { GridItem, ClipAnchor, ClipVideo, Title } from './ClipCard.styled';
 
-const ClipCard = ({ data, type }: any) => {
-  return (
+const ClipCard = ({ data, type, isLoading }: any) => {
+  return isLoading ? (
+    <div
+      css={{
+        fontSize: '100px',
+      }}
+    >
+      isLoading
+    </div>
+  ) : (
     <GridItem>
       <ClipAnchor href={`/clips/${data?.id}`}>
         <ClipVideo key={data?.id} autoPlay muted loop type={type}>

@@ -20,7 +20,7 @@ const Header = ({ name, type }: HeaderProps) => {
         </SvgBox>
       )}
 
-      {type === INDEX ? <span>{name}</span> : <Title>{name}</Title>}
+      <Title type={type}>{name}</Title>
     </Wrapper>
   );
 };

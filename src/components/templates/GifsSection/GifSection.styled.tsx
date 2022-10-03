@@ -5,7 +5,6 @@ import { DETAIL } from 'src/constants';
 export const StyledSection = styled.div<{ type: string }>`
   width: 100%;
   display: flex;
-
   justify-content: space-between;
 `;
 

@@ -102,7 +102,11 @@ const SwiperStyle = `
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--swiper-navigation-color, var(--swiper-theme-color));
+    // color: var(--swiper-navigation-color, var(--swiper-theme-color));
+    color: rgb(166, 166, 166);
+    &: hover {
+      color: white;
+    }
   }
   .swiper-button-prev.swiper-button-disabled,
   .swiper-button-next.swiper-button-disabled {

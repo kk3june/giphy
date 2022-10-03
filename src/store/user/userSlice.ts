@@ -1,20 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-interface UserState {
-  name: string | null;
-}
+import { StateTypes } from 'types/state';
 
-const initialState: UserState = {
-  name: null,
-};
+const initialState = {
+  username: 'login',
+} as StateTypes;
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
     setName: (state, payload) => {
-      console.log('payload', payload);
-      state.name = payload.payload;
+      state.username = payload.payload;
     },
   },
 });

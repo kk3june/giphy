@@ -1,27 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { css } from '@emotion/react';
-import { useRouter } from 'next/router';
+import { GetServerSideProps } from 'next';
+import { useSelector } from 'react-redux';
 
 import ClipCard from 'components/atoms/ClipCard/ClipCard';
 import { DETAIL, UPNEXT } from 'src/constants';
+import { fetchById } from 'store/byId/byIdThunks';
+import { RootState } from 'store/index';
+import wrapper from 'store/index';
+import { fetchRelatedClips } from 'store/related/relatedThunks';
 
-import { getClipById, getUpNext } from '../api/fetchAPI';
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async (context) => {
+  const id = context.query.clips;
+
+  await store.dispatch(fetchRelatedClips({ id }));
+  await store.dispatch(fetchById(id as string));
+  return {
+    props: {}, // will be passed to the page component as props
+  };
+});
 
 const Clips = () => {
-  const router = useRouter();
-  const { query } = router;
-  const params = query.clips;
-
-  const [clipById, setClipById] = useState<any>();
-  const [upNext, setUpNext] = useState<any>();
-
-  useEffect(() => {
-    if (params) {
-      getClipById(params as string).then((res) => setClipById(res));
-      getUpNext(params as string).then((res) => setUpNext(res));
-    }
-  }, [params]);
+  const { relatedClipsIsLoading, relatedClips } = useSelector((state: RootState) => state.related);
+  const { fetchContentByIdIsLoading, fetchContentById } = useSelector((state: RootState) => state.byId);
 
   return (
     <div
@@ -33,7 +35,7 @@ const Clips = () => {
       `}
     >
       <div>
-        <ClipCard data={clipById?.[0]} type={DETAIL} />
+        <ClipCard data={fetchContentById?.[0]} type={DETAIL} isLoading={fetchContentByIdIsLoading} />
       </div>
       <div
         css={css`
@@ -48,7 +50,10 @@ const Clips = () => {
         >
           Up Next
         </h2>
-        {upNext && upNext.map((item: any) => <ClipCard key={item.id} data={item} type={UPNEXT} />)}
+        {relatedClips &&
+          relatedClips.map((item: any) => (
+            <ClipCard key={item.id} data={item} type={UPNEXT} isLoading={relatedClipsIsLoading} />
+          ))}
       </div>
     </div>
   );

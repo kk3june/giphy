@@ -1,10 +1,12 @@
 import { css } from '@emotion/react';
 
+import SearchBtton from '../Buttons/SearchButton';
+
 import { InputBanner, Input } from './SearchInput.styled';
 
-const SearchInput = ({ value, onChange }: any) => {
+const SearchInput = ({ value, handleChange, handleSubmit }: any) => {
   return (
-    <div
+    <form
       css={css`
         position: relative;
         display: flex;
@@ -12,10 +14,12 @@ const SearchInput = ({ value, onChange }: any) => {
         background-color: white;
         border-radius: 0.9375rem;
       `}
+      onSubmit={handleSubmit}
     >
       <InputBanner>{value ? '' : <span>Search All the GIFs and Stickers</span>}</InputBanner>
-      <Input value={value} onChange={onChange} />
-    </div>
+      <Input value={value} onChange={handleChange} />
+      <SearchBtton />
+    </form>
   );
 };
 
