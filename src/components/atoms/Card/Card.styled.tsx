@@ -1,7 +1,5 @@
 import styled from '@emotion/styled';
 
-import { ARTISTS, GIFS } from 'src/constants';
-
 type StyledCardProps = {
   width?: string | undefined;
   height?: string | undefined;

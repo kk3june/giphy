@@ -4,6 +4,7 @@ import { css } from '@emotion/react';
 import { useSelector } from 'react-redux';
 
 import SearchBarLayer from 'layer/SearchBarLayer';
+import { BUTTON_LINK, CREATE_TEXT, UPLOAD_TEXT } from 'src/constants';
 import { RootState } from 'src/store';
 
 import Button from '../../atoms/Buttons/Button';
@@ -36,8 +37,8 @@ const Navbar = () => {
         <Logo />
         <MenuLinkList list={list} />
         <Buttons>
-          <Button name="upload" />
-          <Button name="create" />
+          <Button name={UPLOAD_TEXT} type={BUTTON_LINK} />
+          <Button name={CREATE_TEXT} type={BUTTON_LINK} />
         </Buttons>
         <UserButton userName={username} />
       </div>

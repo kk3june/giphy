@@ -5,12 +5,17 @@ import styled from '@emotion/styled';
 import { GetServerSideProps } from 'next';
 import { useSelector } from 'react-redux';
 
+import Button from 'components/atoms/Buttons/Button';
+import LoginPageButton from 'components/modules/LoginPageButton/LoginPageButton';
 import CardLayer from 'layer/CardLayer';
+import LoginComponentLayer from 'layer/LoginComponentLayer';
+import { BUTTON_CLIICK } from 'src/constants';
 import wrapper, { RootState } from 'store/index';
 import { fetchRandom } from 'store/random/randomThunk';
 
 const WithOutNavWrapper = styled.div`
   display: flex;
+  position: relative;
   width: 100%;
   height: 100vh;
 `;
@@ -32,6 +37,7 @@ const Login = () => {
   const LOGIN_PAGE = 'LOGIN_PAGE';
   return (
     <WithOutNavWrapper>
+      <LoginComponentLayer />
       <Half
         css={css`
           filter: blur(100px);
