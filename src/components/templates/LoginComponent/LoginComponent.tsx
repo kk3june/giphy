@@ -7,7 +7,14 @@ import Button from 'components/atoms/Buttons/Button';
 import Inputs from 'components/atoms/Inputs/Inputs';
 import LoginPageButton from 'components/modules/LoginPageButton/LoginPageButton';
 import GiphyAnimated from 'public/images/login_logo.gif';
-import { BUTTON_LINK, LOG_IN_TEXT, LOG_IN_FACEBOOK_TEXT, LOG_IN_APPLE_TEXT } from 'src/constants';
+import {
+  BUTTON_LINK,
+  LOG_IN_TEXT,
+  LOG_IN_FACEBOOK_TEXT,
+  LOG_IN_APPLE_TEXT,
+  SIGN_UP_FACEBOOK_TEXT,
+  SIGN_UP_APPLE_TEXT,
+} from 'src/constants';
 
 const LoginComponent = () => {
   return (
@@ -25,7 +32,9 @@ const LoginComponent = () => {
         `}
       >
         <Inputs name="Email Address" />
+        {/* {!loginState && <Inputs name="Username" />} */}
         <Inputs name="Password" />
+        {/* {!loginState && <Inputs name="Confirm Your Password" />} */}
       </div>
       <div
         css={css`
@@ -55,6 +64,8 @@ const LoginComponent = () => {
       </div>
       <Button name={LOG_IN_FACEBOOK_TEXT} type={BUTTON_LINK} />
       <Button name={LOG_IN_APPLE_TEXT} type={BUTTON_LINK} />
+      {/* <Button name={loginState ? LOG_IN_FACEBOOK_TEXT : SIGN_UP_FACEBOOK_TEXT} type={BUTTON_LINK} />
+      <Button name={loginState ? LOG_IN_APPLE_TEXT : SIGN_UP_APPLE_TEXT} type={BUTTON_LINK} /> */}
       <div
         css={css`
           margin: 0.625rem 0;
