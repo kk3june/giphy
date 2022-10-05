@@ -21,4 +21,13 @@ export interface StateTypes {
   randomContentIsLoading: boolean | null;
   randomContent: any;
   randomContentError: string | null;
+  searchDataIsLoading: boolean | null;
+  searchData: any;
+  searchDataError: string | null;
+  categoryDataIsLoading: boolean | null;
+  categoryData: any;
+  categoryDataError: string | null;
+  subCategoryDataIsLoading: boolean | null;
+  subCategoryData: any;
+  subCategoryDataError: string | null;
 }
