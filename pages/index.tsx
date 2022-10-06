@@ -15,7 +15,7 @@ import { RootState } from '../src/store';
 import wrapper from '../src/store';
 
 // SSR
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async () => {
   await store.dispatch(fetchTrendingGifs(21));
   await store.dispatch(fetchTrendingClips(3));
   await store.dispatch(fetchArtistsGifs(6));

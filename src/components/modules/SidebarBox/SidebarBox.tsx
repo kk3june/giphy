@@ -16,7 +16,7 @@ import {
 
 const SidebarBox = ({ data }: any) => {
   const userInfoProps = {
-    type: 'sidebar',
+    type: data?.[0].user?.type,
     name: data?.[0].user?.name,
     userName: data?.[0].user?.username,
     avatar: data?.[0].user?.avatar,
