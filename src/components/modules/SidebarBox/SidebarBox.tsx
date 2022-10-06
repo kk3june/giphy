@@ -24,6 +24,8 @@ const SidebarBox = ({ data }: any) => {
 
   const { user } = Array.isArray(data) && data.length > 0 && data[0];
 
+  const showFollow = user?.facebook_url || user?.instagram_url || user?.twitter_url || user?.tumblr_url;
+
   return (
     <div
       css={css`
@@ -39,7 +41,7 @@ const SidebarBox = ({ data }: any) => {
         >
           <UserInfo {...userInfoProps} />
           <StyledSpan>{user?.description}</StyledSpan>
-          <StyledSpan>Follow on:</StyledSpan>
+          {showFollow && <StyledSpan>Follow on:</StyledSpan>}
 
           {user?.facebook_url && (
             <SnsIcon href={user?.facebook_url}>

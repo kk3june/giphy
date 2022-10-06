@@ -7,7 +7,7 @@ type UserInfoProps = {
 const TYPE_VALUE = {
   sidebar: '3.125rem',
   undefined: '1.5625rem',
-  menuSidebar: '13rem',
+  menuSidebar: '15rem',
 };
 
 export const StyledImg = styled.span<UserInfoProps>`
