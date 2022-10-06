@@ -56,6 +56,11 @@ const SidebarBox = ({ data }: any) => {
               <img src="/images/snsIcon/twitter.png" alt="link to twitter" />
             </SnsIcon>
           )}
+          {user?.tumblr_url && (
+            <SnsIcon href={user?.tumblr_url}>
+              <img src="/images/snsIcon/tumblr.png" alt="link to tumblr" />
+            </SnsIcon>
+          )}
 
           {user?.website_url && (
             <>
