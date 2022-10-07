@@ -4,10 +4,11 @@ import { css } from '@emotion/react';
 import { GetServerSideProps } from 'next';
 import { useSelector } from 'react-redux';
 
+import Header from 'components/atoms/Header/Header';
 import HeadingOne from 'components/atoms/HeadingOne/HeadingOne';
 import NormalGrid from 'components/modules/Gird/NormalGrid';
 import SidebarBox from 'components/modules/SidebarBox/SidebarBox';
-import { CONTENT, RELATED_GIFS } from 'src/constants';
+import { CONTENT, LARGE_HEADER, RELATED_GIFS } from 'src/constants';
 import wrapper, { RootState } from 'store/index';
 import { fetchSearchData } from 'store/search/searchThunks';
 
@@ -101,7 +102,7 @@ const Menu = ({ id }: any) => {
     >
       <SidebarBox data={[targetData.data]} />
       <div>
-        <HeadingOne title={targetData.title} />
+        <Header name={targetData.title} type={LARGE_HEADER} />
         <NormalGrid data={searchData} type={RELATED_GIFS} isLoading={searchDataIsLoading} />
       </div>
     </div>
