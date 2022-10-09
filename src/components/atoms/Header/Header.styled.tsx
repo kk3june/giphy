@@ -8,7 +8,7 @@ const FONT_SIZE = {
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 0.8rem;
+  margin: 0.8rem 0;
   font-size: 1.4rem;
   font-weight: 600;
   text-transform: capitalize;
