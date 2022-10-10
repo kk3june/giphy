@@ -36,9 +36,13 @@ export const trendingSlice = createSlice({
     [fetchTrendingGifs.pending.type]: (state) => {
       state.trendingGifsIsLoading = true;
     },
-    [fetchTrendingGifs.fulfilled.type]: (state, action) => {
+    [fetchTrendingGifs.fulfilled.type]: (state, { meta: { arg }, payload }) => {
       state.trendingGifsIsLoading = false;
-      state.trendingGifs = action.payload;
+      if (arg.offset === 0) {
+        state.trendingGifs = payload;
+      } else {
+        state.trendingGifs = [...state.trendingGifs, ...payload];
+      }
     },
     [fetchTrendingGifs.rejected.type]: (state, action) => {
       state.trendingGifsIsLoading = false;
