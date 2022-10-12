@@ -19,20 +19,4 @@ export const StyledStories = styled.div`
   }
 `;
 
-export const WideStory = styled.a`
-  height: 18.75rem;
-  width: 33rem;
-`;
-export const NormalStory = styled.a`
-  height: 18.75rem;
-  width: 16.5rem;
-`;
-
-export const TitleStory = styled.span`
-  position: absolute;
-  bottom: 0;
-  padding: 1.25rem;
-  font-size: 1.125rem;
-  font-weight: bold;
-  color: white;
-`;
+export default StyledStories;

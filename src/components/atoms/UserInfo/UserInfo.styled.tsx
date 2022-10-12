@@ -4,10 +4,16 @@ type UserInfoProps = {
   type?: string;
 };
 
+const TYPE_VALUE = {
+  sidebar: '3.125rem',
+  undefined: '1.5625rem',
+  menuSidebar: '15rem',
+};
+
 export const StyledImg = styled.span<UserInfoProps>`
   img {
-    width: ${({ type }) => (type === 'sidebar' ? '3.125rem' : '1.5625rem')};
-    height: ${({ type }) => (type === 'sidebar' ? '3.125rem' : '1.5625rem')};
+    width: ${({ type }) => TYPE_VALUE[type as keyof typeof TYPE_VALUE]};
+    height: ${({ type }) => TYPE_VALUE[type as keyof typeof TYPE_VALUE]};
     margin-right: 0.5rem;
   }
 `;

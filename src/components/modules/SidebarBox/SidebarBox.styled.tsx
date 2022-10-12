@@ -7,8 +7,8 @@ export const StyledSpan = styled.span`
   margin: 0 0 0.25rem;
   font-size: 0.875rem;
   line-height: 1.2rem;
-  padding: 1.25rem 0;
-  word-break: break-all;
+  padding: 1.25rem 0 0.2rem;
+  word-break: 'word-break';
 `;
 
 export const SnsIcon = styled.a`
@@ -37,7 +37,7 @@ export const SourceLinkUrl = styled.span`
 export const LearnMoreGif = styled.img`
   position: absolute;
   width: 16.875rem;
-  top: 0.625rem;
+  top: 1rem;
   left: -0.9375rem;
   z-index: 2;
 `;
@@ -48,7 +48,7 @@ export const StyledTextBox = styled.span<{ learnmore?: any }>`
   line-height: 3rem;
   background-color: rgb(33, 33, 33);
   position: ${({ learnmore }) => learnmore && 'absolute'};
-  top: ${({ learnmore }) => learnmore && '11.875rem'};
+  top: ${({ learnmore }) => learnmore && '12.5rem'};
   text-align: center;
   a {
     text-decoration: none;

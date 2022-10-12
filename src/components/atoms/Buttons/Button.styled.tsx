@@ -6,6 +6,8 @@ const CLICKABLE_BACKGROUND = {
 };
 const LINK_BACKGROUND = {
   'Log In': 'linear-gradient(-135deg, rgb(97, 87, 255) 0%, rgb(153, 51, 255) 100%)',
+  Create: 'linear-gradient(263.31deg, rgb(153, 51, 255) -97.49%, rgb(97, 87, 255) 94.14%)',
+  Upload: 'linear-gradient(263.55deg, rgb(153, 51, 255) -5.88%, rgb(97, 87, 255) 194.65%)',
 };
 
 export const ButtonItem = styled.button<{ name: any }>`

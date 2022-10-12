@@ -5,11 +5,8 @@ import styled from '@emotion/styled';
 import { GetServerSideProps } from 'next';
 import { useSelector } from 'react-redux';
 
-import Button from 'components/atoms/Buttons/Button';
-import LoginPageButton from 'components/modules/LoginPageButton/LoginPageButton';
 import CardLayer from 'layer/CardLayer';
 import LoginComponentLayer from 'layer/LoginComponentLayer';
-import { BUTTON_CLIICK } from 'src/constants';
 import wrapper, { RootState } from 'store/index';
 import { fetchRandom } from 'store/random/randomThunk';
 
@@ -27,7 +24,7 @@ const Half = styled.div`
 `;
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async () => {
-  await store.dispatch(fetchRandom());
+  await store.dispatch(fetchRandom('arg'));
   return { props: {} };
 });
 

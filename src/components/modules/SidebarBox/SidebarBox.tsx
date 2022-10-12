@@ -16,13 +16,15 @@ import {
 
 const SidebarBox = ({ data }: any) => {
   const userInfoProps = {
-    type: 'sidebar',
+    type: data?.[0].user?.type,
     name: data?.[0].user?.name,
     userName: data?.[0].user?.username,
     avatar: data?.[0].user?.avatar,
   };
 
   const { user } = Array.isArray(data) && data.length > 0 && data[0];
+
+  const showFollow = user?.facebook_url || user?.instagram_url || user?.twitter_url || user?.tumblr_url;
 
   return (
     <div
@@ -39,7 +41,7 @@ const SidebarBox = ({ data }: any) => {
         >
           <UserInfo {...userInfoProps} />
           <StyledSpan>{user?.description}</StyledSpan>
-          <StyledSpan>Follow on:</StyledSpan>
+          {showFollow && <StyledSpan>Follow on:</StyledSpan>}
 
           {user?.facebook_url && (
             <SnsIcon href={user?.facebook_url}>
@@ -54,6 +56,11 @@ const SidebarBox = ({ data }: any) => {
           {user?.twitter_url && (
             <SnsIcon href={user?.twitter_url}>
               <img src="/images/snsIcon/twitter.png" alt="link to twitter" />
+            </SnsIcon>
+          )}
+          {user?.tumblr_url && (
+            <SnsIcon href={user?.tumblr_url}>
+              <img src="/images/snsIcon/tumblr.png" alt="link to tumblr" />
             </SnsIcon>
           )}
 

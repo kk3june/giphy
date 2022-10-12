@@ -11,7 +11,7 @@ const MenuLinkList = ({ list }: { list: MenuLinkProps[] }) => {
         const { name } = data;
         return (
           <LinkItem key={name}>
-            <Anchor href={name}>{name}</Anchor>
+            <Anchor href={`/menu/${name}`}>{name}</Anchor>
           </LinkItem>
         );
       })}

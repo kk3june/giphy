@@ -36,11 +36,11 @@ const Navbar = () => {
       >
         <Logo />
         <MenuLinkList list={list} />
-        <Buttons>
+        {/* <Buttons>
           <Button name={UPLOAD_TEXT} type={BUTTON_LINK} />
           <Button name={CREATE_TEXT} type={BUTTON_LINK} />
         </Buttons>
-        <UserButton userName={username} />
+        <UserButton userName={username} /> */}
       </div>
       <SearchBarLayer />
     </nav>
