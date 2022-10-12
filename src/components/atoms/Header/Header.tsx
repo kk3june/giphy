@@ -1,10 +1,9 @@
+import ArtistsSvg from 'components/atoms/Svgs/ArtistsSvg';
+import ClipSvg from 'components/atoms/Svgs/ClipSvg';
+import StoriesSvg from 'components/atoms/Svgs/StoriesSvg';
+import TrendingSvg from 'components/atoms/Svgs/TrendingSvg';
 import { TRENDING, ARTISTS, CLIPS, STORIES, INDEX } from 'src/constants';
-
-import { HeaderProps } from '../../../types/home';
-import ArtistsSvg from '../Svgs/ArtistsSvg';
-import ClipSvg from '../Svgs/ClipSvg';
-import StoriesSvg from '../Svgs/StoriesSvg';
-import TrendingSvg from '../Svgs/TrendingSvg';
+import { HeaderProps } from 'types/home';
 
 import { Wrapper, SvgBox, Title } from './Header.styled';
 
