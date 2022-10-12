@@ -16,7 +16,7 @@ export const fetchCategories = createAsyncThunk('category/getCategories', async 
 
 export const fetchSubCategories = createAsyncThunk('category/getSubCategories', async (thunkAPI: any) => {
   try {
-    const { data: categories } = await gf.subcategories('tennis', { limit: 10, offset: 25, rating: 'g' });
+    const { data: categories } = await gf.subcategories('tennis', { limit: 10, offset: 25 });
     // categories.forEach((category) => {
     //   console.log('subcategory', category); // ICategory
     // });

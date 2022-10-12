@@ -24,7 +24,7 @@ const Half = styled.div`
 `;
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async () => {
-  await store.dispatch(fetchRandom());
+  await store.dispatch(fetchRandom('arg'));
   return { props: {} };
 });
 

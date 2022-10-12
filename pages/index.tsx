@@ -5,6 +5,7 @@ import { GetServerSideProps } from 'next';
 import { useDispatch, useSelector } from 'react-redux';
 
 import ListWrapper from 'components/templates/ListWrapper/ListWrapper';
+import { useAppDispatch } from 'hooks/useDispatch';
 import useInfiniteScroll from 'hooks/useInfiniteScroll';
 import CarouselLayer from 'layer/CarouselLayer';
 import GridLayer from 'layer/GridLayer';
@@ -37,7 +38,7 @@ function Home() {
   const { artistsGifsIsLoading, artistsGifs } = useSelector((state: RootState) => state.artists);
   const [trendingGifsOffset, setTrendingGifsOffset] = useState<number>(22);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const checkIntersect = useCallback(
     ([entry]: any, observer: any) => {
@@ -45,6 +46,7 @@ function Home() {
         observer.unobserve(entry.target);
         if (!trendingGifsIsLoading && trendingGifsOffset < 200) {
           dispatch(fetchTrendingGifs({ limit: 8, offset: trendingGifsOffset }));
+          // eslint-disable-next-line no-return-assign
           setTrendingGifsOffset((c) => (c += 8));
         }
       }

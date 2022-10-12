@@ -7,6 +7,7 @@ module.exports = {
     'prettier',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
+    'plugin:@next/next/recommended',
   ],
   rules: {
     semi: ['error', 'always'],
@@ -33,6 +34,8 @@ module.exports = {
     'react/no-unknown-property': ['error', { ignore: ['css'] }],
     'react/jsx-filename-extension': ['error', { extensions: ['.tsx', '.jsx', 'spec.js'] }],
     'react/function-component-definition': 'off',
+    'react/no-unescaped-entities': 'off',
+    '@next/next/no-page-custom-font': 'off',
     'import/no-duplicates': 'off',
     'import/extensions': [
       'error',

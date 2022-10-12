@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import { css } from '@emotion/react';
 
 import { StyledImg, UserName } from './UserInfo.styled';

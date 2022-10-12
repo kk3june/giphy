@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { StateTypes } from 'types/state';
 
@@ -23,7 +23,7 @@ export const artistsSlice = createSlice({
         state.artistsGifsIsLoading = false;
         state.artistsGifs = action.payload;
       })
-      .addCase(fetchArtistsGifs.rejected, (state, action) => {
+      .addCase(fetchArtistsGifs.rejected, (state, action: PayloadAction<any>) => {
         state.artistsGifsIsLoading = false;
         state.artistsGifsError = action.payload;
       }),
