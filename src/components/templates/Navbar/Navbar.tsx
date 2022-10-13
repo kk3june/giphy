@@ -23,7 +23,6 @@ const Navbar = () => {
     { name: 'sports' },
     { name: 'stickers' },
     { name: 'artists' },
-    { name: '•' },
   ];
 
   return (
