@@ -8,7 +8,7 @@ const WIDTH_TYPE = {
 export const StyledStory = styled.a<{ type: any }>`
   height: 18.75rem;
   width: ${({ type }) => WIDTH_TYPE[type as keyof typeof WIDTH_TYPE]};
-  & > img {
+  & > .story_item {
     position: absolute;
     top: 0;
     left: 0;
