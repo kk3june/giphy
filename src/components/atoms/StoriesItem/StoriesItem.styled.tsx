@@ -22,8 +22,9 @@ export const StyledStory = styled.a<{ type: any }>`
   }
   &:hover {
     .hover {
-      scale: 1.2;
+      transform: scale(1.2);
       opacity: 1;
+      transition: transform 0.5s;
     }
   }
 `;
@@ -59,7 +60,7 @@ export const Overlay = styled.div`
   bottom: 0;
   width: 100%;
   height: 40%;
-  background: linear-gradient(180deg, transparent, blue);
+  background: linear-gradient(180deg, transparent, ${({ color }) => color});
   z-index: 2;
   opacity: 0;
 `;

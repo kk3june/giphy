@@ -7,13 +7,13 @@ import { getRandomColor } from 'hooks/useGetRandomColor';
 import {
   StyledStory,
   TitleStory,
-  StyledSkeleton,
-  Overlay,
   StoryUserBadge,
+  StoryContent,
+  Overlay,
+  StyledSkeleton,
   StyledBottomTop,
   StyledBottomMiddle,
   StyledBottomBottom,
-  StoryContent,
 } from './StoriesItem.styled';
 
 const StoriesItem = ({ data, type }: any) => {
@@ -33,7 +33,7 @@ const StoriesItem = ({ data, type }: any) => {
           />
         </StoryUserBadge>
         <TitleStory>{data.title}</TitleStory>
-        <Overlay className="hover" />
+        <Overlay className="hover" color={color} />
         <img className="story_item hover" src={data.images.original.url} alt="Story Gif" />
         <StyledSkeleton color={color} />
       </StoryContent>
