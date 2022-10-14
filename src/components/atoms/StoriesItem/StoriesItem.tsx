@@ -4,7 +4,17 @@ import { css } from '@emotion/react';
 
 import { getRandomColor } from 'hooks/useGetRandomColor';
 
-import { StyledStory, TitleStory, StyledSkeleton } from './StoriesItem.styled';
+import {
+  StyledStory,
+  TitleStory,
+  StyledSkeleton,
+  Overlay,
+  StoryUserBadge,
+  StyledBottomTop,
+  StyledBottomMiddle,
+  StyledBottomBottom,
+  StoryContent,
+} from './StoriesItem.styled';
 
 const StoriesItem = ({ data, type }: any) => {
   const color = useMemo(() => {
@@ -13,26 +23,31 @@ const StoriesItem = ({ data, type }: any) => {
 
   return (
     <StyledStory key={data.id} type={type} href={`gifs/${data.id}`}>
+      <StoryContent>
+        <StoryUserBadge>
+          <img
+            src={data.user ? data.user.avatar_url : 'https://media.giphy.com/avatars/news/hggHJAb9dlmy/80h.gif'}
+            alt="user_badge"
+            width={50}
+            height={50}
+          />
+        </StoryUserBadge>
+        <TitleStory>{data.title}</TitleStory>
+        <Overlay className="hover" />
+        <img className="story_item hover" src={data.images.original.url} alt="Story Gif" />
+        <StyledSkeleton color={color} />
+      </StoryContent>
       <div
         css={css`
-          position: absolute;
-          top: 1rem;
-          left: 1rem;
-          width: 0.9375rem;
-          height: 0.9375rem;
-          z-index: 2;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         `}
       >
-        <img
-          src={data.user ? data.user.avatar_url : 'https://media.giphy.com/avatars/news/hggHJAb9dlmy/80h.gif'}
-          alt="test"
-          width={50}
-          height={50}
-        />
+        <StyledBottomTop color={color} />
+        <StyledBottomMiddle color={color} />
+        <StyledBottomBottom color={color} />
       </div>
-      <TitleStory>{data.title}</TitleStory>
-      <img className="story_item" src={data.images.original.url} alt="Story Gif" />
-      <StyledSkeleton color={color} />
     </StyledStory>
   );
 };

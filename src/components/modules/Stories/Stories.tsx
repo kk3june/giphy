@@ -9,8 +9,8 @@ const Stories = ({ data, chkArr }: any) => {
       {data &&
         chkArr &&
         data?.map((item: any, idx: number) => {
-          if (chkArr.indexOf(idx) !== -1) return <StoriesItem key={item.id} data={item} type={NORMAL} />;
-          return <StoriesItem key={item.id} data={item} type={WIDE} />;
+          if (chkArr.indexOf(idx) === -1) return <StoriesItem key={item.id} data={item} type={WIDE} />;
+          return <StoriesItem key={item.id} data={item} type={NORMAL} />;
         })}
     </StyledStories>
   );
