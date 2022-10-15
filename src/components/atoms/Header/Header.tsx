@@ -3,7 +3,7 @@ import ClipSvg from 'components/atoms/Svgs/ClipSvg';
 import StoriesSvg from 'components/atoms/Svgs/StoriesSvg';
 import TrendingSvg from 'components/atoms/Svgs/TrendingSvg';
 import { TRENDING, ARTISTS, CLIPS, STORIES, INDEX } from 'src/constants';
-import { HeaderProps } from 'types/home';
+import { HeaderProps } from 'types/types';
 
 import { Wrapper, SvgBox, Title } from './Header.styled';
 

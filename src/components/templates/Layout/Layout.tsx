@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 
 import Floating from 'components/modules/Floating/Floating';
 import Login from 'pages/login';
-import { LayoutProps } from 'types/layout';
+import { LayoutProps } from 'types/types';
 
 import Navbar from '../Navbar/Navbar';
 

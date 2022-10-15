@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MenuLinkProps } from 'src/types/menu';
+import { MenuLinkProps } from 'src/types/types';
 
 import { UnOrdered, LinkItem, Anchor } from './MenuLinkList.styled';
 
