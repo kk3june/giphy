@@ -3,11 +3,13 @@ import React from 'react';
 import { css } from '@emotion/react';
 
 import GifsSection from 'components/templates/GifsSection/GifSection';
-import { DETAIL } from 'src/constants';
+import { CLIPS, DETAIL, UPLOAD_TEXT, UPNEXT } from 'src/constants';
 
+import LikeSvg from '../Svgs/LikeSvg';
+import LinkSvg from '../Svgs/LinkSvg';
 import UserInfo from '../UserInfo/UserInfo';
 
-import { GridItem, ClipAnchor, ClipVideo, Title } from './ClipCard.styled';
+import { GridItem, ClipAnchor, ClipVideo, Title, ClipsHoverSvg } from './ClipCard.styled';
 
 const ClipCard = ({ data, type, isLoading }: any) => {
   return isLoading ? (
@@ -25,7 +27,6 @@ const ClipCard = ({ data, type, isLoading }: any) => {
           <source src={data?.images.original.mp4} type="video/mp4" />
         </ClipVideo>
       </ClipAnchor>
-
       <div
         css={css`
           display: flex;
@@ -39,8 +40,21 @@ const ClipCard = ({ data, type, isLoading }: any) => {
       </div>
       {data?.user && (
         <ClipAnchor href={`/writer/${data?.username}`}>
-          <UserInfo avatar={data?.user?.avatar_url} userName={data?.user?.display_name} />
+          <UserInfo avatar={data?.user?.avatar_url} userName={data?.user?.display_name} type="upNext" />
         </ClipAnchor>
+      )}
+
+      {type === CLIPS && (
+        <ClipsHoverSvg className="clips_hover">
+          <LinkSvg />
+          <LikeSvg />
+        </ClipsHoverSvg>
+      )}
+      {type === UPNEXT && (
+        <ClipsHoverSvg className="clips_hover">
+          <LinkSvg />
+          <LikeSvg />
+        </ClipsHoverSvg>
       )}
     </GridItem>
   );

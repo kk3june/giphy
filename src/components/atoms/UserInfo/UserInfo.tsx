@@ -11,10 +11,6 @@ interface UserInfoProps {
 }
 
 const UserInfo = ({ type, avatar, name, userName }: UserInfoProps) => {
-  if (type === undefined) {
-    type = 'sidebar';
-  }
-
   return (
     <div
       css={css`

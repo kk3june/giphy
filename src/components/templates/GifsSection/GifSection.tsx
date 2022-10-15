@@ -10,7 +10,7 @@ const GifsSection = ({ data, type }: any) => {
   return (
     <GifButtonWrapper type={type}>
       <GifButton type={type}>
-        <LikeSvg />
+        <LikeSvg size="xl" />
         <GifButtonName>Favorite</GifButtonName>
       </GifButton>
 

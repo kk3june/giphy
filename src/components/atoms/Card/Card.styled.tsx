@@ -55,18 +55,27 @@ export const TrendingHoverSvgs = styled.div`
   position: absolute;
   display: flex;
   justify-content: space-between;
-  top: 5px;
-  right: 8px;
-  width: 3rem;
+  top: 0.8rem;
+  right: 1rem;
+  width: 3.5rem;
   visibility: hidden;
 `;
 
 export const TrendingHoverBadge = styled.a`
   position: absolute;
+  display: flex;
+  align-items: center;
   cursor: pointer;
   bottom: 5px;
   left: 8px;
   visibility: hidden;
+  text-decoration: none;
+  span {
+    padding-left: 5px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
 `;
 
 export const ArtistHoverWrapper = styled.div`

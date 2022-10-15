@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ARTISTS, GIF, LOGIN_PAGE, TRENDING } from 'src/constants';
+import { ARTISTS, CLIPS, GIF, LOGIN_PAGE, RELATED_CLIPS, RELATED_GIFS, TRENDING } from 'src/constants';
 
 import LikeSvg from '../Svgs/LikeSvg';
 import LinkSvg from '../Svgs/LinkSvg';
@@ -16,9 +16,6 @@ import {
 } from './Card.styled';
 
 const Card = ({ data, type, isLoading }: any) => {
-  if (type === ARTISTS) {
-    console.log(type, data);
-  }
   return isLoading ? (
     <div
       css={{
@@ -45,8 +42,8 @@ const Card = ({ data, type, isLoading }: any) => {
       {type === TRENDING && (
         <div className="trending_hover">
           <TrendingHoverSvgs>
-            <LikeSvg />
             <LinkSvg />
+            <LikeSvg />
           </TrendingHoverSvgs>
           <TrendingHoverBadge href={`/gifs/${data?.id}`}>
             {data.user && <img src={data.user.avatar_url} width={35} height={35} alt="user_badge" />}
@@ -70,6 +67,28 @@ const Card = ({ data, type, isLoading }: any) => {
             </div>
           </ArtistsBadge>
         </>
+      )}
+
+      {type === RELATED_CLIPS && (
+        <div className="trending_hover">
+          <TrendingHoverSvgs>
+            <LinkSvg />
+            <LikeSvg />
+          </TrendingHoverSvgs>
+        </div>
+      )}
+
+      {type === RELATED_GIFS && (
+        <div className="trending_hover">
+          <TrendingHoverSvgs>
+            <LinkSvg />
+            <LikeSvg />
+          </TrendingHoverSvgs>
+          <TrendingHoverBadge href={`/gifs/${data?.id}`}>
+            {data.user && <img src={data.user.avatar_url} width={35} height={35} alt="user_badge" />}
+            <span>{data.username}</span>
+          </TrendingHoverBadge>
+        </div>
       )}
     </StyledCard>
   );

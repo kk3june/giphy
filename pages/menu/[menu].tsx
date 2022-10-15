@@ -5,7 +5,6 @@ import { GetServerSideProps } from 'next';
 import { useSelector } from 'react-redux';
 
 import Header from 'components/atoms/Header/Header';
-import HeadingOne from 'components/atoms/HeadingOne/HeadingOne';
 import NormalGrid from 'components/modules/Gird/NormalGrid';
 import SidebarBox from 'components/modules/SidebarBox/SidebarBox';
 import { CONTENT, LARGE_HEADER, RELATED_GIFS } from 'src/constants';

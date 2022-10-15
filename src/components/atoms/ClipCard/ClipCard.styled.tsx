@@ -2,15 +2,21 @@ import styled from '@emotion/styled';
 
 import { DETAIL, UPNEXT } from 'src/constants';
 
-export const GridItem = styled.div<{ type?: string }>`
-  width: 100%;
-  margin-bottom: 0.5rem;
-`;
-
 const WIDTH_TYPE = {
   DETAIL: '48.5rem',
   UPNEXT: '14.5rem',
 };
+
+export const GridItem = styled.div<{ type?: string }>`
+  position: relative;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  &:hover {
+    .clips_hover > * {
+      visibility: visible;
+    }
+  }
+`;
 
 export const ClipAnchor = styled.a`
   display: inline-block;
@@ -36,4 +42,14 @@ export const Title = styled.div<{ type?: string }>`
   text-overflow: ellipsis;
   text-decoration: none;
   color: white;
+`;
+
+export const ClipsHoverSvg = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  top: 0.8rem;
+  right: 1rem;
+  width: 3.5rem;
+  visibility: hidden;
 `;
