@@ -107,7 +107,7 @@ export const ArtistsBadge = styled.div`
     line-height: 1.3rem;
     font-weight: bold;
   }
-  span:nth-child(2) {
+  span:nth-of-type(2) {
     color: rgb(0, 255, 153);
     font-size: 0.875rem;
   }

@@ -24,3 +24,9 @@ export const UPLOAD_TEXT = 'Upload';
 export const CREATE_TEXT = 'Create';
 export const SIGN_UP_FACEBOOK_TEXT = 'Sign Up With Facebook';
 export const SIGN_UP_APPLE_TEXT = 'Sign Up With Apple';
+export const QUERY_KEYS = {
+  TRENDING_GIFS: 'TRENDING_GIFS',
+  TRENDING_CLIPS: 'TRENDING_CLIPS',
+  ARTISTS_GIFS: 'ARTISTS_GIFS',
+  STORIES_GIFS: 'STORIES_GIFS',
+};

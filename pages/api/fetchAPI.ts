@@ -2,9 +2,9 @@ import { GiphyFetch } from '@giphy/js-fetch-api';
 
 export const gf = new GiphyFetch(process.env.NEXT_PUBLIC_GIPHY_API_KEY as string);
 
-export const getTrendingGifs = async ({ limit, offset }: any) => {
+export const getTrendingGifs = async () => {
   try {
-    const { data: gifs } = await gf.trending({ limit, offset });
+    const { data: gifs } = await gf.trending({ limit: 21 });
     return gifs;
   } catch (e) {
     return console.log('error');

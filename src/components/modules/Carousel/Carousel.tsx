@@ -18,14 +18,6 @@ interface CarouselLayerProps {
 
 const Carousel = ({ data, type, isLoading }: CarouselLayerProps) => {
   return isLoading ? (
-    <div
-      css={{
-        fontSize: '100px',
-      }}
-    >
-      isLoading
-    </div>
-  ) : (
     <StyledWrapper>
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -44,6 +36,14 @@ const Carousel = ({ data, type, isLoading }: CarouselLayerProps) => {
           ))}
       </Swiper>
     </StyledWrapper>
+  ) : (
+    <div
+      css={{
+        fontSize: '100px',
+      }}
+    >
+      isLoading
+    </div>
   );
 };
 

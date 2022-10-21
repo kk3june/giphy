@@ -3,6 +3,8 @@ import React from 'react';
 import '../src/styles/globals.css';
 import '../src/styles/reset.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import type { AppProps } from 'next/app';
 
 import Layout from '../src/components/templates/Layout/Layout';
@@ -12,9 +14,13 @@ import wrapper from '../src/store';
 config.autoAddCss = false;
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const queryClient = new QueryClient();
   return (
     <Layout>
-      <Component {...pageProps} />
+      <QueryClientProvider client={queryClient}>
+        <Component {...pageProps} />
+        <ReactQueryDevtools initialIsOpen />
+      </QueryClientProvider>
     </Layout>
   );
 }
