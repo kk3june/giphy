@@ -13,6 +13,7 @@ export const getTrendingGifs = async () => {
 
 export const getArtistGifs = async () => {
   const { data: gifs } = await gf.gifs('art', 'loop');
+
   return gifs;
 };
 
@@ -21,9 +22,9 @@ export const getTrendingClips = async () => {
   return clips;
 };
 
-export const getStoryGifs = async () => {
-  const { data: gifs } = await gf.trending({ limit: 25 });
-  return gifs;
+export const getStoryGifs = async ({ limit, offset }: any) => {
+  const { data: gifs, pagination } = await gf.trending({ limit, offset });
+  return { gifs, pagination };
 };
 
 export const getGifById = async (id: string) => {

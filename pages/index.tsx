@@ -1,8 +1,9 @@
 import React, { RefObject, useEffect } from 'react';
 
 import styled from '@emotion/styled';
-import { dehydrate, QueryClient, useQueries } from '@tanstack/react-query';
+import { dehydrate, QueryClient, useInfiniteQuery, useQueries } from '@tanstack/react-query';
 import { GetServerSideProps } from 'next';
+import { useInView } from 'react-intersection-observer';
 
 import ListWrapper from 'components/templates/ListWrapper/ListWrapper';
 import CarouselLayer from 'layer/CarouselLayer';
@@ -12,18 +13,21 @@ import { TRENDING, ARTISTS, CLIPS, STORIES, INDEX, QUERY_KEYS } from 'src/consta
 
 import wrapper from '../src/store';
 
-import { getArtistGifs, getTrendingClips, getTrendingGifs } from './api/fetchAPI';
+import { getArtistGifs, getStoryGifs, getTrendingClips, getTrendingGifs } from './api/fetchAPI';
 
 // SSR
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(() => async () => {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery([QUERY_KEYS.TRENDING_GIFS], getTrendingGifs);
   await queryClient.prefetchQuery([QUERY_KEYS.TRENDING_GIFS], getTrendingClips);
-  await queryClient.prefetchQuery([QUERY_KEYS.TRENDING_GIFS], getArtistGifs);
+  await queryClient.prefetchQuery([QUERY_KEYS.ARTISTS_GIFS], getArtistGifs);
+  await queryClient.prefetchInfiniteQuery([QUERY_KEYS.STORIES_GIFS], () => getStoryGifs({ limit: 22, offset: 0 }), {
+    staleTime: 10 * 1000,
+  });
 
   return {
-    props: { dehydratedState: dehydrate(queryClient) }, // will be passed to the page component as props
+    props: { dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))) }, // will be passed to the page component as props
   };
 });
 
@@ -40,8 +44,27 @@ function Home() {
     ],
   });
 
+  const { data, fetchNextPage, hasNextPage, isSuccess } = useInfiniteQuery(
+    [QUERY_KEYS.STORIES_GIFS],
+    ({ pageParam = 23 }) => getStoryGifs({ limit: 13, offset: pageParam }),
+    {
+      getNextPageParam: ({ pagination }) => {
+        if (pagination.offset === 0) {
+          return 23;
+        }
+
+        if (pagination.offset === pagination.total_count) {
+          return undefined;
+        }
+        return pagination.offset + 13;
+      },
+      staleTime: 60 * 1000, // 1 minute
+    },
+  );
+
+  const [ref, inView] = useInView();
   useEffect(() => {
-    console.log('rendering');
+    if (hasNextPage && inView) fetchNextPage();
   }, [results]);
 
   const MAIN_LIST = [
@@ -60,23 +83,21 @@ function Home() {
     {
       name: STORIES,
       children: (
-        <>
-          <div>test</div>
-          {/* <StoriesLayer type={STORIES} data={trendingGifs} isLoading={trendingGifsIsLoading} /> */}
-          {/* <StyledSentinel ref={ref} /> */}
-        </>
+        <div>
+          {data && data.pages.map((item) => <StoriesLayer type={STORIES} data={item.gifs} isLoading={isSuccess} />)}
+        </div>
       ),
     },
   ];
 
   return (
     <div>
-      {/* <div>{userName}</div> */}
       {MAIN_LIST.map((item) => (
         <ListWrapper key={`${item.name}`} name={item.name} type={INDEX}>
           {item.children}
         </ListWrapper>
       ))}
+      <StyledSentinel ref={ref} />
     </div>
   );
 }
