@@ -84,7 +84,10 @@ function Home() {
       name: STORIES,
       children: (
         <div>
-          {data && data.pages.map((item) => <StoriesLayer type={STORIES} data={item.gifs} isLoading={isSuccess} />)}
+          {data &&
+            data.pages.map((item) => (
+              <StoriesLayer key={item.pagination.offset} ype={STORIES} data={item.gifs} isLoading={isSuccess} />
+            ))}
         </div>
       ),
     },

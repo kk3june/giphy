@@ -19,24 +19,26 @@ interface CarouselLayerProps {
 const Carousel = ({ data, type, isLoading }: CarouselLayerProps) => {
   return isLoading ? (
     <StyledWrapper>
-      <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]} spaceBetween={3} slidesPerView="auto" navigation>
+      <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]} spaceBetween={3} slidesPerView={1} navigation>
         {data &&
-          data.map((item: any, index: any) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <SwiperSlide key={`${item.type}-${index}`}>
+          data.map((item: any) => (
+            <SwiperSlide key={item.id}>
               <CardLayer data={item} type={type} />
             </SwiperSlide>
           ))}
       </Swiper>
     </StyledWrapper>
   ) : (
-    <div
-      css={{
-        fontSize: '100px',
-      }}
-    >
-      isLoading
-    </div>
+    <StyledWrapper>
+      <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]} spaceBetween={3} slidesPerView="auto" navigation>
+        {data &&
+          data.map((item: any) => (
+            <SwiperSlide key={item.id}>
+              <CardLayer data={item} type={type} />
+            </SwiperSlide>
+          ))}
+      </Swiper>
+    </StyledWrapper>
   );
 };
 

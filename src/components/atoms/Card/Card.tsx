@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
+import { getRandomColor } from 'hooks/useGetRandomColor';
 import { ARTISTS, CLIPS, GIF, LOGIN_PAGE, RELATED_CLIPS, RELATED_GIFS, TRENDING } from 'src/constants';
 
 import LikeSvg from '../Svgs/LikeSvg';
@@ -7,6 +8,7 @@ import LinkSvg from '../Svgs/LinkSvg';
 
 import {
   StyledCard,
+  StyledSkeleton,
   StyledImg,
   TrendingHoverBadge,
   TrendingHoverSvgs,
@@ -16,15 +18,11 @@ import {
 } from './Card.styled';
 
 const Card = ({ data, type, isLoading }: any) => {
-  return isLoading ? (
-    <div
-      css={{
-        fontSize: '100px',
-      }}
-    >
-      isLoading
-    </div>
-  ) : (
+  const color = useMemo(() => {
+    return getRandomColor();
+  }, []);
+
+  return (
     <StyledCard type={type}>
       {type === GIF && data?.source_post_url && (
         <a href={data?.source_post_url}>
@@ -90,6 +88,7 @@ const Card = ({ data, type, isLoading }: any) => {
           </TrendingHoverBadge>
         </div>
       )}
+      <StyledSkeleton color={color} type={type} isLoading={isLoading} />
     </StyledCard>
   );
 };

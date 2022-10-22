@@ -28,6 +28,8 @@ export const StyledCard = styled.div<StyledCardProps>`
   height: ${({ type }) => HEIGHT_TYPE[type as keyof typeof HEIGHT_TYPE]};
   margin-right: 0.2rem;
   margin-bottom: 0.2rem;
+  border-radius: 0.3125rem;
+  overflow: hidden;
   &:hover {
     .trending_hover > * {
       visibility: visible;
@@ -42,10 +44,18 @@ export const StyledCard = styled.div<StyledCardProps>`
   }
 `;
 
+export const StyledSkeleton = styled.div<{ isLoading: boolean; type: string }>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: ${({ color }) => color};
+  z-index: ${({ isLoading }) => !isLoading && -1};
+`;
+
 export const StyledImg = styled.img<StyledCardProps>`
   display: inline-block;
-  margin: 0 0.125rem;
-  border-radius: 0.3125rem;
   height: 100%;
   width: ${({ type }) => WIDTH_TYPE[type as keyof typeof WIDTH_TYPE]};
   object-fit: cover;
