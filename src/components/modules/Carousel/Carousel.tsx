@@ -19,14 +19,7 @@ interface CarouselLayerProps {
 const Carousel = ({ data, type, isLoading }: CarouselLayerProps) => {
   return isLoading ? (
     <StyledWrapper>
-      <Swiper
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={3}
-        slidesPerView={1}
-        navigation
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
-      >
+      <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]} spaceBetween={3} slidesPerView="auto" navigation>
         {data &&
           data.map((item: any, index: any) => (
             // eslint-disable-next-line react/no-array-index-key
