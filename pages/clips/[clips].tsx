@@ -30,6 +30,7 @@ const Clips = () => {
       css={css`
         display: flex;
         width: 100%;
+        height: 100%;
         justify-content: space-between;
         margin-top: 1rem;
       `}

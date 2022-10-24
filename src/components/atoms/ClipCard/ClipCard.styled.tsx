@@ -26,10 +26,21 @@ export const ClipAnchor = styled.a`
 
 export const ClipVideo = styled.video<{ type: any }>`
   width: ${({ type }) => WIDTH_TYPE[type as keyof typeof WIDTH_TYPE]};
-  height: ${({ type }) => (type === UPNEXT ? '8.125rem' : '')};
+  height: ${({ type }) => (type === UPNEXT ? '8.125rem' : 'auto')};
   border-radius: 5px;
   object-fit: cover;
   object-position: top;
+`;
+
+export const StyledSkeleton = styled.div<{ isLoading: boolean; type: string }>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: ${({ type }) => (type === UPNEXT ? '8.125rem' : '100%')};
+  background-color: ${({ color }) => color};
+  border-radius: 5px;
+  z-index: ${({ isLoading }) => !isLoading && -1};
 `;
 
 export const Title = styled.div<{ type?: string }>`
