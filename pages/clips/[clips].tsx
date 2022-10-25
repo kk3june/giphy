@@ -3,15 +3,12 @@ import React from 'react';
 import { css } from '@emotion/react';
 import { useQueries } from '@tanstack/react-query';
 import { GetServerSideProps } from 'next';
-import { useSelector } from 'react-redux';
 
 import ClipCard from 'components/atoms/ClipCard/ClipCard';
 import { getContentById, getRelatedClips } from 'pages/api/fetchAPI';
 import { DETAIL, QUERY_KEYS, UPNEXT } from 'src/constants';
-import { fetchById } from 'store/byId/byIdThunks';
-import { RootState } from 'store/index';
 import wrapper from 'store/index';
-import { fetchRelatedClips } from 'store/related/relatedThunks';
+import { ParamTypes } from 'types/types';
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async (context) => {
   const param = context.query.clips;
@@ -20,10 +17,6 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
     props: { param },
   };
 });
-
-type ParamTypes = {
-  param: string;
-};
 
 const Clips = ({ param }: ParamTypes) => {
   const results = useQueries({

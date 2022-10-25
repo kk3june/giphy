@@ -10,3 +10,7 @@ export interface LayoutProps {
 export interface MenuLinkProps {
   name: string;
 }
+
+export interface ParamTypes {
+  param: string;
+}

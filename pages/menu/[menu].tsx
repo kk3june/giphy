@@ -1,28 +1,27 @@
 import React from 'react';
 
 import { css } from '@emotion/react';
+import { useQuery } from '@tanstack/react-query';
 import { GetServerSideProps } from 'next';
-import { useSelector } from 'react-redux';
 
 import Header from 'components/atoms/Header/Header';
 import NormalGrid from 'components/modules/Gird/NormalGrid';
 import SidebarBox from 'components/modules/SidebarBox/SidebarBox';
-import { CONTENT, LARGE_HEADER, RELATED_GIFS } from 'src/constants';
-import wrapper, { RootState } from 'store/index';
-import { fetchSearchData } from 'store/search/searchThunks';
+import { getSearchData } from 'pages/api/fetchAPI';
+import { LARGE_HEADER, QUERY_KEYS, RELATED_GIFS } from 'src/constants';
+import wrapper from 'store/index';
+import { ParamTypes } from 'types/types';
 
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async (context) => {
-  const id = context.query.menu;
-
-  await store.dispatch(fetchSearchData(id as string));
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(() => async (context) => {
+  const param = context.query.menu;
 
   return {
-    props: { id }, // will be passed to the page component as props
+    props: { param },
   };
 });
 
-const Menu = ({ id }: any) => {
-  const { searchDataIsLoading, searchData } = useSelector((state: RootState) => state.search);
+const Menu = ({ param }: ParamTypes) => {
+  const { data: searchData, isSuccess } = useQuery([QUERY_KEYS.SEARCH_DATA], () => getSearchData(param));
 
   const MENU_LIST = {
     reactions: {
@@ -90,7 +89,7 @@ const Menu = ({ id }: any) => {
     },
   };
 
-  const targetData = MENU_LIST[id as keyof typeof MENU_LIST];
+  const targetData = MENU_LIST[param as keyof typeof MENU_LIST];
 
   return (
     <div
@@ -102,7 +101,7 @@ const Menu = ({ id }: any) => {
       <SidebarBox data={[targetData.data]} />
       <div>
         <Header name={targetData.title} type={LARGE_HEADER} />
-        <NormalGrid data={searchData} type={RELATED_GIFS} isLoading={searchDataIsLoading} />
+        <NormalGrid data={searchData} type={RELATED_GIFS} isLoading={!isSuccess} />
       </div>
     </div>
   );

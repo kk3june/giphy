@@ -16,12 +16,12 @@ config.autoAddCss = false;
 function MyApp({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient();
   return (
-    <Layout>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <Layout>
         <Component {...pageProps} />
-        <ReactQueryDevtools initialIsOpen />
-      </QueryClientProvider>
-    </Layout>
+      </Layout>
+      <ReactQueryDevtools initialIsOpen />
+    </QueryClientProvider>
   );
 }
 

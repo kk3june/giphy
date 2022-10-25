@@ -13,6 +13,7 @@ import CarouselLayer from 'layer/CarouselLayer';
 import { getContentById, getRelatedClips, getRelatedGifs } from 'pages/api/fetchAPI';
 import { CONTENT, GIF, QUERY_KEYS, RELATED_CLIPS, RELATED_GIFS } from 'src/constants';
 import wrapper from 'src/store';
+import { ParamTypes } from 'types/types';
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(() => async (context) => {
   const param = context.query.gifs;
@@ -21,10 +22,6 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
     props: { param },
   };
 });
-
-type ParamTypes = {
-  param: string;
-};
 
 const Gifs = ({ param }: ParamTypes) => {
   const results = useQueries({
