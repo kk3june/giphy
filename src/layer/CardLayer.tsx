@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { VAC } from 'react-vac';
+// import { VAC } from 'react-vac';
 
 import Card from 'components/atoms/Card/Card';
 

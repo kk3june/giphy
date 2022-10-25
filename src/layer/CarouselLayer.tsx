@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { VAC } from 'react-vac';
+// import { VAC } from 'react-vac';
 
 import Carousel from 'components/modules/Carousel/Carousel';
 

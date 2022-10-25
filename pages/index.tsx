@@ -1,4 +1,4 @@
-import React, { RefObject, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import styled from '@emotion/styled';
 import { dehydrate, QueryClient, useInfiniteQuery, useQueries } from '@tanstack/react-query';
@@ -31,7 +31,7 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
   };
 });
 
-const StyledSentinel = styled.div<{ ref: RefObject<HTMLDivElement> }>`
+const StyledSentinel = styled.div`
   height: 1px;
 `;
 

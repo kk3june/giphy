@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 
 import { getRandomColor } from 'hooks/useGetRandomColor';
-import { ARTISTS, CLIPS, GIF, LOGIN_PAGE, RELATED_CLIPS, RELATED_GIFS, TRENDING } from 'src/constants';
+import { ARTISTS, GIF, LOGIN_PAGE, RELATED_CLIPS, RELATED_GIFS, TRENDING } from 'src/constants';
 
 import LikeSvg from '../Svgs/LikeSvg';
 import LinkSvg from '../Svgs/LinkSvg';

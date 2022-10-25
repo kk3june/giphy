@@ -11,17 +11,9 @@ const StyleNormalGrid = styled.div`
 `;
 
 const NormalGrid = ({ data, type, isLoading }: any) => {
-  return isLoading ? (
-    <div
-      css={{
-        fontSize: '100px',
-      }}
-    >
-      isLoading
-    </div>
-  ) : (
+  return (
     <StyleNormalGrid>
-      {data && data.map((item: any) => <CardLayer key={item.id} data={item} type={type} />)}
+      {data && data.map((item: any) => <CardLayer key={item.id} data={item} type={type} isLoading={isLoading} />)}
     </StyleNormalGrid>
   );
 };

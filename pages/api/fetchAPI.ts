@@ -33,12 +33,12 @@ export const getGifById = async (id: string) => {
 };
 
 export const getRelatedGifs = async (id: string) => {
-  const { data: gifs } = await gf.related(id, { limit: 10 });
+  const { data: gifs } = await gf.related(id, { limit: 15 });
   return gifs;
 };
 
 export const getRelatedClips = async (id: string) => {
-  const { data: clips } = await gf.related(id, { limit: 3 });
+  const { data: clips } = await gf.related(id, { limit: 12 });
   return clips;
 };
 
@@ -50,4 +50,14 @@ export const getUpNext = async (id: string) => {
 export const getClipById = async (id: string) => {
   const { data: gifs } = await gf.gifs([id]);
   return gifs;
+};
+
+export const getSearchData = async (id: string) => {
+  const { data: gifs } = await gf.search(id, { sort: 'relevant', lang: 'es', limit: 12, type: 'gifs' });
+  return gifs;
+};
+
+export const getContentById = async (id: string) => {
+  const { data: content } = await gf.gif(id);
+  return content;
 };
