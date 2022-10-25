@@ -39,7 +39,7 @@ const Gifs = ({ param }: ParamTypes) => {
     },
     {
       name: 'Related Gifs',
-      children: <NormalGrid type={RELATED_GIFS} data={results[2].data} isLoading={!results[2].isSuccess} />,
+      children: <NormalGrid type={RELATED_GIFS} data={results[2].data} isLoading={results[2].isSuccess} />,
     },
   ];
 
@@ -62,7 +62,7 @@ const Gifs = ({ param }: ParamTypes) => {
             display: flex;
           `}
         >
-          <CardLayer data={results[0].data} type={GIF} isLoading={!results[0].isSuccess} />
+          <CardLayer data={results[0].data} type={GIF} isLoading={results[0].isSuccess} />
           <GifSection data={[results[0]]} />
         </div>
 

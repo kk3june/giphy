@@ -13,10 +13,9 @@ export const StyledSpan = styled.span`
 
 export const SnsIcon = styled.a`
   margin-right: 1.25rem;
+
   img {
     margin-top: 0.625rem;
-    width: 1.25rem;
-    height: 1.25rem;
   }
 `;
 

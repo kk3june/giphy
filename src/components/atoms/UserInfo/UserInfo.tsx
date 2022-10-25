@@ -1,12 +1,13 @@
 /* eslint-disable react/require-default-props */
 import { css } from '@emotion/react';
+import Image from 'next/image';
 
 import { StyledImg, UserName } from './UserInfo.styled';
 
 interface UserInfoProps {
   type?: string;
   name?: string;
-  avatar?: string;
+  avatar: string;
   userName?: string;
 }
 
@@ -19,7 +20,7 @@ const UserInfo = ({ type, avatar, name, userName }: UserInfoProps) => {
       `}
     >
       <StyledImg type={type}>
-        <img src={avatar} alt="userAvatar" />
+        <Image src={avatar} alt="userAvatar" layout="fill" />
       </StyledImg>
       <div
         css={css`

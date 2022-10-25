@@ -101,7 +101,7 @@ const Menu = ({ param }: ParamTypes) => {
       <SidebarBox data={[targetData.data]} />
       <div>
         <Header name={targetData.title} type={LARGE_HEADER} />
-        <NormalGrid data={searchData} type={RELATED_GIFS} isLoading={!isSuccess} />
+        <NormalGrid data={searchData} type={RELATED_GIFS} isLoading={isSuccess} />
       </div>
     </div>
   );

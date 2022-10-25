@@ -1,5 +1,7 @@
 import React, { useMemo } from 'react';
 
+import Image from 'next/image';
+
 import { getRandomColor } from 'hooks/useGetRandomColor';
 import { ARTISTS, GIF, LOGIN_PAGE, RELATED_CLIPS, RELATED_GIFS, TRENDING } from 'src/constants';
 
@@ -22,20 +24,52 @@ const Card = ({ data, type, isLoading }: any) => {
     return getRandomColor();
   }, []);
 
+  console.log(data, type);
   return (
     <StyledCard type={type}>
       {type === GIF && data?.source_post_url && (
         <a href={data?.source_post_url}>
-          <StyledImg src={data?.images?.original.url} type={type} />
+          <StyledImg type={type}>
+            <Image
+              src={data?.images?.original.webp ? data?.images?.original.webp : data?.images?.original.url}
+              layout="fill"
+              alt={data?.title}
+            />
+          </StyledImg>
         </a>
       )}
-      {type === GIF && !data?.source_post_url && <StyledImg src={data?.images?.original.url} type={type} />}
+
+      {/* GIFS 페이지 Main */}
+      {type === GIF && !data?.source_post_url && (
+        <StyledImg type={type} height={data?.iamges?.original.height}>
+          <Image
+            src={data?.images?.original.webp ? data?.images?.original.webp : data?.images?.original.url}
+            layout="fill"
+            alt={data?.title}
+          />
+        </StyledImg>
+      )}
+
+      {/* GIFS 페이지 RELATED GIFS, RELATED Clips */}
       {type !== GIF && type !== LOGIN_PAGE && (
         <a href={`/gifs/${data?.id}`}>
-          <StyledImg src={data?.images?.original.url} type={type} />
+          <StyledImg type={type}>
+            <Image
+              src={data?.images?.original.webp ? data?.images?.original.webp : data?.images?.original.url}
+              layout="fill"
+              alt={data?.title}
+              priority
+              height={data?.images?.original.height}
+            />
+          </StyledImg>
         </a>
       )}
-      {type === LOGIN_PAGE && <StyledImg src={data?.images?.original.url} type={type} />}
+
+      {type === LOGIN_PAGE && (
+        <StyledImg type={type}>
+          <Image src={data?.images?.original.webp} layout="fill" alt={data?.title} />
+        </StyledImg>
+      )}
 
       {type === TRENDING && (
         <div className="trending_hover">
@@ -44,7 +78,7 @@ const Card = ({ data, type, isLoading }: any) => {
             <LikeSvg />
           </TrendingHoverSvgs>
           <TrendingHoverBadge href={`/gifs/${data?.id}`}>
-            {data.user && <img src={data.user.avatar_url} width={35} height={35} alt="user_badge" />}
+            {data.user && <Image src={data.user.avatar_url} width={35} height={35} alt="user_badge" />}
           </TrendingHoverBadge>
         </div>
       )}
@@ -54,11 +88,11 @@ const Card = ({ data, type, isLoading }: any) => {
           <a href={`/gifs/${data?.id}`} className="artists_hover">
             <ArtistHoverWrapper />
             <ArtistsHoverImg className="image">
-              <img src="/images/hover_page_image.png" width={50} height={50} alt="artists hover" />
+              <Image src="/images/hover_page_image.png" width={50} height={50} alt="artists hover" />
             </ArtistsHoverImg>
           </a>
           <ArtistsBadge>
-            {data.user && <img src={data.user.avatar_url} width={40} height={40} alt="user_badge" />}
+            {data.user && <Image src={data.user.avatar_url} width={40} height={40} alt="user_badge" />}
             <div>
               <span>{data.username}</span>
               <span>{data.username && '• Available for work'}</span>
@@ -83,7 +117,7 @@ const Card = ({ data, type, isLoading }: any) => {
             <LikeSvg />
           </TrendingHoverSvgs>
           <TrendingHoverBadge href={`/gifs/${data?.id}`}>
-            {data.user && <img src={data.user.avatar_url} width={35} height={35} alt="user_badge" />}
+            {data.user && <Image src={data.user.avatar_url} width={35} height={35} alt="user_badge" />}
             <span>{data.username}</span>
           </TrendingHoverBadge>
         </div>

@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import Image from 'next/image';
 
 import UploadIcon from '../../atoms/Svgs/UploadIcon';
 import UserInfo from '../../atoms/UserInfo/UserInfo';
@@ -45,22 +46,22 @@ const SidebarBox = ({ data }: any) => {
 
           {user?.facebook_url && (
             <SnsIcon href={user?.facebook_url}>
-              <img src="/images/snsIcon/facebook.png" alt="link to facebook" />
+              <Image src="/images/snsIcon/facebook.png" alt="link to facebook" width={20} height={20} />
             </SnsIcon>
           )}
           {user?.instagram_url && (
             <SnsIcon href={user?.instagram_url}>
-              <img src="/images/snsIcon/instagram.png" alt="link to instagram" />
+              <Image src="/images/snsIcon/instagram.png" alt="link to instagram" width={20} height={20} />
             </SnsIcon>
           )}
           {user?.twitter_url && (
             <SnsIcon href={user?.twitter_url}>
-              <img src="/images/snsIcon/twitter.png" alt="link to twitter" />
+              <Image src="/images/snsIcon/twitter.png" alt="link to twitter" width={20} height={20} />
             </SnsIcon>
           )}
           {user?.tumblr_url && (
             <SnsIcon href={user?.tumblr_url}>
-              <img src="/images/snsIcon/tumblr.png" alt="link to tumblr" />
+              <Image src="/images/snsIcon/tumblr.png" alt="link to tumblr" width={20} height={20} />
             </SnsIcon>
           )}
 
@@ -68,7 +69,7 @@ const SidebarBox = ({ data }: any) => {
             <>
               <StyledSpan>Source</StyledSpan>
               <SourceLink href={user?.website_url} type="bold">
-                <img
+                <Image
                   css={css`
                     width: 1rem;
                     margin-right: 0.3125rem;

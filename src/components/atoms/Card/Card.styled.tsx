@@ -7,7 +7,7 @@ type StyledCardProps = {
 };
 
 const WIDTH_TYPE = {
-  TRENDING: '',
+  TRENDING: '10rem', // 임시
   ARTISTS: '21.4375rem',
   RELATED_CLIPS: '15.5rem',
   RELATED_GIFS: '15.5rem',
@@ -18,7 +18,8 @@ const HEIGHT_TYPE = {
   TRENDING: '8.75rem',
   ARTISTS: '16.8125rem',
   RELATED_CLIPS: '8.71875rem',
-  RELATED_GIFS: 'auto',
+  RELATED_GIFS: '10rem', // 임시
+  GIF: '20rem', // 임시
   LOGIN_PAGE: '100%',
 };
 
@@ -51,12 +52,13 @@ export const StyledSkeleton = styled.div<{ isLoading: boolean; type: string }>`
   width: 100%;
   height: 100%;
   background-color: ${({ color }) => color};
-  z-index: ${({ isLoading }) => !isLoading && -1};
+  z-index: ${({ isLoading }) => isLoading && -1};
 `;
 
-export const StyledImg = styled.img<StyledCardProps>`
+export const StyledImg = styled.div<StyledCardProps>`
+  position: relative;
   display: inline-block;
-  height: 100%;
+  height: ${({ type }) => HEIGHT_TYPE[type as keyof typeof HEIGHT_TYPE]};
   width: ${({ type }) => WIDTH_TYPE[type as keyof typeof WIDTH_TYPE]};
   object-fit: cover;
 `;

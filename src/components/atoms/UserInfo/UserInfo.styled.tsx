@@ -12,11 +12,10 @@ const TYPE_VALUE = {
 };
 
 export const StyledImg = styled.span<UserInfoProps>`
-  img {
-    width: ${({ type }) => TYPE_VALUE[type as keyof typeof TYPE_VALUE]};
-    height: ${({ type }) => TYPE_VALUE[type as keyof typeof TYPE_VALUE]};
-    margin-right: 0.5rem;
-  }
+  position: relative;
+  width: ${({ type }) => TYPE_VALUE[type as keyof typeof TYPE_VALUE]};
+  height: ${({ type }) => TYPE_VALUE[type as keyof typeof TYPE_VALUE]};
+  margin-right: 0.5rem;
 `;
 
 export const UserName = styled.span`

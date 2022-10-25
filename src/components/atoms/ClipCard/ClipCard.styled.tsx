@@ -4,7 +4,7 @@ import { DETAIL, UPNEXT } from 'src/constants';
 
 const WIDTH_TYPE = {
   DETAIL: '48.5rem',
-  UPNEXT: '14.5rem',
+  UPNEXT: '100%',
 };
 
 export const GridItem = styled.div<{ type?: string }>`
@@ -40,7 +40,7 @@ export const StyledSkeleton = styled.div<{ isLoading: boolean; type: string }>`
   height: ${({ type }) => (type === UPNEXT ? '8.125rem' : '100%')};
   background-color: ${({ color }) => color};
   border-radius: 5px;
-  z-index: ${({ isLoading }) => !isLoading && -1};
+  z-index: ${({ isLoading }) => isLoading && -1};
 `;
 
 export const Title = styled.div<{ type?: string }>`

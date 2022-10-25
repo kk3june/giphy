@@ -23,7 +23,7 @@ const LoginComponent = () => {
         width: 22rem;
       `}
     >
-      <Image src={GiphyAnimated} alt="giphy_animated" />
+      <Image src={GiphyAnimated} alt="giphy_animated" layout="fill" />
       <LoginPageButton />
       <div
         css={css`

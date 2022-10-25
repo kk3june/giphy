@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 
 import { css } from '@emotion/react';
+import Image from 'next/image';
 
 import { getRandomColor } from 'hooks/useGetRandomColor';
 
@@ -25,7 +26,7 @@ const StoriesItem = ({ data, type }: any) => {
     <StyledStory key={data.id} type={type} href={`gifs/${data.id}`}>
       <StoryContent>
         <StoryUserBadge>
-          <img
+          <Image
             src={data.user ? data.user.avatar_url : 'https://media.giphy.com/avatars/news/hggHJAb9dlmy/80h.gif'}
             alt="user_badge"
             width={50}
@@ -34,7 +35,7 @@ const StoriesItem = ({ data, type }: any) => {
         </StoryUserBadge>
         <TitleStory>{data.title}</TitleStory>
         <Overlay className="hover" color={color} />
-        <img className="story_item hover" src={data.images.original.url} alt="Story Gif" />
+        <Image className="story_item hover" src={data.images.original.url} alt="Story Gif" layout="fill" />
         <StyledSkeleton color={color} />
       </StoryContent>
       <div

@@ -33,7 +33,7 @@ const Search = ({ param }: ParamTypes) => {
       `}
     >
       <Header name={param} type={LARGE_HEADER} />
-      <NormalGrid type={RELATED_GIFS} data={searchData} isLoading={!isSuccess} />
+      <NormalGrid type={RELATED_GIFS} data={searchData} isLoading={isSuccess} />
     </div>
   );
 };

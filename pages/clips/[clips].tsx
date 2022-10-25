@@ -10,7 +10,7 @@ import { DETAIL, QUERY_KEYS, UPNEXT } from 'src/constants';
 import wrapper from 'store/index';
 import { ParamTypes } from 'types/types';
 
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async (context) => {
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(() => async (context) => {
   const param = context.query.clips;
 
   return {
@@ -37,7 +37,7 @@ const Clips = ({ param }: ParamTypes) => {
       `}
     >
       <div>
-        <ClipCard data={results[0].data} type={DETAIL} isLoading={!results[0].isSuccess} />
+        <ClipCard data={results[0].data} type={DETAIL} isLoading={results[0].isSuccess} />
       </div>
       <div
         css={css`
@@ -54,7 +54,7 @@ const Clips = ({ param }: ParamTypes) => {
         </h2>
         {results[1].data &&
           results[1].data.map((item: any) => (
-            <ClipCard key={item.id} data={item} type={UPNEXT} isLoading={!results[1].isSuccess} />
+            <ClipCard key={item.id} data={item} type={UPNEXT} isLoading={results[1].isSuccess} />
           ))}
       </div>
     </div>

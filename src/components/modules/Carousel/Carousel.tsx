@@ -17,24 +17,13 @@ interface CarouselLayerProps {
 }
 
 const Carousel = ({ data, type, isLoading }: CarouselLayerProps) => {
-  return isLoading ? (
-    <StyledWrapper>
-      <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]} spaceBetween={3} slidesPerView={1} navigation>
-        {data &&
-          data.map((item: any) => (
-            <SwiperSlide key={item.id}>
-              <CardLayer data={item} type={type} />
-            </SwiperSlide>
-          ))}
-      </Swiper>
-    </StyledWrapper>
-  ) : (
+  return (
     <StyledWrapper>
       <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]} spaceBetween={3} slidesPerView="auto" navigation>
         {data &&
           data.map((item: any) => (
             <SwiperSlide key={item.id}>
-              <CardLayer data={item} type={type} />
+              <CardLayer data={item} type={type} isLoading={isLoading} />
             </SwiperSlide>
           ))}
       </Swiper>
