@@ -4,7 +4,7 @@ import { css } from '@emotion/react';
 
 import GifsSection from 'components/templates/GifsSection/GifSection';
 import { getRandomColor } from 'hooks/useGetRandomColor';
-import { CLIPS, DETAIL, UPLOAD_TEXT, UPNEXT } from 'src/constants';
+import { CLIPS, DETAIL, UPNEXT } from 'src/constants';
 
 import LikeSvg from '../Svgs/LikeSvg';
 import LinkSvg from '../Svgs/LinkSvg';

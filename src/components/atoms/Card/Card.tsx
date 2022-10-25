@@ -24,7 +24,6 @@ const Card = ({ data, type, isLoading }: any) => {
     return getRandomColor();
   }, []);
 
-  console.log(data, type);
   return (
     <StyledCard type={type}>
       {type === GIF && data?.source_post_url && (
@@ -59,7 +58,6 @@ const Card = ({ data, type, isLoading }: any) => {
               layout="fill"
               alt={data?.title}
               priority
-              height={data?.images?.original.height}
             />
           </StyledImg>
         </a>
