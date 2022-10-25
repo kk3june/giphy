@@ -1,29 +1,37 @@
 import React from 'react';
 
 import { css } from '@emotion/react';
+import { useQueries } from '@tanstack/react-query';
 import { GetServerSideProps } from 'next';
 import { useSelector } from 'react-redux';
 
 import ClipCard from 'components/atoms/ClipCard/ClipCard';
-import { DETAIL, UPNEXT } from 'src/constants';
+import { getContentById, getRelatedClips } from 'pages/api/fetchAPI';
+import { DETAIL, QUERY_KEYS, UPNEXT } from 'src/constants';
 import { fetchById } from 'store/byId/byIdThunks';
 import { RootState } from 'store/index';
 import wrapper from 'store/index';
 import { fetchRelatedClips } from 'store/related/relatedThunks';
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async (context) => {
-  const id = context.query.clips;
+  const param = context.query.clips;
 
-  await store.dispatch(fetchRelatedClips({ id }));
-  await store.dispatch(fetchById(id as string));
   return {
-    props: {}, // will be passed to the page component as props
+    props: { param },
   };
 });
 
-const Clips = () => {
-  const { relatedClipsIsLoading, relatedClips } = useSelector((state: RootState) => state.related);
-  const { fetchContentByIdIsLoading, fetchContentById } = useSelector((state: RootState) => state.byId);
+type ParamTypes = {
+  param: string;
+};
+
+const Clips = ({ param }: ParamTypes) => {
+  const results = useQueries({
+    queries: [
+      { queryKey: [QUERY_KEYS.GETDATA_BYID], queryFn: () => getContentById(param) },
+      { queryKey: [QUERY_KEYS.RELATED_CLIPS], queryFn: () => getRelatedClips(param) },
+    ],
+  });
 
   return (
     <div
@@ -36,7 +44,7 @@ const Clips = () => {
       `}
     >
       <div>
-        <ClipCard data={fetchContentById?.[0]} type={DETAIL} isLoading={fetchContentByIdIsLoading} />
+        <ClipCard data={results[0].data} type={DETAIL} isLoading={!results[0].isSuccess} />
       </div>
       <div
         css={css`
@@ -51,9 +59,9 @@ const Clips = () => {
         >
           Up Next
         </h2>
-        {relatedClips &&
-          relatedClips.map((item: any) => (
-            <ClipCard key={item.id} data={item} type={UPNEXT} isLoading={relatedClipsIsLoading} />
+        {results[1].data &&
+          results[1].data.map((item: any) => (
+            <ClipCard key={item.id} data={item} type={UPNEXT} isLoading={!results[1].isSuccess} />
           ))}
       </div>
     </div>

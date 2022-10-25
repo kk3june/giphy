@@ -22,11 +22,11 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
   };
 });
 
-type IdTypes = {
+type ParamTypes = {
   param: string;
 };
 
-const Gifs = ({ param }: IdTypes) => {
+const Gifs = ({ param }: ParamTypes) => {
   const results = useQueries({
     queries: [
       { queryKey: [QUERY_KEYS.GETDATA_BYID], queryFn: () => getContentById(param) },
