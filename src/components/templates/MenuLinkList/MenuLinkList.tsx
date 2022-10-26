@@ -11,7 +11,9 @@ const MenuLinkList = ({ list }: { list: MenuLinkProps[] }) => {
         const { name } = data;
         return (
           <LinkItem key={name}>
-            <Anchor href={`/menu/${name}`}>{name}</Anchor>
+            <Anchor href={`/menu/${name}`} aria-label={`link to ${name} page`}>
+              {name}
+            </Anchor>
           </LinkItem>
         );
       })}

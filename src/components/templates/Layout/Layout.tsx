@@ -29,9 +29,10 @@ const Layout = ({ children }: LayoutProps) => {
         <meta property="og:url" content="https://jiphy.site" />
         <meta property="og:site_name" content="JIPHY" />
         <meta property="og:image" content="https://github.com/kk3june/jiphy/blob/main/public/images/og_image.png" />
-        <meta property="og:description" content="concept from GIPHY platform  that animates your world" />
+        <meta property="og:description" content="concept from GIPHY platform that animates your world" />
         <meta property="og:locale" content="en_Ko" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="description" content="kk3june의 개인 사이드 프로젝트" />
       </Head>
       {!hideNavbar ? (
         <div

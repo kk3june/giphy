@@ -135,7 +135,9 @@ const SidebarBox = ({ data }: any) => {
           />
         </LearnMoreGif>
         <StyledTextBox learnmore>
-          <a href="https://giphy.com/backdrop">Learn More</a>
+          <a href="https://giphy.com/backdrop" aria-label="learn more">
+            Learn More
+          </a>
         </StyledTextBox>
       </div>
     </div>

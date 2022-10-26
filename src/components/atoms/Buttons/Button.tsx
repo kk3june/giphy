@@ -14,6 +14,7 @@ const Button = ({ name, type }: any) => {
       css={css`
         text-decoration: none;
       `}
+      aria-label="LogIn"
     >
       <ButtonItem name={name}>
         {name === LOG_IN_FACEBOOK_TEXT && (

@@ -23,11 +23,11 @@ const Card = ({ data, type, isLoading }: any) => {
   const color = useMemo(() => {
     return getRandomColor();
   }, []);
-
+  console.log(data);
   return (
     <StyledCard type={type}>
       {type === GIF && data?.source_post_url && (
-        <a href={data?.source_post_url}>
+        <a href={data?.source_post_url} aria-label={data.title}>
           <StyledImg type={type}>
             <Image
               src={data?.images?.original.webp ? data?.images?.original.webp : data?.images?.original.url}
@@ -53,7 +53,7 @@ const Card = ({ data, type, isLoading }: any) => {
 
       {/* GIFS 페이지 RELATED GIFS, RELATED Clips */}
       {type !== GIF && type !== LOGIN_PAGE && (
-        <a href={`/gifs/${data?.id}`}>
+        <a href={`/gifs/${data?.id}`} aria-label={data.title}>
           <StyledImg type={type}>
             <Image
               src={data?.images?.original.webp ? data?.images?.original.webp : data?.images?.original.url}
@@ -87,7 +87,7 @@ const Card = ({ data, type, isLoading }: any) => {
 
       {type === ARTISTS && (
         <>
-          <a href={`/gifs/${data?.id}`} className="artists_hover">
+          <a href={`/gifs/${data?.id}`} className="artists_hover" aria-label={data.title}>
             <ArtistHoverWrapper />
             <ArtistsHoverImg className="image">
               <Image src="/images/hover_page_image.png" width={50} height={50} alt="artists hover" />

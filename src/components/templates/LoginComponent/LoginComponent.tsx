@@ -2,6 +2,7 @@ import React from 'react';
 
 import { css } from '@emotion/react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import Button from 'components/atoms/Buttons/Button';
 import Inputs from 'components/atoms/Inputs/Inputs';
@@ -50,8 +51,9 @@ const LoginComponent = () => {
           margin-bottom: 1.3125rem;
         `}
       >
-        <a
+        <Link
           href="/"
+          aria-label="forgot your password"
           css={css`
             font-size: 0.8125rem;
             font-weight: bold;
@@ -60,7 +62,7 @@ const LoginComponent = () => {
           `}
         >
           Forgot Your Password
-        </a>
+        </Link>
       </div>
       <Button name={LOG_IN_FACEBOOK_TEXT} type={BUTTON_LINK} />
       <Button name={LOG_IN_APPLE_TEXT} type={BUTTON_LINK} />
@@ -77,6 +79,7 @@ const LoginComponent = () => {
         By logging in you agree to GIPHY&apos;s
         <a
           href="https://support.giphy.com/hc/en-us/articles/360020027752-GIPHY-Terms-of-Service"
+          aria-label="terms of service"
           css={css`
             color: rgb(0, 204, 255);
             text-decoration: none;
