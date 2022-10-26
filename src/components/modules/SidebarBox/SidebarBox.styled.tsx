@@ -33,9 +33,10 @@ export const SourceLinkUrl = styled.span`
   overflow: hidden;
 `;
 
-export const LearnMoreGif = styled.img`
+export const LearnMoreGif = styled.div`
   position: absolute;
   width: 16.875rem;
+  height: 12rem;
   top: 1rem;
   left: -0.9375rem;
   z-index: 2;

@@ -20,7 +20,7 @@ const UserInfo = ({ type, avatar, name, userName }: UserInfoProps) => {
       `}
     >
       <StyledImg type={type}>
-        <Image src={avatar} alt="userAvatar" layout="fill" />
+        <Image src={avatar} alt="userAvatar" width={25} height={25} />
       </StyledImg>
       <div
         css={css`

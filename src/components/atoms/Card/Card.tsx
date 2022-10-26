@@ -31,8 +31,9 @@ const Card = ({ data, type, isLoading }: any) => {
           <StyledImg type={type}>
             <Image
               src={data?.images?.original.webp ? data?.images?.original.webp : data?.images?.original.url}
-              layout="fill"
               alt={data?.title}
+              layout="fill"
+              objectFit="cover"
             />
           </StyledImg>
         </a>
@@ -43,8 +44,9 @@ const Card = ({ data, type, isLoading }: any) => {
         <StyledImg type={type} height={data?.iamges?.original.height}>
           <Image
             src={data?.images?.original.webp ? data?.images?.original.webp : data?.images?.original.url}
-            layout="fill"
             alt={data?.title}
+            layout="fill"
+            objectFit="cover"
           />
         </StyledImg>
       )}
@@ -55,9 +57,9 @@ const Card = ({ data, type, isLoading }: any) => {
           <StyledImg type={type}>
             <Image
               src={data?.images?.original.webp ? data?.images?.original.webp : data?.images?.original.url}
-              layout="fill"
               alt={data?.title}
-              priority
+              layout="fill"
+              objectFit="cover"
             />
           </StyledImg>
         </a>
@@ -65,7 +67,7 @@ const Card = ({ data, type, isLoading }: any) => {
 
       {type === LOGIN_PAGE && (
         <StyledImg type={type}>
-          <Image src={data?.images?.original.webp} layout="fill" alt={data?.title} />
+          <Image src={data?.images?.original.webp} alt={data?.title} layout="fill" objectFit="cover" />
         </StyledImg>
       )}
 
@@ -76,7 +78,9 @@ const Card = ({ data, type, isLoading }: any) => {
             <LikeSvg />
           </TrendingHoverSvgs>
           <TrendingHoverBadge href={`/gifs/${data?.id}`}>
-            {data.user && <Image src={data.user.avatar_url} width={35} height={35} alt="user_badge" />}
+            {data.user && (
+              <Image src={data.user.avatar_url} width={35} height={35} alt="user_badge" objectFit="cover" />
+            )}
           </TrendingHoverBadge>
         </div>
       )}

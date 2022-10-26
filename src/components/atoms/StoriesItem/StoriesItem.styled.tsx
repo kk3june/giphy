@@ -40,8 +40,6 @@ export const StoryUserBadge = styled.div`
   position: absolute;
   top: 1rem;
   left: 1rem;
-  width: 0.9375rem;
-  height: 0.9375rem;
   z-index: 2;
 `;
 

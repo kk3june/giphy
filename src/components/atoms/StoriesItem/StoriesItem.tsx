@@ -29,13 +29,20 @@ const StoriesItem = ({ data, type }: any) => {
           <Image
             src={data.user ? data.user.avatar_url : 'https://media.giphy.com/avatars/news/hggHJAb9dlmy/80h.gif'}
             alt="user_badge"
-            width={50}
-            height={50}
+            width="3.125rem"
+            height="3.125rem"
+            loading="lazy"
           />
         </StoryUserBadge>
         <TitleStory>{data.title}</TitleStory>
         <Overlay className="hover" color={color} />
-        <Image className="story_item hover" src={data.images.original.url} alt="Story Gif" layout="fill" />
+        <Image
+          className="story_item hover"
+          src={data.images.original.webp}
+          alt="Story Gif"
+          layout="fill"
+          loading="lazy"
+        />
         <StyledSkeleton color={color} />
       </StoryContent>
       <div

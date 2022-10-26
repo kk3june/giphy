@@ -51,7 +51,7 @@ const Gifs = ({ param }: ParamTypes) => {
         width: 65rem;
       `}
     >
-      <Sidebar data={[results[0]]} />
+      <Sidebar data={results[0].data} />
       <div
         css={css`
           overflow: hidden;

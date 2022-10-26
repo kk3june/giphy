@@ -4,6 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: [
+      'giphy.com',
       'media.giphy.com',
       'media0.giphy.com',
       'media1.giphy.com',
