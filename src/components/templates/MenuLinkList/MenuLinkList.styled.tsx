@@ -33,4 +33,17 @@ export const Anchor = styled.a`
   color: rgb(255, 255, 255);
   text-decoration: none;
   text-transform: capitalize;
+  transition: background 0.4s ease-in-out;
+  &:hover {
+    background: linear-gradient(
+        to right,
+        rgb(0, 204, 255),
+        rgb(153, 51, 255) 51%,
+        rgb(230, 70, 182) 82%,
+        rgb(255, 249, 170) 97%,
+        rgb(0, 255, 153),
+        rgb(0, 204, 255)
+      )
+      0% 50% / 200% 50%;
+  }
 `;
