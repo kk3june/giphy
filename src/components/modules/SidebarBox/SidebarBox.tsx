@@ -48,28 +48,22 @@ const SidebarBox = ({ data }: any) => {
 
           {data?.user?.facebook_url && (
             <SnsIcon href={data?.user?.facebook_url}>
-              <Image src="/images/snsIcon/facebook.png" alt="link to facebook" width={20} height={20} loading="lazy" />
+              <Image src="/images/snsIcon/facebook.png" alt="link to facebook" width={20} height={20} />
             </SnsIcon>
           )}
           {data?.user?.instagram_url && (
             <SnsIcon href={data?.user?.instagram_url}>
-              <Image
-                src="/images/snsIcon/instagram.png"
-                alt="link to instagram"
-                width={20}
-                height={20}
-                loading="lazy"
-              />
+              <Image src="/images/snsIcon/instagram.png" alt="link to instagram" width={20} height={20} />
             </SnsIcon>
           )}
           {data?.user?.twitter_url && (
             <SnsIcon href={data?.user?.twitter_url}>
-              <Image src="/images/snsIcon/twitter.png" alt="link to twitter" width={20} height={20} loading="lazy" />
+              <Image src="/images/snsIcon/twitter.png" alt="link to twitter" width={20} height={20} />
             </SnsIcon>
           )}
           {data?.user?.tumblr_url && (
             <SnsIcon href={data?.user?.tumblr_url}>
-              <Image src="/images/snsIcon/tumblr.png" alt="link to tumblr" width={20} height={20} loading="lazy" />
+              <Image src="/images/snsIcon/tumblr.png" alt="link to tumblr" width={20} height={20} />
             </SnsIcon>
           )}
 

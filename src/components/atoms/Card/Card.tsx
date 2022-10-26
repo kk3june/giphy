@@ -23,7 +23,6 @@ const Card = ({ data, type, isLoading }: any) => {
   const color = useMemo(() => {
     return getRandomColor();
   }, []);
-  console.log(data);
   return (
     <StyledCard type={type}>
       {type === GIF && data?.source_post_url && (

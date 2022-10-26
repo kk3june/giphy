@@ -7,7 +7,6 @@ import { InputBanner, Input } from './SearchInput.styled';
 const SearchInput = ({ value, handleChange, handleSubmit }: any) => {
   return (
     <form
-      id="searchInput"
       css={css`
         position: relative;
         display: flex;
@@ -17,8 +16,11 @@ const SearchInput = ({ value, handleChange, handleSubmit }: any) => {
       `}
       onSubmit={handleSubmit}
     >
-      <InputBanner>{value ? '' : <label htmlFor="searchInput">Search All the GIFs and Stickers</label>}</InputBanner>
-      <Input value={value} onChange={handleChange} />
+      <label htmlFor="searchInput">
+        <InputBanner>{value ? '' : <span>Search All the GIFs and Stickers</span>}</InputBanner>
+      </label>
+      <Input id="searchInput" name="searchInput" value={value} onChange={handleChange} />
+
       <SearchBtton />
     </form>
   );
