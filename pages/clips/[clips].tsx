@@ -5,7 +5,7 @@ import { useQueries } from '@tanstack/react-query';
 import { GetServerSideProps } from 'next';
 
 import ClipCard from 'components/atoms/ClipCard/ClipCard';
-import { getContentById, getRelatedClips } from 'pages/api/fetchAPI';
+import { getContentById, getRelatedClips, getUpNext } from 'pages/api/fetchAPI';
 import { DETAIL, QUERY_KEYS, UPNEXT } from 'src/constants';
 import wrapper from 'store/index';
 import { ParamTypes } from 'types/types';
@@ -22,7 +22,7 @@ const Clips = ({ param }: ParamTypes) => {
   const results = useQueries({
     queries: [
       { queryKey: [QUERY_KEYS.GETDATA_BYID], queryFn: () => getContentById(param) },
-      { queryKey: [QUERY_KEYS.RELATED_CLIPS], queryFn: () => getRelatedClips(param) },
+      { queryKey: [QUERY_KEYS.GET_UPNEXT], queryFn: () => getUpNext(param) },
     ],
   });
 

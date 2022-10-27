@@ -1,36 +1,20 @@
 import styled from '@emotion/styled';
 
 type StyledCardProps = {
-  width?: string | undefined;
-  height?: string | undefined;
+  width?: number | undefined;
+  height?: number | undefined;
   type?: string | undefined;
-};
-
-const WIDTH_TYPE = {
-  TRENDING: '10rem', // 임시
-  ARTISTS: '21.4375rem',
-  RELATED_CLIPS: '15.5rem',
-  RELATED_GIFS: '15.5rem',
-  GIF: '31.25rem',
-  LOGIN_PAGE: '100%',
-};
-const HEIGHT_TYPE = {
-  TRENDING: '8.75rem',
-  ARTISTS: '16.8125rem',
-  RELATED_CLIPS: '8.71875rem',
-  RELATED_GIFS: '10rem', // 임시
-  GIF: '20rem', // 임시
-  LOGIN_PAGE: '100%',
 };
 
 export const StyledCard = styled.div<StyledCardProps>`
   position: relative;
-  width: ${({ type }) => WIDTH_TYPE[type as keyof typeof WIDTH_TYPE]};
-  height: ${({ type }) => HEIGHT_TYPE[type as keyof typeof HEIGHT_TYPE]};
+  width: ${({ width }) => `${width}px`};
+  height: ${({ height }) => `${height}px`};
   margin-right: 0.2rem;
   margin-bottom: 0.2rem;
   border-radius: 0.3125rem;
   overflow: hidden;
+
   &:hover {
     .trending_hover > * {
       visibility: visible;
@@ -58,8 +42,8 @@ export const StyledSkeleton = styled.div<{ isLoading: boolean; type: string }>`
 export const StyledImg = styled.div<StyledCardProps>`
   position: relative;
   display: inline-block;
-  height: ${({ type }) => HEIGHT_TYPE[type as keyof typeof HEIGHT_TYPE]};
-  width: ${({ type }) => WIDTH_TYPE[type as keyof typeof WIDTH_TYPE]};
+  width: ${({ width }) => `${width}px`};
+  height: ${({ height }) => `${height}px`};
   object-fit: cover;
 `;
 

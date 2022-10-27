@@ -4,11 +4,13 @@ import React from 'react';
 
 import Carousel from 'components/modules/Carousel/Carousel';
 
-const CarouselLayer = ({ type, data, isLoading }: any) => {
+const CarouselLayer = ({ type, data, isLoading, childWidth, childHeight }: any) => {
   const carouselType = {
     type,
     data,
     isLoading,
+    childWidth,
+    childHeight,
   };
 
   return (

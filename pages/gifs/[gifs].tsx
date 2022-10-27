@@ -35,11 +35,27 @@ const Gifs = ({ param }: ParamTypes) => {
   const CONTENT_LIST = [
     {
       name: 'Related Clips',
-      children: <CarouselLayer type={RELATED_CLIPS} data={results[1].data} isLoading={results[1].isSuccess} />,
+      children: (
+        <CarouselLayer
+          type={RELATED_CLIPS}
+          data={results[1].data}
+          isLoading={results[1].isSuccess}
+          childWidth={243}
+          childHeight={139.5}
+        />
+      ),
     },
     {
       name: 'Related Gifs',
-      children: <NormalGrid type={RELATED_GIFS} data={results[2].data} isLoading={results[2].isSuccess} />,
+      children: (
+        <NormalGrid
+          type={RELATED_GIFS}
+          data={results[2].data}
+          isLoading={results[2].isSuccess}
+          childWidth={243}
+          childHeight={200}
+        />
+      ),
     },
   ];
 
@@ -62,7 +78,7 @@ const Gifs = ({ param }: ParamTypes) => {
             display: flex;
           `}
         >
-          <CardLayer data={results[0].data} type={GIF} isLoading={results[0].isSuccess} />
+          <CardLayer data={results[0].data} type={GIF} isLoading={results[0].isSuccess} childWidth={500} />
           <GifSection data={[results[0]]} />
         </div>
 

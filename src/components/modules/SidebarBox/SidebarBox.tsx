@@ -17,10 +17,10 @@ import {
 
 const SidebarBox = ({ data }: any) => {
   const userInfoProps = {
-    type: data?.user.type,
-    name: data?.user.name,
-    userName: data?.user.username,
-    avatar: data?.user.avatar_url,
+    type: data?.user?.type,
+    name: data?.user?.name,
+    userName: data?.user?.username,
+    avatar: data?.user?.avatar_url,
   };
 
   // const { user } = Array.isArray(data) && data.length > 0 && data;

@@ -70,11 +70,21 @@ function Home() {
   const MAIN_LIST = [
     {
       name: TRENDING,
-      children: <CarouselLayer type={TRENDING} data={results[0].data} isLoading={results[0].isSuccess} />,
+      children: (
+        <CarouselLayer type={TRENDING} data={results[0].data} isLoading={results[0].isSuccess} childHeight={140} />
+      ),
     },
     {
       name: ARTISTS,
-      children: <CarouselLayer type={ARTISTS} data={results[1].data} isLoading={results[1].isSuccess} />,
+      children: (
+        <CarouselLayer
+          type={ARTISTS}
+          data={results[1].data}
+          isLoading={results[1].isSuccess}
+          childWidth={343}
+          childHeight={269}
+        />
+      ),
     },
     {
       name: CLIPS,

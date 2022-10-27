@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 
+import { css } from '@emotion/react';
 import Image from 'next/image';
 
 import { getRandomColor } from 'hooks/useGetRandomColor';
@@ -19,15 +20,16 @@ import {
   ArtistHoverWrapper,
 } from './Card.styled';
 
-const Card = ({ data, type, isLoading }: any) => {
+const Card = ({ data, type, isLoading, childWidth, childHeight, dynamicWidth, dynamicHeight }: any) => {
   const color = useMemo(() => {
     return getRandomColor();
   }, []);
+
   return (
     <StyledCard type={type}>
       {type === GIF && data?.source_post_url && (
         <a href={data?.source_post_url} aria-label={data.title}>
-          <StyledImg type={type}>
+          <StyledImg type={type} width={childWidth || dynamicWidth} height={childHeight || dynamicHeight}>
             <Image
               src={data?.images?.original.webp ? data?.images?.original.webp : data?.images?.original.url}
               alt={data?.title}
@@ -40,7 +42,7 @@ const Card = ({ data, type, isLoading }: any) => {
 
       {/* GIFS 페이지 Main */}
       {type === GIF && !data?.source_post_url && (
-        <StyledImg type={type} height={data?.iamges?.original.height}>
+        <StyledImg type={type} width={childWidth} height={childHeight || dynamicHeight}>
           <Image
             src={data?.images?.original.webp ? data?.images?.original.webp : data?.images?.original.url}
             alt={data?.title}
@@ -50,14 +52,15 @@ const Card = ({ data, type, isLoading }: any) => {
         </StyledImg>
       )}
 
-      {/* GIFS 페이지 RELATED GIFS, RELATED Clips */}
+      {/* INDEX페이지 Carousel, GIFS 페이지 RELATED GIFS, RELATED CLIPS */}
       {type !== GIF && type !== LOGIN_PAGE && (
         <a href={`/gifs/${data?.id}`} aria-label={data.title}>
-          <StyledImg type={type}>
+          <StyledImg type={type} width={childWidth || dynamicWidth} height={childHeight || dynamicHeight}>
             <Image
               src={data?.images?.original.webp ? data?.images?.original.webp : data?.images?.original.url}
               alt={data?.title}
-              layout="fill"
+              width={childWidth || dynamicWidth}
+              height={childHeight || dynamicHeight}
               objectFit="cover"
             />
           </StyledImg>
@@ -112,7 +115,14 @@ const Card = ({ data, type, isLoading }: any) => {
       )}
 
       {type === RELATED_GIFS && (
-        <div className="trending_hover">
+        <div
+          className="trending_hover"
+          css={css`
+            position: relative;
+            width: 100%;
+            height: 100%;
+          `}
+        >
           <TrendingHoverSvgs>
             <LinkSvg />
             <LikeSvg />

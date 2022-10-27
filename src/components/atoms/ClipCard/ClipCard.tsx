@@ -18,7 +18,7 @@ const ClipCard = ({ data, type, isLoading }: any) => {
   }, []);
   return (
     <GridItem>
-      <ClipAnchor href={`/clips/${data?.id}`} className="video" aria-label={data.title}>
+      <ClipAnchor href={`/clips/${data?.id}`} className="video" aria-label={data?.title}>
         <ClipVideo key={data?.id} autoPlay muted loop type={type}>
           <source src={data?.images.original.mp4} type="video/mp4" />
         </ClipVideo>
@@ -31,13 +31,13 @@ const ClipCard = ({ data, type, isLoading }: any) => {
           width: ${type !== DETAIL ? '14.5rem' : ''};
         `}
       >
-        <ClipAnchor href={`/clips/${data?.id}`} aria-label={data.title}>
+        <ClipAnchor href={`/clips/${data?.id}`} aria-label={data?.title}>
           <Title type={type}>{data?.title}</Title>
         </ClipAnchor>
         {type === DETAIL && <GifsSection type={type} />}
       </div>
       {data?.user && (
-        <ClipAnchor href={`/writer/${data?.username}`} aria-label={data.title}>
+        <ClipAnchor href={`/writer/${data?.username}`} aria-label={data?.title}>
           <UserInfo avatar={data?.user?.avatar_url} userName={data?.user?.display_name} type="upNext" />
         </ClipAnchor>
       )}

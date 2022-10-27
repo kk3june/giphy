@@ -10,10 +10,20 @@ const StyleNormalGrid = styled.div`
   flex-wrap: wrap;
 `;
 
-const NormalGrid = ({ data, type, isLoading }: any) => {
+const NormalGrid = ({ data, type, isLoading, childWidth, childHeight }: any) => {
   return (
     <StyleNormalGrid>
-      {data && data.map((item: any) => <CardLayer key={item.id} data={item} type={type} isLoading={isLoading} />)}
+      {data &&
+        data.map((item: any) => (
+          <CardLayer
+            key={item.id}
+            data={item}
+            type={type}
+            isLoading={isLoading}
+            childWidth={childWidth}
+            childHeight={childHeight}
+          />
+        ))}
     </StyleNormalGrid>
   );
 };
