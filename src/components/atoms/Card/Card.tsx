@@ -26,7 +26,7 @@ const Card = ({ data, type, isLoading, childWidth, childHeight, dynamicWidth, dy
   }, []);
 
   return (
-    <StyledCard type={type}>
+    <StyledCard type={type} height={childHeight || dynamicHeight}>
       {type === GIF && data?.source_post_url && (
         <a href={data?.source_post_url} aria-label={data.title}>
           <StyledImg type={type} width={childWidth || dynamicWidth} height={childHeight || dynamicHeight}>
