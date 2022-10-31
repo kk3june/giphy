@@ -10,15 +10,7 @@ import 'swiper/css/scrollbar';
 import { StyledWrapper } from 'components/modules/Carousel/Carousel.styled';
 import CardLayer from 'layer/CardLayer';
 
-interface CarouselLayerProps {
-  type: string | undefined;
-  data: any;
-  isLoading: boolean;
-  childWidth?: number | undefined;
-  childHeight?: number | undefined;
-}
-
-const Carousel = ({ data, type, isLoading, childWidth, childHeight }: CarouselLayerProps) => {
+const Carousel = ({ data, type, isLoading, childWidth, childHeight }: any) => {
   return (
     <StyledWrapper>
       <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]} spaceBetween={3} slidesPerView="auto" navigation>
