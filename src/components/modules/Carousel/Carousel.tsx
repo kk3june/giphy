@@ -10,36 +10,20 @@ import 'swiper/css/scrollbar';
 import { StyledWrapper } from 'components/modules/Carousel/Carousel.styled';
 import CardLayer from 'layer/CardLayer';
 
-interface CarouselLayerProps {
-  type: string | undefined;
-  data: any;
-  isLoading: boolean;
-}
-
-const Carousel = ({ data, type, isLoading }: CarouselLayerProps) => {
-  return isLoading ? (
-    <div
-      css={{
-        fontSize: '100px',
-      }}
-    >
-      isLoading
-    </div>
-  ) : (
+const Carousel = ({ data, type, isLoading, childWidth, childHeight }: any) => {
+  return (
     <StyledWrapper>
-      <Swiper
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={3}
-        slidesPerView={1}
-        navigation
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
-      >
+      <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]} spaceBetween={3} slidesPerView="auto" navigation>
         {data &&
-          data.map((item: any, index: any) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <SwiperSlide key={`${item.type}-${index}`}>
-              <CardLayer data={item} type={type} />
+          data.map((item: any) => (
+            <SwiperSlide key={item.id}>
+              <CardLayer
+                data={item}
+                type={type}
+                isLoading={isLoading}
+                childWidth={childWidth}
+                childHeight={childHeight}
+              />
             </SwiperSlide>
           ))}
       </Swiper>

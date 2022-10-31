@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { css } from '@emotion/react';
+import { useQueries } from '@tanstack/react-query';
 import { GetServerSideProps } from 'next';
-import { useSelector } from 'react-redux';
 
 import NormalGrid from 'components/modules/Gird/NormalGrid';
 import GifSection from 'components/templates/GifsSection/GifSection';
@@ -10,37 +10,52 @@ import ListWrapper from 'components/templates/ListWrapper/ListWrapper';
 import Sidebar from 'components/templates/Sidebar/Sidebar';
 import CardLayer from 'layer/CardLayer';
 import CarouselLayer from 'layer/CarouselLayer';
-import { CONTENT, GIF, RELATED_CLIPS, RELATED_GIFS } from 'src/constants';
+import { getContentById, getRelatedClips, getRelatedGifs } from 'pages/api/fetchAPI';
+import { CONTENT, GIF, QUERY_KEYS, RELATED_CLIPS, RELATED_GIFS } from 'src/constants';
 import wrapper from 'src/store';
-import { RootState } from 'src/store';
-import { fetchById } from 'store/byId/byIdThunks';
-import { fetchRelatedGifs, fetchRelatedClips } from 'store/related/relatedThunks';
+import { ParamTypes } from 'types/types';
 
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async (context) => {
-  const id = context.query.gifs;
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(() => async (context) => {
+  const param = context.query.gifs;
 
-  await store.dispatch(fetchRelatedClips({ id }));
-  await store.dispatch(fetchRelatedGifs({ id }));
-  await store.dispatch(fetchById(id as string));
   return {
-    props: {}, // will be passed to the page component as props
+    props: { param },
   };
 });
 
-const Gifs = () => {
-  const { relatedGifsIsLoading, relatedGifs, relatedClipsIsLoading, relatedClips } = useSelector(
-    (state: RootState) => state.related,
-  );
-  const { fetchContentByIdIsLoading, fetchContentById } = useSelector((state: RootState) => state.byId);
+const Gifs = ({ param }: ParamTypes) => {
+  const results = useQueries({
+    queries: [
+      { queryKey: [QUERY_KEYS.GETDATA_BYID], queryFn: () => getContentById(param) },
+      { queryKey: [QUERY_KEYS.RELATED_CLIPS], queryFn: () => getRelatedClips(param) },
+      { queryKey: [QUERY_KEYS.RELATED_GIFS], queryFn: () => getRelatedGifs(param) },
+    ],
+  });
 
   const CONTENT_LIST = [
     {
       name: 'Related Clips',
-      children: <CarouselLayer type={RELATED_CLIPS} data={relatedClips} isLoading={relatedClipsIsLoading} />,
+      children: (
+        <CarouselLayer
+          type={RELATED_CLIPS}
+          data={results[1].data}
+          isLoading={results[1].isSuccess}
+          childWidth={243}
+          childHeight={139.5}
+        />
+      ),
     },
     {
       name: 'Related Gifs',
-      children: <NormalGrid type={RELATED_GIFS} data={relatedGifs} isLoading={relatedGifsIsLoading} />,
+      children: (
+        <NormalGrid
+          type={RELATED_GIFS}
+          data={results[2].data}
+          isLoading={results[2].isSuccess}
+          childWidth={243}
+          childHeight={200}
+        />
+      ),
     },
   ];
 
@@ -52,7 +67,7 @@ const Gifs = () => {
         width: 65rem;
       `}
     >
-      <Sidebar data={fetchContentById} />
+      <Sidebar data={results[0].data} />
       <div
         css={css`
           overflow: hidden;
@@ -63,8 +78,8 @@ const Gifs = () => {
             display: flex;
           `}
         >
-          <CardLayer data={fetchContentById?.[0]} type={GIF} isLoading={fetchContentByIdIsLoading} />
-          <GifSection data={fetchContentById} />
+          <CardLayer data={results[0].data} type={GIF} isLoading={results[0].isSuccess} childWidth={500} />
+          <GifSection data={[results[0]]} />
         </div>
 
         {CONTENT_LIST.map((item) => (

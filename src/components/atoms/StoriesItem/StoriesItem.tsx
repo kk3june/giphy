@@ -1,8 +1,21 @@
 import React, { useMemo } from 'react';
 
+import { css } from '@emotion/react';
+import Image from 'next/image';
+
 import { getRandomColor } from 'hooks/useGetRandomColor';
 
-import { StyledStory, TitleStory, StyledSkeleton } from './StoriesItem.styled';
+import {
+  StyledStory,
+  TitleStory,
+  StoryUserBadge,
+  StoryContent,
+  Overlay,
+  StyledSkeleton,
+  StyledBottomTop,
+  StyledBottomMiddle,
+  StyledBottomBottom,
+} from './StoriesItem.styled';
 
 const StoriesItem = ({ data, type }: any) => {
   const color = useMemo(() => {
@@ -11,9 +24,38 @@ const StoriesItem = ({ data, type }: any) => {
 
   return (
     <StyledStory key={data.id} type={type} href={`gifs/${data.id}`}>
-      <TitleStory>{data.title}</TitleStory>
-      <img src={data.images.original.url} alt="Story Gif" />
-      <StyledSkeleton color={color} />
+      <StoryContent>
+        <StoryUserBadge>
+          <Image
+            src={data.user ? data.user.avatar_url : 'https://media.giphy.com/avatars/news/hggHJAb9dlmy/80h.gif'}
+            alt="user_badge"
+            width="3.125rem"
+            height="3.125rem"
+            loading="lazy"
+          />
+        </StoryUserBadge>
+        <TitleStory>{data.title}</TitleStory>
+        <Overlay className="hover" color={color} />
+        <Image
+          className="story_item hover"
+          src={data.images.original.webp}
+          alt="Story Gif"
+          layout="fill"
+          loading="lazy"
+        />
+        <StyledSkeleton color={color} />
+      </StoryContent>
+      <div
+        css={css`
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        `}
+      >
+        <StyledBottomTop color={color} />
+        <StyledBottomMiddle color={color} />
+        <StyledBottomBottom color={color} />
+      </div>
     </StyledStory>
   );
 };

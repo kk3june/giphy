@@ -34,7 +34,7 @@
     "./src/**/*",
     "./pages/**/*",
     "**/*.ts",
-    "**/*.tsx",
+    "**/*.tsx", "redux-toolkit",
   ],
   "exclude": [
     "node_modules"

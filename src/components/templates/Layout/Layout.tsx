@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 import { css } from '@emotion/react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import Floating from 'components/modules/Floating/Floating';
 import Login from 'pages/login';
-import { LayoutProps } from 'types/layout';
+import { LayoutProps } from 'types/types';
 
 import Navbar from '../Navbar/Navbar';
 
@@ -21,6 +22,18 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <div>
+      <Head>
+        <title>JIPHY</title>
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="JIPHY - by kk3june" key="title" />
+        <meta property="og:url" content="https://jiphy.site" />
+        <meta property="og:site_name" content="JIPHY" />
+        <meta property="og:image" content="https://github.com/kk3june/jiphy/blob/main/public/images/og_image.png" />
+        <meta property="og:description" content="concept from GIPHY platform that animates your world" />
+        <meta property="og:locale" content="en_Ko" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="description" content="kk3june의 개인 사이드 프로젝트" />
+      </Head>
       {!hideNavbar ? (
         <div
           id="layout"

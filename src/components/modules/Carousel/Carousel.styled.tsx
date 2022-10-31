@@ -165,7 +165,7 @@ export const StyledWrapper = styled.div`
 
   .swiper-wrapper {
     .swiper-slide {
-      width: auto !important;
+      width: auto;
     }
   }
 `;

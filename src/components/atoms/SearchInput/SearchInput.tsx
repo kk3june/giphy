@@ -16,8 +16,11 @@ const SearchInput = ({ value, handleChange, handleSubmit }: any) => {
       `}
       onSubmit={handleSubmit}
     >
-      <InputBanner>{value ? '' : <span>Search All the GIFs and Stickers</span>}</InputBanner>
-      <Input value={value} onChange={handleChange} />
+      <label htmlFor="searchInput">
+        <InputBanner>{value ? '' : <span>Search All the GIFs and Stickers</span>}</InputBanner>
+      </label>
+      <Input id="searchInput" name="searchInput" value={value} onChange={handleChange} />
+
       <SearchBtton />
     </form>
   );

@@ -6,8 +6,10 @@ const StyledGrid = styled.div`
   grid-template-rows: repeat(2, 15rem);
   grid-gap: 0.625rem;
   overflow: hidden;
-  & div > a > video {
+  & div > .video > video,
+  div > .video > div {
     width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: 0.5rem;
   }
@@ -17,7 +19,8 @@ const StyledGrid = styled.div`
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 3;
-    a > video {
+    .video > video,
+    .video > div {
       height: 25.7rem;
     }
   }
@@ -26,7 +29,8 @@ const StyledGrid = styled.div`
     grid-column-end: 7;
     grid-row-start: 1;
     grid-row-end: 2;
-    a > video {
+    .video > video,
+    .video > div {
       height: 10rem;
     }
   }
@@ -35,7 +39,8 @@ const StyledGrid = styled.div`
     grid-column-end: 7;
     grid-row-start: 2;
     grid-row-end: 3;
-    video {
+    .video > video,
+    .video > div {
       height: 10rem;
     }
   }
