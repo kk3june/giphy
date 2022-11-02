@@ -24,11 +24,12 @@ const Layout = ({ children }: LayoutProps) => {
     <div>
       <Head>
         <title>JIPHY</title>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="JIPHY - by kk3june" key="title" />
         <meta property="og:url" content="https://jiphy.site" />
         <meta property="og:site_name" content="JIPHY" />
-        <meta property="og:image" content="https://github.com/kk3june/jiphy/blob/main/public/images/og_image.png" />
+        <meta property="og:image" content="/images/og_image.png" />
         <meta property="og:description" content="concept from GIPHY platform that animates your world" />
         <meta property="og:locale" content="en_Ko" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
