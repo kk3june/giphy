@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { css } from '@emotion/react';
-import { useQueries } from '@tanstack/react-query';
+import { dehydrate, QueryClient, useQueries } from '@tanstack/react-query';
 import { GetServerSideProps } from 'next';
 
 import NormalGrid from 'components/modules/Gird/NormalGrid';
@@ -18,8 +18,14 @@ import { ParamTypes } from 'types/types';
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(() => async (context) => {
   const param = context.query.gifs;
 
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery([QUERY_KEYS.GETDATA_BYID], () => getContentById(param as string));
+  await queryClient.prefetchQuery([QUERY_KEYS.RELATED_CLIPS], () => getRelatedClips(param as string));
+  await queryClient.prefetchQuery([QUERY_KEYS.RELATED_GIFS], () => getRelatedGifs(param as string));
+
   return {
-    props: { param },
+    props: { dehydratedState: dehydrate(queryClient), param },
   };
 });
 
