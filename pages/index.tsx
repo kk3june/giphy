@@ -27,7 +27,7 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
   });
 
   return {
-    props: { dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))) }, // will be passed to the page component as props
+    props: { dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))) },
   };
 });
 
