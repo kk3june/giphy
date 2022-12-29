@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { css } from '@emotion/react';
-import { useQueries } from '@tanstack/react-query';
+import { dehydrate, QueryClient, useQueries } from '@tanstack/react-query';
 import { GetServerSideProps } from 'next';
 
 import ClipCard from 'components/atoms/ClipCard/ClipCard';
-import { getContentById, getRelatedClips, getUpNext } from 'pages/api/fetchAPI';
+import { getContentById, getUpNext } from 'pages/api/fetchAPI';
 import { DETAIL, QUERY_KEYS, UPNEXT } from 'src/constants';
 import wrapper from 'store/index';
 import { ParamTypes } from 'types/types';
@@ -13,8 +13,13 @@ import { ParamTypes } from 'types/types';
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(() => async (context) => {
   const param = context.query.clips;
 
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery([QUERY_KEYS.GETDATA_BYID], () => getContentById(param as string));
+  await queryClient.prefetchQuery([QUERY_KEYS.GET_UPNEXT], () => getUpNext(param as string));
+
   return {
-    props: { param },
+    props: { dehydratedState: dehydrate(queryClient), param },
   };
 });
 

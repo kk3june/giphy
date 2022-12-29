@@ -20,14 +20,14 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery([QUERY_KEYS.TRENDING_GIFS], getTrendingGifs);
-  await queryClient.prefetchQuery([QUERY_KEYS.TRENDING_GIFS], getTrendingClips);
+  await queryClient.prefetchQuery([QUERY_KEYS.TRENDING_CLIPS], getTrendingClips);
   await queryClient.prefetchQuery([QUERY_KEYS.ARTISTS_GIFS], getArtistGifs);
   await queryClient.prefetchInfiniteQuery([QUERY_KEYS.STORIES_GIFS], () => getStoryGifs({ limit: 22, offset: 0 }), {
     staleTime: 10 * 1000,
   });
 
   return {
-    props: { dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))) }, // will be passed to the page component as props
+    props: { dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))) },
   };
 });
 

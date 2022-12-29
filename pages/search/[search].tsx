@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { css } from '@emotion/react';
-import { useQuery } from '@tanstack/react-query';
+import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query';
 import { GetServerSideProps } from 'next';
 
 import Header from 'components/atoms/Header/Header';
@@ -14,17 +14,21 @@ import { ParamTypes } from 'types/types';
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(() => async (context) => {
   const param = context.query.search;
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery([QUERY_KEYS.SEARCH_DATA], () => getSearchData(param as string));
 
   return {
-    props: { param }, // will be passed to the page component as props
+    props: { dehydratedState: dehydrate(queryClient), param },
   };
 });
+
 const Search = ({ param }: ParamTypes) => {
   const { data: searchData, isSuccess, refetch } = useQuery([QUERY_KEYS.SEARCH_DATA], () => getSearchData(param));
 
   useEffect(() => {
     refetch();
-  }, [param]);
+  }, [searchData]);
 
   return (
     <div
