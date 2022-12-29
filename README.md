@@ -1,7 +1,5 @@
 <p align="center">
-  <a href="https://jiphy.site">
     <img src="https://gifyu.com/image/SvLie" width="500" />
-  </a>
 </p>;
 
 ### [Demo ⚙️](https://jiphy.site)
