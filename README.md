@@ -1,6 +1,4 @@
-<p align="center">
-    <img src="https://gifyu.com/image/SvLie" width="500" />
-</p>;
+![image](https://user-images.githubusercontent.com/34735492/209967507-9b0a19e6-421a-4c67-9c94-c6deb0077572.gif)
 
 ### [Demo ⚙️](https://jiphy.site)
 > 사용자들이 애니메이션 GIF 파일과 짧은 동영상들을 공유할 수 있는 미국의 Giphy.com 을 모티브로 제작하였습니다.
