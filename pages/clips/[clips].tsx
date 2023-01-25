@@ -2,16 +2,15 @@ import React from 'react';
 
 import { css } from '@emotion/react';
 import { dehydrate, QueryClient, useQueries } from '@tanstack/react-query';
-import { GetServerSideProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 
 import ClipCard from 'components/atoms/ClipCard/ClipCard';
 import { getContentById, getUpNext } from 'pages/api/fetchAPI';
 import { DETAIL, QUERY_KEYS, UPNEXT } from 'src/constants';
-import wrapper from 'store/index';
 import { ParamTypes } from 'types/types';
 
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(() => async (context) => {
-  const param = context.query.clips;
+export const getStaticProps: GetStaticProps = async (context) => {
+  const param = context.params?.clips;
 
   const queryClient = new QueryClient();
 
@@ -19,9 +18,16 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
   await queryClient.prefetchQuery([QUERY_KEYS.GET_UPNEXT], () => getUpNext(param as string));
 
   return {
-    props: { dehydratedState: dehydrate(queryClient), param },
+    props: { dehydratedState: dehydrate(queryClient) },
   };
-});
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  };
+};
 
 const Clips = ({ param }: ParamTypes) => {
   const results = useQueries({
