@@ -2,7 +2,7 @@ import React from 'react';
 
 import { css } from '@emotion/react';
 import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query';
-import { GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 
 import Header from 'components/atoms/Header/Header';
 import NormalGrid from 'components/modules/Gird/NormalGrid';
