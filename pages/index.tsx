@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 
 import styled from '@emotion/styled';
-import { dehydrate, QueryClient, useInfiniteQuery, useQueries } from '@tanstack/react-query';
-import { GetServerSideProps } from 'next';
+import { useInfiniteQuery, useQueries } from '@tanstack/react-query';
 import { useInView } from 'react-intersection-observer';
 
 import ListWrapper from 'components/templates/ListWrapper/ListWrapper';
@@ -11,25 +10,7 @@ import GridLayer from 'layer/GridLayer';
 import StoriesLayer from 'layer/StoriesLayer';
 import { TRENDING, ARTISTS, CLIPS, STORIES, INDEX, QUERY_KEYS } from 'src/constants';
 
-import wrapper from '../src/store';
-
 import { getArtistGifs, getStoryGifs, getTrendingClips, getTrendingGifs } from './api/fetchAPI';
-
-// SSR
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(() => async () => {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery([QUERY_KEYS.TRENDING_GIFS], getTrendingGifs);
-  await queryClient.prefetchQuery([QUERY_KEYS.TRENDING_CLIPS], getTrendingClips);
-  await queryClient.prefetchQuery([QUERY_KEYS.ARTISTS_GIFS], getArtistGifs);
-  await queryClient.prefetchInfiniteQuery([QUERY_KEYS.STORIES_GIFS], () => getStoryGifs({ limit: 22, offset: 0 }), {
-    staleTime: 10 * 1000,
-  });
-
-  return {
-    props: { dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))) },
-  };
-});
 
 const StyledSentinel = styled.div`
   height: 1px;

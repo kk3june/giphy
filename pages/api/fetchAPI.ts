@@ -61,3 +61,8 @@ export const getContentById = async (id: string) => {
   const { data: content } = await gf.gif(id);
   return content;
 };
+
+export const getRandomGif = async () => {
+  const { data: gif } = await gf.random({ tag: 'art', type: 'gifs' });
+  return gif;
+};
