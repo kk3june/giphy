@@ -2,18 +2,17 @@ import React, { useEffect } from 'react';
 
 import { css } from '@emotion/react';
 import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps, GetStaticPaths } from 'next';
 
 import Header from 'components/atoms/Header/Header';
 import NormalGrid from 'components/modules/Gird/NormalGrid';
 import { getSearchData } from 'pages/api/fetchAPI';
 import { LARGE_HEADER, QUERY_KEYS } from 'src/constants';
 import { RELATED_GIFS } from 'src/constants';
-import wrapper from 'src/store';
 import { ParamTypes } from 'types/types';
 
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(() => async (context) => {
-  const param = context.query.search;
+export const getStaticProps: GetStaticProps = async (context) => {
+  const param = context.params?.search;
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery([QUERY_KEYS.SEARCH_DATA], () => getSearchData(param as string));
@@ -21,7 +20,14 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
   return {
     props: { dehydratedState: dehydrate(queryClient), param },
   };
-});
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  };
+};
 
 const Search = ({ param }: ParamTypes) => {
   const { data: searchData, isSuccess, refetch } = useQuery([QUERY_KEYS.SEARCH_DATA], () => getSearchData(param));

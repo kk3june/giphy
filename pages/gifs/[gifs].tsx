@@ -2,7 +2,7 @@ import React from 'react';
 
 import { css } from '@emotion/react';
 import { dehydrate, QueryClient, useQueries } from '@tanstack/react-query';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps, GetStaticPaths } from 'next';
 
 import NormalGrid from 'components/modules/Gird/NormalGrid';
 import GifSection from 'components/templates/GifsSection/GifSection';
@@ -12,11 +12,10 @@ import CardLayer from 'layer/CardLayer';
 import CarouselLayer from 'layer/CarouselLayer';
 import { getContentById, getRelatedClips, getRelatedGifs } from 'pages/api/fetchAPI';
 import { CONTENT, GIF, QUERY_KEYS, RELATED_CLIPS, RELATED_GIFS } from 'src/constants';
-import wrapper from 'src/store';
 import { ParamTypes } from 'types/types';
 
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(() => async (context) => {
-  const param = context.query.gifs;
+export const getStaticProps: GetStaticProps = async (context) => {
+  const param = context.params?.gifs;
 
   const queryClient = new QueryClient();
 
@@ -27,7 +26,14 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
   return {
     props: { dehydratedState: dehydrate(queryClient), param },
   };
-});
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  };
+};
 
 const Gifs = ({ param }: ParamTypes) => {
   const results = useQueries({
