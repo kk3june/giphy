@@ -28,7 +28,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      GIPHY_API_KEY: ${{secrets.GIPHY_API_KEY}}
       NEXT_PUBLIC_GIPHY_API_KEY: ${{secrets.NEXT_PUBLIC_GIPHY_API_KEY}}
     steps:
       - name: Checkout
