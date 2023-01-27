@@ -49,8 +49,8 @@ jobs:
           fi
       - name: Generate Environment Variables File for Production
         run: |
-          echo "GIPHY_API_KEY=$GIPHY_API_KEY">> .env.production
-          echo "NEXT_PUBLIC_GIPHY_API_KEY=$NEXT_PUBLIC_GIPHY_API_KEY">> .env.production
+          echo "GIPHY_API_KEY=$GIPHY_API_KEY">> .env
+          echo "NEXT_PUBLIC_GIPHY_API_KEY=$NEXT_PUBLIC_GIPHY_API_KEY">> .env
         env:
           GIPHY_API_KEY: ${{secrets.GIPHY_API_KEY}}
           NEXT_PUBLIC_GIPHY_API_KEY: ${{secrets.NEXT_PUBLIC_GIPHY_API_KEY}}
